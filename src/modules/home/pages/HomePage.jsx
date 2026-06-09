@@ -8,6 +8,7 @@ import Testimonials from '../components/Testimonials';
 import Outcome from '../components/Outcome';
 import UniversityPartnership from '../components/UniversityPartnership';
 import LeadForm from '../components/LeadForm';
+import FAQs from '../components/FAQs';
 import Resources from '../components/Resources';
 
 function HomePage() {
@@ -22,9 +23,10 @@ function HomePage() {
       <Outcome />
       <Programs />
       <Testimonials />
-      <Resources/>
       <UniversityPartnership />
       <LeadForm />
+      <Resources />
+      <FAQs />
     </PageViewer>
   )
 }
