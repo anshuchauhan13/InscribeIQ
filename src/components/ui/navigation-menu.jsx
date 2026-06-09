@@ -8,7 +8,7 @@ import { ChevronDownIcon } from "lucide-react"
 function NavigationMenu({
   className,
   children,
-  viewport = false,
+  viewport = true,
   ...props
 }) {
   return (
@@ -92,7 +92,8 @@ function NavigationMenuViewport({
   ...props
 }) {
   return (
-    <div className={cn("perspective-[2000px] absolute top-full left-0 isolate z-50 flex justify-center")}>
+    <div
+      className={cn("absolute top-full left-0 isolate z-50 flex justify-center")}>
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(

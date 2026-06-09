@@ -29,7 +29,7 @@ const services = [
   { label: "Research", href: "#" },
   { label: "University Partnership", href: "#" },
   { label: "Honorary Doctorate", href: "#" },
- { label: "Admissions", href: "#" },
+  { label: "Admissions", href: "#" },
 
 
 ];
@@ -39,7 +39,7 @@ const company = [
   { label: "Contact", href: "#" },
   { label: "Careers", href: "#" },
 
- 
+
 ];
 
 const resources = [
@@ -48,36 +48,36 @@ const resources = [
   { label: "FAQs", href: "#" },
 
 
- 
+
 ];
 
 
 
 
-export const Footer = () => {
+const Footer = () => {
   const [email, setEmail] = useState("");
 
   return (
     <footer
-  className="relative overflow-hidden text-white min-h-[75vh]
-  bg-[radial-gradient(circle_at_bottom_center,_#242E3E_0%,_#0C0E18_70%)]"
->
+      className="relative overflow-hidden text-white min-h-[75vh]
+  bg-[radial-gradient(circle_at_bottom_center,_#242E3E_0%,_#0C0E18_70%)] inter"
+    >
       {/* Watermark */}
-    <div
-  className="absolute -bottom-8 left-1/2 -translate-x-1/2 pointer-events-none select-none whitespace-nowrap"
-  aria-hidden="true"
->
-<span
-  className="text-[clamp(6rem,18vw,16rem)] font-extrabold tracking-[-0.04em] leading-none text-transparent bg-clip-text opacity-20"
-  style={{
-    backgroundImage:
-      "linear-gradient(to bottom, rgba(141,124,177,0.65) 0%, rgba(91,90,93,1) 100%)",
-    fontFamily: "Inter Variable, Inter, sans-serif",
-  }}
->
-  Inscribe IQ
-</span>
-</div>
+      <div
+        className="absolute -bottom-8 left-1/2 -translate-x-1/2 pointer-events-none select-none whitespace-nowrap"
+        aria-hidden="true"
+      >
+        <span
+          className="text-[clamp(6rem,18vw,16rem)] font-extrabold tracking-[-0.04em] leading-none text-transparent bg-clip-text opacity-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(141,124,177,0.65) 0%, rgba(91,90,93,1) 100%)",
+            fontFamily: "Inter Variable, Inter, sans-serif",
+          }}
+        >
+          Inscribe IQ
+        </span>
+      </div>
 
       <div className="relative z-10 container mx-auto px-12 pt-12 pb-6">
         {/* Main grid */}
@@ -85,7 +85,7 @@ export const Footer = () => {
           {/* Col 1: Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-             
+
               <div className="h-8 w-auto">
                 <a href="/" className="shrink-0">
                   <img
@@ -125,7 +125,7 @@ export const Footer = () => {
           {/* Col 2: Quick Links */}
           <div>
             <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
-             Services
+              Services
             </h3>
             <ul className="flex flex-col gap-2.5">
               {services.map(({ label, href }) => (
@@ -144,7 +144,7 @@ export const Footer = () => {
           {/* Col 3: Our Services */}
           <div>
             <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
-             Company
+              Company
             </h3>
             <ul className="flex flex-col gap-2.5">
               {company.map(({ label, href }) => (
@@ -175,7 +175,7 @@ export const Footer = () => {
               ))}
             </ul>
 
-           
+
           </div>
 
           {/* Col 4: Get in Touch */}
@@ -222,12 +222,12 @@ export const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-       <div className="relative my-2">
-  <Separator className="border-t border-dashed border-slate-600 bg-transparent" />
+        <div className="relative my-2">
+          <Separator className="border-t border-dashed border-slate-600 bg-transparent" />
 
-  <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-[#0f172a] to-transparent" />
-  <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f172a] to-transparent" />
-</div>
+          <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-[#0f172a] to-transparent" />
+          <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f172a] to-transparent" />
+        </div>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[E0E8F8]">
           <span>©2026 InscribeIQ • All right reserved.</span>
           <div className="flex items-center gap-5">
