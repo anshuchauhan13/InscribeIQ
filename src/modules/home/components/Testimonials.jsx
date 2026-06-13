@@ -48,11 +48,15 @@ const ORBIT = {
     "https://randomuser.me/api/portraits/women/24.jpg",
     "https://randomuser.me/api/portraits/men/45.jpg",
     "https://randomuser.me/api/portraits/women/9.jpg",
+     "https://randomuser.me/api/portraits/men/12.jpg",
+    "https://randomuser.me/api/portraits/women/24.jpg",
   ],
   inner: [
     "https://randomuser.me/api/portraits/women/15.jpg",
     "https://randomuser.me/api/portraits/men/76.jpg",
     "https://randomuser.me/api/portraits/women/33.jpg",
+     "https://randomuser.me/api/portraits/men/12.jpg",
+    "https://randomuser.me/api/portraits/women/24.jpg",
   ],
 };
 
@@ -185,8 +189,8 @@ function Testimonials() {
   const current = TESTIMONIALS[active];
 
   // Ring diameters derived from the measured section width
-  const outerD = width * 1;
-  const innerD = width * 0.88;
+  const outerD = width * 0.94;
+  const innerD = width * 0.80;
   const outerA = clamp(48, width * 0.085, 68);
   const innerA = clamp(44, width * 0.075, 60);
 
@@ -200,7 +204,7 @@ function Testimonials() {
       </div>
 
 
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-end mt-[15%]">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-end mt-[10%]">
         {/* Orbit stage — its width drives the ring diameters */}
         <div ref={stageRef} className="relative h-[260px] w-full sm:h-[320px]">
           {width > 0 && (
@@ -211,7 +215,7 @@ function Testimonials() {
                 direction={1}
                 avatars={ORBIT.inner}
                 avatarSize={innerA}
-                className={"-mb-[6%]"}
+                className={"-mb-[16%]"}
               />
               <OrbitRing
                 diameter={outerD}
@@ -219,6 +223,7 @@ function Testimonials() {
                 direction={-1}
                 avatars={ORBIT.outer}
                 avatarSize={outerA}
+                className={"-mb-[10%]"}
               />
             </>
           )}
@@ -252,9 +257,9 @@ function Testimonials() {
               size="icon"
               onClick={() => go(-1)}
               aria-label="Previous testimonial"
-              className="h-16 w-16 rounded-2xl bg-primary-foreground text-light-blue hover:bg-light-blue hover:text-white"
+              className="h-16 w-16 rounded-2xl bg-muted text-primary/30 hover:bg-light-blue hover:text-white shadow-md"
             >
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft strokeWidth={2.5} className="size-6"/>
             </Button>
           </div>
           <div
@@ -265,15 +270,15 @@ function Testimonials() {
               size="icon"
               onClick={() => go(1)}
               aria-label="Next testimonial"
-              className="h-16 w-16 rounded-2xl bg-primary-foreground text-light-blue hover:bg-light-blue hover:text-white"
+              className="h-16 w-16 rounded-2xl bg-muted text-primary/30 hover:bg-light-blue hover:text-white shadow-md"
             >
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight strokeWidth={2.5} className="size-6" />
             </Button>
           </div>
 
           {/* Quote card — top corners notched via clip-path */}
           <div
-            className="w-full bg-primary-foreground px-6 pb-10 pt-24 text-center sm:px-12 sm:pt-28"
+            className="w-full bg-muted px-6 pb-10 pt-24 text-center sm:px-12 sm:pt-28 shadow-md" 
             style={{ clipPath: CARD_CLIP }}
           >
             <AnimatePresence mode="wait">

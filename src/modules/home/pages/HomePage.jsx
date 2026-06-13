@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection';
 import Impact from '../components/Impact';
 import WhyInscribe from '../components/WhyInscribe';
 import CoreServices from '../components/CoreServices';
+import Flow from '../components/Flow';
 import Programs from '../components/Programs';
 import Testimonials from '../components/Testimonials';
 import Outcome from '../components/Outcome';
@@ -20,6 +21,7 @@ function HomePage() {
       </div>
       <WhyInscribe />
       <CoreServices />
+      <Flow />
       <Outcome />
       <Programs />
       <Testimonials />

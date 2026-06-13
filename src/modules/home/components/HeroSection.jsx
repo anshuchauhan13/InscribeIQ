@@ -12,13 +12,13 @@ const AVATARS = [
 function HeroSection() {
   return (
     <div >
-      <SectionViewer className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10 pt-14 pb-6 md:pt-24 md:pb-10">
+      <SectionViewer className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10 pt-14 pb-6 md:pt-16 md:pb-10">
 
         {/* LEFT */}
         <div className="w-full md:w-1/2 flex flex-col gap-6">
 
           {/* Trust badge */}
-          <div className="inline-flex items-center gap-2 self-start rounded-full border border-light-blue/30 bg-light-blue/10 px-4 py-1.5">
+          <div className="inline-flex items-center gap-2 self-start rounded-full bg-light-blue/10 px-4 py-1.5">
             <span className="h-2 w-2 rounded-full bg-light-blue animate-pulse" />
             <span className="text-sm font-medium text-light-blue">
               Trusted by 10,000+ Scholars &amp; Researchers
@@ -49,7 +49,7 @@ function HeroSection() {
           <div className="flex flex-wrap items-center gap-3">
             <Button
               size="lg"
-              className="rounded-full bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] text-white hover:opacity-90 px-7 shadow-md"
+              variant="gradiant"
             >
               Get Started Today
               <ArrowRight className="ml-2 h-4 w-4" />

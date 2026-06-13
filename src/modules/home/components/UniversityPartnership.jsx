@@ -2,6 +2,7 @@ import { PlusIcon, University } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 const UNIVERSITIES = [
   "Global Leadership Academy",
@@ -14,7 +15,44 @@ const UNIVERSITIES = [
   "Royal Academy of Sciences",
 ];
 
+
+
 export default function UniversityPartnership({ className, ...props }) {
+  const logos = [
+  {
+    src: "https://svgl.app/library/nvidia-wordmark-light.svg",
+    alt: "Nvidia Logo",
+  },
+  {
+    src: "https://svgl.app/library/supabase_wordmark_light.svg",
+    alt: "Supabase Logo",
+  },
+  {
+    src: "https://svgl.app/library/openai_wordmark_light.svg",
+    alt: "OpenAI Logo",
+  },
+  {
+    src: "https://svgl.app/library/turso-wordmark-light.svg",
+    alt: "Turso Logo",
+  },
+  {
+    src: "https://svgl.app/library/vercel_wordmark.svg",
+    alt: "Vercel Logo",
+  },
+  {
+    src: "https://svgl.app/library/github_wordmark_light.svg",
+    alt: "GitHub Logo",
+  },
+  {
+    src: "https://svgl.app/library/claude-ai-wordmark-icon_light.svg",
+    alt: "Claude AI Logo",
+  },
+  {
+    src: "https://svgl.app/library/clerk-wordmark-light.svg",
+    alt: "Clerk Logo",
+  },
+];
+
   return (
     <SectionViewer className="py-14 md:py-24">
       {/* Header */}
@@ -29,67 +67,56 @@ export default function UniversityPartnership({ className, ...props }) {
         </p>
       </div>
 
-      {/* Grid */}
-      <div
-        className={cn("relative grid grid-cols-2 border-x md:grid-cols-4", className)}
-        {...props}
-      >
-        <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t" />
+   <div className="w-full place-content-center">
+    <div
+        aria-hidden="true"
+        className={cn(
+          "-z-10 -top-1/2 -translate-x-1/2 pointer-events-none absolute left-1/2 h-[120vmin] sm:w-[120vmin] rounded-b-full",
+          "bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]",
+          "blur-[30px]"
+        )}
+      />
 
-        {UNIVERSITIES.map((name, i) => {
-          const tinted = i % 3 === 0;
-          // A cell's bottom-right corner is an internal junction when it is
-          // neither in the last column nor the last row — computed per layout
-          // since the grid is 2-col on mobile and 4-col on desktop.
-          const junctionMobile = i % 2 === 0 && i < UNIVERSITIES.length - 2;
-          const junctionDesktop = i % 4 !== 3 && i < UNIVERSITIES.length - 4;
-          return (
-            <LogoCard
-              key={name}
-              name={name}
-              className={cn(
-                "border-b",
-                i % 2 === 0 && "border-r",
-                i % 4 !== 3 && "md:border-r",
-                tinted && "bg-muted",
-                i >= UNIVERSITIES.length - 4 && "md:border-b-0"
-              )}
-            >
-              {(junctionMobile || junctionDesktop) && (
-                <PlusIcon
-                  className={cn(
-                    "-right-[12.5px] -bottom-[12.5px] absolute z-10 size-6 text-muted-foreground/50",
-                    junctionMobile ? "block" : "hidden",
-                    junctionDesktop ? "md:block" : "md:hidden"
-                  )}
-                  strokeWidth={1}
-                />
-              )}
-            </LogoCard>
-          );
-        })}
+      <section>
+       
+        <div className="mx-auto my-5 h-px max-w-sm bg-border [mask-image:linear-gradient(to_right,transparent,blue,transparent)]" />
 
-        <div className="-translate-x-1/2 -bottom-px pointer-events-none absolute left-1/2 w-screen border-b" />
-      </div>
+        <LogoCloud logos={logos} reverse={false} />
+        <LogoCloud logos={logos} reverse={true} />
+
+        <div className="mt-5 h-px bg-border [mask-image:linear-gradient(to_right,transparent,blue,transparent)]" />
+      </section>
+    </div>
+   
     </SectionViewer>
   );
 }
 
-function LogoCard({ name, className, children, ...props }) {
+
+
+export function LogoCloud({ className, logos, reverse = false, ...props }) {
   return (
     <div
+      {...props}
       className={cn(
-        "group relative flex flex-col items-center justify-center gap-2 bg-background px-4 py-8 text-center transition-colors md:p-8",
+        "overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black,transparent)]",
         className
       )}
-      {...props}
     >
-      <University
-        className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-light-blue"
-        strokeWidth={1.5}
-      />
-      <span className="text-sm font-medium text-foreground">{name}</span>
-      {children}
+      <InfiniteSlider gap={54} reverse={reverse} duration={80} durationOnHover={25}>
+        {logos.map((logo) => (
+          <img
+            alt={logo.alt}
+            className="pointer-events-none h-6 select-none md:h-10 brightness-0 opacity-70"
+            height={logo.height || "auto"}
+            key={`logo-${logo.alt}`}
+            loading="lazy"
+            src={logo.src}
+            width={logo.width || "auto"}
+          />
+        ))}
+      </InfiniteSlider>
     </div>
   );
 }
+
