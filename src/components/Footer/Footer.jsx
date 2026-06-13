@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
@@ -30,29 +28,63 @@ const services = [
   { label: "University Partnership", href: "#" },
   { label: "Honorary Doctorate", href: "#" },
   { label: "Admissions", href: "#" },
-
-
 ];
 
 const company = [
   { label: "About", href: "#" },
   { label: "Contact", href: "#" },
   { label: "Careers", href: "#" },
-
-
 ];
 
 const resources = [
   { label: "Blogs", href: "#" },
   { label: "Guides", href: "#" },
   { label: "FAQs", href: "#" },
-
-
-
 ];
 
+// Accordion item — only renders chevron & toggle on mobile
+const AccordionLinkGroup = ({ title, links }) => {
+  const [open, setOpen] = useState(false);
 
+  return (
+    <div className="border-b border-slate-700/60 sm:border-none">
+      {/* Header — clickable only on mobile */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between py-3.5 sm:py-0 sm:cursor-default sm:pointer-events-none"
+      >
+        <h3 className="text-sm font-semibold text-white tracking-wide">
+          {title}
+        </h3>
+        <ChevronDown
+          className={`h-4 w-4 text-slate-400 transition-transform duration-300 sm:hidden ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
 
+      {/* Links — always visible on sm+, toggleable on mobile */}
+      <ul
+        className={`flex flex-col gap-2.5 overflow-hidden transition-all duration-300 ease-in-out
+          sm:max-h-none sm:opacity-100 sm:pb-0 sm:mt-4
+          ${open ? "max-h-96 opacity-100 pb-3.5" : "max-h-0 opacity-0"}
+        `}
+      >
+        {links.map(({ label, href }) => (
+          <li key={label}>
+            <a
+              href={href}
+              className="text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -60,7 +92,7 @@ const Footer = () => {
   return (
     <footer
       className="relative overflow-hidden text-white min-h-[75vh]
-  bg-[radial-gradient(circle_at_bottom_center,_#242E3E_0%,_#0C0E18_70%)] inter"
+      bg-[radial-gradient(circle_at_bottom_center,_#242E3E_0%,_#0C0E18_70%)] inter"
     >
       {/* Watermark */}
       <div
@@ -79,27 +111,27 @@ const Footer = () => {
         </span>
       </div>
 
-      <div className="relative z-10 container mx-auto px-12 pt-12 pb-6">
+      <div className="relative z-10 container mx-auto px-5 sm:px-8 lg:px-12 pt-10 sm:pt-12 pb-6">
         {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-5 lg:grid-cols-5 gap-10 mb-10">
-          {/* Col 1: Brand */}
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-0 sm:gap-10 mb-6 sm:mb-10">
 
-              <div className="h-8 w-auto">
+          {/* Col 1: Brand — always fully visible */}
+          <div className="flex flex-col gap-4 pb-6 sm:pb-0 border-b border-slate-700/60 sm:border-none mb-2 sm:mb-0">
+            <div className="flex items-center gap-3">
+              <div className="h-auto w-auto">
                 <a href="/" className="shrink-0">
                   <img
                     src="/faviconIcon.png"
                     alt="Logo"
-                    className="h-10 md:h-12 w-auto"
+                    className="h-14 sm:h-10 md:h-12 w-auto"
                   />
                 </a>
               </div>
-              <span className="text-lg font-bold tracking-tight text-white">
+              <span className="text-2xl sm:text-lg font-bold tracking-tight text-white">
                 Inscribe IQ
               </span>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-[220px]">
+            <p className="text-sm text-slate-400 leading-relaxed max-w-[280px] sm:max-w-[220px]">
               Empowering your ideas with expert writing and publishing
               solutions. Let's create impactful stories together—crafted with
               precision, delivered with excellence.
@@ -122,65 +154,18 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Col 2: Quick Links */}
-          <div>
-            <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
-              Services
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {services.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Col 2: Services */}
+          <AccordionLinkGroup title="Services" links={services} />
 
-          {/* Col 3: Our Services */}
-          <div>
-            <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
-              Company
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {company.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
-              Resources
-            </h3> <ul className="flex flex-col gap-2.5">
-              {resources.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Col 3: Company */}
+          <AccordionLinkGroup title="Company" links={company} />
 
+          {/* Col 4: Resources */}
+          <AccordionLinkGroup title="Resources" links={resources} />
 
-          </div>
-
-          {/* Col 4: Get in Touch */}
-          <div>
-            <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+          {/* Col 5: Get in Touch */}
+          <div className="pt-5 sm:pt-0">
+            <h3 className="text-sm font-semibold text-white mb-4 tracking-wide">
               Get in Touch
             </h3>
 
@@ -224,12 +209,12 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="relative my-2">
           <Separator className="border-t border-dashed border-slate-600 bg-transparent" />
-
           <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-[#0f172a] to-transparent" />
           <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f172a] to-transparent" />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[E0E8F8]">
-          <span>©2026 InscribeIQ • All right reserved.</span>
+
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 pt-2">
+          <span>©2026 InscribeIQ • All rights reserved.</span>
           <div className="flex items-center gap-5">
             <a href="#" className="hover:text-slate-300 transition-colors">
               Privacy Policy

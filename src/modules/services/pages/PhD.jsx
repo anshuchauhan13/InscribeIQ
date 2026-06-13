@@ -12,7 +12,6 @@ import WhyInscribe from "../components/Doctorate/WhyInscribe";
 import Benefit from "../components/Doctorate/Benefit";
 import LeadGeneration from "../components/Doctorate/LeadGeneration";
 import CareerOutcomes from "../components/Doctorate/CareerOutcomes";
-import Gallery from "../components/Doctorate/Gallery";
 import {
   Megaphone,
   DollarSign,
@@ -24,41 +23,38 @@ import {
 // import Process from '../components/Doctorate/Process';
 // import FAQ from '../components/Doctorate/FAQ';
 
-function HonaryDoctorate() {
-const heroSectionData = {
-  eyebrow: "Honorary Doctorate Recognition",
-  titleLine1: "Honorary Doctorate Recognition for",
-  titleLine2: "Exceptional Achievements",
+function PhD() {
+ const heroSectionData = {
+  // ✅ New props
+  eyebrow: "PhD Admissions & Research Advisory",
   subheadline:
-    "Celebrate outstanding contributions in business, education, healthcare, social impact, entrepreneurship, arts, innovation, and leadership through globally recognized honorary recognition opportunities.",
+    "Get expert guidance for PhD admission, university selection, research area planning, thesis support, and publication assistance.",
   badges: [
-    "Global Recognition",
-    "International Opportunities",
-    "Distinguished Achievements",
-    "Prestigious Academic Recognition",
+    "UGC Recognized Options",
+    "Global Universities",
+    "Flexible Learning",
+    "Research Support",
   ],
 
-  duration: "3 Months",
+  titleLine1: "Global PhD Programs for Working Professionals",
+  titleLine2: "& Research Aspirants",
+  duration: "UGC Recognized",
 
   imageSrc1: "/service/hero1.png",
   imageSrc2: "/service/hero2.png",
   imageSrc3: "/service/hero3.png",
   imageSrc4: "/service/hero4.png",
 
-  imageAlt1: "Foreign dignitary receiving award",
-  imageAlt2: "Convocation ceremony",
-  imageAlt3: "Doctoral robe and honorary medal",
-  imageAlt4: "Luxury stage background",
+  imageAlt1: "Person 1",
+  imageAlt2: "Person 2",
+  imageAlt3: "Person 3",
+  imageAlt4: "Person 4",
 
-  location: "Global Leadership Academy, India",
-  credential: "Global Recognition",
-  credentialLabel: "Distinguished Achievements",
+  location: "Global Universities",
+  credential: "UGC Recognized Options",
+  credentialLabel: "Flexible Learning",
 
-  breadcrumbs: [
-    "Home",
-    "Doctorate Courses",
-    "Honorary Doctorate in Business Administration",
-  ],
+  breadcrumbs: ["Home", "Doctorate Courses", "PhD"],
 
   applyLabel: "Apply for this program",
   expertLabel: "Talk to Expert",
@@ -68,36 +64,33 @@ const heroSectionData = {
 };
   const quickInfoData = [
     {
-      value: "500+",
-      label: "Recipients Honoured",
+      value: "3 – 4 Years",
+      label: "Duration",
     },
     {
-      value: "21 Days",
-      label: "Avg. Processing Time",
+      value: "Online / Hybrid / Regular",
+      label: "Mode",
     },
     {
-      value: "100%",
-      label: "Fully Guided Process",
+      value: "Master’s Degree",
+      label: "Eligibility",
     },
     {
-      value: "12+",
-      label: "Partner Institutions",
+      value: "Thesis + Publication",
+      label: "Support",
     },
-    {
-      value: "4.9 ★",
-      label: "Satisfaction Rating",
-    },
+  
   ];
 
   const whatIsCourseData = {
-    title: "What is an Honorary Doctorate?",
+    title: "What is a PhD?",
 
-    heading: "A Recognition of Excellence and Impact",
+    heading: "What Makes a PhD Different from a Traditional Doctorate?",
 
     description: [
-      "An Honorary Doctorate is a prestigious recognition awarded to individuals who have demonstrated exceptional achievements, leadership, innovation, philanthropy, or significant contributions to society and their respective fields.",
+      "A Doctor of Business Administration (DBA) is a professional doctoral degree designed for experienced business professionals who want to solve real-world business challenges through applied research.",
 
-      "It is designed to honor distinguished accomplishments and lifelong impact.",
+      "Unlike traditional academic doctorates, DBA programs focus on practical business impact, leadership, innovation, and organizational transformation.",
     ],
 
     sideImage: "/images/dba.jpg",
@@ -168,35 +161,28 @@ const heroSectionData = {
   };
 
   const whoShouldJoinData = {
-  heading: "Recognizing Leaders Across Diverse Fields",
+  heading: "Who Should Choose a PhD?",
 
   accentColor: "bg-blue-600",
 
   items: [
     {
       id: "01",
-      label: "Entrepreneurs - Visionaries who have built successful businesses and generated economic impact.",
+      label: "Working Professionals - For professionals who want doctoral recognition and career growth.",
     },
     {
       id: "02",
-      label: "Business Leaders -  Executives who have transformed industries and organizations.",
+      label: "Faculty Members - For professors aiming for academic promotion, research profile building, and institutional ranking support.",
     },
     {
       id: "03",
-      label: "Educators - Individuals contributing significantly to education and academic advancement.",
+      label: "Research Scholars - For students who want structured research guidance.",
     },
     {
       id: "04",
-      label: "Healthcare Professionals - Leaders creating positive healthcare outcomes and innovations.",
+      label: "Corporate Leaders - For leaders looking to build expertise in management, technology, education, or other domains.",
     },
-    {
-      id: "05",
-      label: "Artists & Creatives - Thought leaders influencing communities through knowledge and inspiration.",
-    },
-    {
-      id: "06",
-      label: "Innovators & Technologists - Individuals driving technological advancement and innovation.",
-    },
+
   ],
 
   images: [
@@ -219,9 +205,9 @@ const heroSectionData = {
 };
 
 const popularCourseData = {
-  heading: "Popular DBA Specializations",
+  heading: "Popular PhD Specializations",
   highlight: "DBA Specializations",
-
+  accentColor: "bg-purple-700",
   columns: 3,
 
   items: [
@@ -289,11 +275,11 @@ const popularCourseData = {
 };
 
 const journeyData = {
-  eyebrow: "How the Recognition Process Works",
+  eyebrow: "Your PhD journey",
 
-  headingMain: "Recognition Journey",
+  headingMain: "How It Works",
 
-  headingAccent: "It Works",
+  headingAccent: "",
 
   subheading:
     "From your first profile evaluation to receiving your doctorate — a structured, guided path built around your professional life.",
@@ -307,109 +293,117 @@ const journeyData = {
     },
     {
       id: 2,
-      title: "Achievement Evaluation",
+      title: "University Shortlisting",
       shortTitle: "University Shortlisting",
       desc: "We match you with accredited universities that align with your goals, industry, and research interests.",
     },
     {
       id: 3,
-      title: "Documentation Review",
+      title: "Admission Process",
       shortTitle: "Admission Process",
       desc: "Our team guides you through every step of the application and enrollment process seamlessly.",
     },
     {
       id: 4,
-      title: "Nomination Guidance",
+      title: "Research Proposal Development",
       shortTitle: "Research Proposal",
       desc: "You craft a focused research proposal with mentorship from our academic committee.",
     },
     {
       id: 5,
-      title: "Recognition Consideration",
+      title: "Coursework & Research",
       shortTitle: "Coursework & Research",
       desc: "Engage in rigorous coursework and begin your applied research journey under expert supervision.",
     },
     {
       id: 6,
-      title: "Award & Convocation Ceremony",
-      shortTitle: "Applied Research",
+      title: "Thesis Writing Support",
+      shortTitle: "Thesis Writing",
       desc: "Conduct real-world business research that creates measurable impact in your industry.",
     },
-    // {
-    //   id: 7,
-    //   title: "Final Thesis / Project",
-    //   shortTitle: "Final Thesis",
-    //   desc: "Submit your doctoral thesis or capstone project for formal academic evaluation.",
-    // },
-    // {
-    //   id: 8,
-    //   title: "Doctoral Qualification Completion",
-    //   shortTitle: "Doctorate Awarded",
-    //   desc: "Your DBA is formally awarded and all credentials are dispatched within 30 days.",
-    // },
+    {
+      id: 7,
+      title: "Publication Support",
+      shortTitle: "Publication",
+      desc: "Submit your doctoral thesis or capstone project for formal academic evaluation.",
+    },
+    {
+      id: 8,
+      title: "Final Submission & Viva Preparation",
+      shortTitle: "Doctorate Awarded",
+      desc: "Your DBA is formally awarded and all credentials are dispatched within 30 days.",
+    },
   ],
 };
 
- const whyInscribeData = {
-  heading: "How Inscribe IQ Supports Your DBA Journey",
+ 
+const whyInscribeData = {
+  heading: "Why Choose Us?",
 
   subheading:
-    "Most DBA aspirants come to us after struggling alone — unsure which university fits, uncertain about proposals, and overwhelmed by research. Inscribe IQ is built differently. Not just guidance — but a full-stack support system for every stage of your doctoral journey.",
+    "Pursuing a PhD or DBA can be overwhelming without the right guidance. From university selection to thesis completion and publication, our experts provide end-to-end academic support designed to help you succeed with confidence.",
 
   cards: {
     stat: {
-      eyebrow: "Program Guidance",
-      body: "Eligibility checks & university shortlisting — matched to your profile and research goals.",
-      stat: "<10",
-      statLabel: "Days to University Shortlist",
-      badgeText: "Admission\nAssistance",
+      eyebrow: "Admission Guidance",
+      body:
+        "Get expert assistance with university selection, eligibility assessment, documentation, and application submission.",
+      stat: "100%",
+      statLabel: "Application Support",
+      badgeText: "Admission\nGuidance",
     },
 
     imageCard: {
-      badge: "Research Support",
-      title: "Thesis & Proposal That Stands Out.",
-      sub: "From research topic selection to final doctoral report — guided at every step.",
-      tags: ["Proposal Dev", "SPSS / AMOS", "SmartPLS"],
+      badge: "Research Topic Finalization",
+      title: "Choose a Research Topic That Gets Approved.",
+      sub:
+        "Identify a strong, relevant, and research-worthy topic aligned with your academic goals and university expectations.",
+      tags: ["Topic Selection", "Research Gap", "Proposal Ready"],
       img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
     },
 
     lightCard: {
-      eyebrow: "Application Assistance",
-      title: "Documentation. Admissions. Done Right.",
-      accent: "End-to-end support from SOP to offer letter",
-      body: "We handle every document, every deadline, and every university requirement — so you focus on your research vision, not paperwork.",
-      pills: ["SOP Writing", "LOR Guidance", "Interview Prep"],
+      eyebrow: "Synopsis Support",
+      title: "Proposal & Synopsis Development.",
+      accent: "Structured according to university guidelines",
+      body:
+        "We help you prepare a well-organized synopsis and research proposal that meets academic standards and increases approval chances.",
+      pills: ["Synopsis Writing", "Research Design", "Proposal Review"],
     },
 
     darkCard1: {
-      badge: "Data Analysis",
-      title: "SPSS. SmartPLS. AMOS. R.",
-      accent: "Your data, expertly analysed",
-      body: "We run your quantitative & qualitative analysis and walk you through every output — ready for your viva.",
+      badge: "Data Analysis Support",
+      title: "SPSS. AMOS. SmartPLS. R. Python.",
+      accent: "Accurate statistical analysis for your research",
+      body:
+        "Comprehensive quantitative and qualitative data analysis support using industry-standard tools, including interpretation and reporting.",
     },
 
     darkCard2: {
-      badge: "Publication Support",
-      title: "Research Published. Career Advanced.",
-      accent: "Journals & conferences, covered",
-      body: "Get your research submitted to indexed journals and conferences with expert editorial guidance.",
+      badge: "Thesis & Publication Support",
+      title: "From Thesis Writing to Journal Publication.",
+      accent: "Complete research assistance under one roof",
+      body:
+        "End-to-end thesis writing support, formatting, review, and publication assistance for Scopus, WoS, PubMed, ABDC, and international journals.",
     },
   },
 };
 
+
+
 const benefitsData = {
   eyebrow: "Benefits",
 
-  heading: "Why Business Leaders Choose DBA Programs",
+  heading: "Career Benefits After PhD",
 
   subheading:
     "Elevate your leadership, strengthen your credibility.",
 
   items: [
     {
-      id: "executive-credibility",
+      id: "Academic promotions",
       image: "/service/hero1.png",
-      name: "Executive Credibility",
+      name: "Academic promotions",
       role: "Professional Recognition",
       quote:
         "Strengthen your professional reputation with a doctoral qualification that demonstrates expertise, leadership, and commitment to excellence.",
@@ -417,7 +411,7 @@ const benefitsData = {
     {
       id: "thinking",
       image: "/service/hero2.png",
-      name: "Strategic Thinking",
+      name: "Professor / lecturer opportunities",
       role: "Education Consultant",
       quote:
         "Develop advanced analytical and decision-making capabilities to solve complex business challenges and lead with confidence.",
@@ -425,7 +419,7 @@ const benefitsData = {
     {
       id: "global",
       image: "/service/hero3.png",
-      name: "Global Recognition",
+      name: "Research career growth",
       role: "Education Consultant",
       company: "Founder, HopeBridge Foundation",
       quote:
@@ -434,7 +428,7 @@ const benefitsData = {
     {
       id: "consulting",
       image: "/service/hero4.png",
-      name: "Consulting Opportunities",
+      name: "Better credibility",
       role: "Mindset Coach",
       quote:
         "Expand your influence as a trusted advisor by leveraging doctoral-level expertise to guide organizations and business leaders.",
@@ -459,62 +453,49 @@ const benefitsData = {
 };
 
 const whyChooseUsData = {
-  eyebrow: "Why Individuals Pursue Honorary Recognition",
+  eyebrow: "Why Choose Global PhD Programs?",
 
-  heading: "A Symbol of Achievement and Legacy",
+  heading: "Build Your Research Career with International Doctoral Opportunities",
 
   subheading:
-    "",
+    "A Global Phd is a great way to accelerate your career and provides an excellent balance between ease of access and powerful executive outcomes.",
 
   services: [
     {
       id: 1,
       iconType: "executive",
-      title: "Global Recognition",
+      title: "Executive Credibility",
       description:
         "Strengthen your professional profile with a globally recognised doctoral credential that signals research authority to boards and clients.",
     },
     {
       id: 2,
       iconType: "strategy",
-      title: "Professional Credibility",
+      title: "Strategic Thinking",
       description:
         "Master advanced business frameworks — systems thinking, scenario planning, and evidence-based strategy — moving your organisation from reactive to proactive.",
     },
     {
       id: 3,
       iconType: "global",
-      title: "Legacy Building",
+      title: "Global Recognition",
       description:
         "A DBA is accepted across borders — opening doors in multinational corporations, international advisory roles, and top-tier academic institutions.",
     },
     {
       id: 4,
       iconType: "research",
-      title: "Personal Milestone",
+      title: "Research-Based Decisions",
       description:
         "Move beyond intuition. Apply systematic research methods to complex organisational challenges and drive measurable performance improvements.",
     },
   ],
 };
 
-const galleryData = {heading:"Life as an Honorary Doctorate Recipient",
-  subheading:"Every image reflects a journey of leadership, innovation, and impact—celebrating those who have shaped industries and left a lasting legacy.",
-  accentColor:"",
-  images:[
-    { src: "/service/Gallery1.jpeg", alt: "Campus" },
-    { src: "/service/gallery2.jpeg", alt: "Lecture" },
-    { src: "/service/gallery3.jpeg", alt: "Discussion" },
-    { src: "/service/gallery4.jpeg", alt: "Workshop" },
-    { src: "/service/gallery5.jpeg", alt: "Graduation" },
-    { src: "/service/gallery6.jpeg", alt: "Hero shot" }, // tall right panel
-  ]
-}
-
 const careerOutcomesData = {
   tagline: "CAREER OUTCOMES",
 
-  heading: "Career Opportunities After DBA",
+  heading: "Career Opportunities After PhD",
 
   description:
     "A DBA empowers experienced professionals to move into leadership, consulting, entrepreneurship, and academic roles through advanced business knowledge and applied research expertise.",
@@ -575,7 +556,7 @@ const careerOutcomesData = {
   return (
     <>
       <HeroSection {...heroSectionData} />
-     <QuickInfo items={quickInfoData} />
+      <QuickInfo items={quickInfoData} />
       <WhatIsCourse {...whatIsCourseData} />
       <WhoShould {...whoShouldJoinData}
       />
@@ -583,9 +564,6 @@ const careerOutcomesData = {
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
       <WhyInscribe  {...whyInscribeData}/>
-      <Gallery
-{...galleryData}
-/>
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData}/>
       <CareerOutcomes {...careerOutcomesData} />
@@ -594,4 +572,4 @@ const careerOutcomesData = {
   );
 }
 
-export default HonaryDoctorate;
+export default PhD;

@@ -12,7 +12,6 @@ import WhyInscribe from "../components/Doctorate/WhyInscribe";
 import Benefit from "../components/Doctorate/Benefit";
 import LeadGeneration from "../components/Doctorate/LeadGeneration";
 import CareerOutcomes from "../components/Doctorate/CareerOutcomes";
-import Gallery from "../components/Doctorate/Gallery";
 import {
   Megaphone,
   DollarSign,
@@ -21,43 +20,41 @@ import {
   Cpu,
   Briefcase,
 } from "lucide-react";
-// import Process from '../components/Doctorate/Process';
-// import FAQ from '../components/Doctorate/FAQ';
 
-function HonaryDoctorate() {
-const heroSectionData = {
-  eyebrow: "Honorary Doctorate Recognition",
-  titleLine1: "Honorary Doctorate Recognition for",
-  titleLine2: "Exceptional Achievements",
+function DBA() {
+  const heroSectionData = {
+  eyebrow: "Doctoral Programs for Business Leaders",
+  titleLine1: "Doctor of Business Administration (DBA)",
+  titleLine2: "for Business Leaders & Executives",
   subheadline:
-    "Celebrate outstanding contributions in business, education, healthcare, social impact, entrepreneurship, arts, innovation, and leadership through globally recognized honorary recognition opportunities.",
+    "Advance your leadership profile with a globally recognized doctoral qualification designed for experienced professionals, entrepreneurs, and decision-makers.",
   badges: [
-    "Global Recognition",
-    "International Opportunities",
-    "Distinguished Achievements",
-    "Prestigious Academic Recognition",
+    "Designed for Working Professionals",
+    "Global University Options",
+    "Flexible Learning Pathways",
+    "Executive Research Focus",
   ],
 
-  duration: "3 Months",
+  duration: "Global University",
 
   imageSrc1: "/service/hero1.png",
   imageSrc2: "/service/hero2.png",
   imageSrc3: "/service/hero3.png",
   imageSrc4: "/service/hero4.png",
 
-  imageAlt1: "Foreign dignitary receiving award",
-  imageAlt2: "Convocation ceremony",
-  imageAlt3: "Doctoral robe and honorary medal",
-  imageAlt4: "Luxury stage background",
+  imageAlt1: "CEO in boardroom",
+  imageAlt2: "Business executive presenting",
+  imageAlt3: "Global corporate skyline",
+  imageAlt4: "Executive leadership meeting",
 
   location: "Global Leadership Academy, India",
-  credential: "Global Recognition",
-  credentialLabel: "Distinguished Achievements",
+  credential: "Hon. DBA",
+  credentialLabel: "Flexible Learning Pathways",
 
   breadcrumbs: [
     "Home",
     "Doctorate Courses",
-    "Honorary Doctorate in Business Administration",
+    "Doctor of Business Administration",
   ],
 
   applyLabel: "Apply for this program",
@@ -66,38 +63,39 @@ const heroSectionData = {
   onApply: () => console.log("Apply clicked"),
   onTalkToExpert: () => console.log("Talk to Expert clicked"),
 };
+
   const quickInfoData = [
     {
-      value: "500+",
-      label: "Recipients Honoured",
+      value: "3–4 Years",
+      label: "Duration",
     },
     {
-      value: "21 Days",
-      label: "Avg. Processing Time",
+      value: "Online / Hybrid / Regular",
+      label: "Mode",
     },
     {
-      value: "100%",
-      label: "Fully Guided Process",
+      value: "Master’s Degree",
+      label: "Eligibility",
     },
     {
-      value: "12+",
-      label: "Partner Institutions",
+      value: "Thesis + Publication",
+      label: "Support",
     },
     {
-      value: "4.9 ★",
-      label: "Satisfaction Rating",
+      value: "Expert Counselling",
+      label: "Guidance",
     },
   ];
 
   const whatIsCourseData = {
-    title: "What is an Honorary Doctorate?",
+    title: "What is a DBA?",
 
-    heading: "A Recognition of Excellence and Impact",
+    heading: "What Makes a DBA Different from a Traditional Doctorate?",
 
     description: [
-      "An Honorary Doctorate is a prestigious recognition awarded to individuals who have demonstrated exceptional achievements, leadership, innovation, philanthropy, or significant contributions to society and their respective fields.",
+      "A Doctor of Business Administration (DBA) is a professional doctoral degree designed for experienced business professionals who want to solve real-world business challenges through applied research.",
 
-      "It is designed to honor distinguished accomplishments and lifelong impact.",
+      "Unlike traditional academic doctorates, DBA programs focus on practical business impact, leadership, innovation, and organizational transformation.",
     ],
 
     sideImage: "/images/dba.jpg",
@@ -168,34 +166,34 @@ const heroSectionData = {
   };
 
   const whoShouldJoinData = {
-  heading: "Recognizing Leaders Across Diverse Fields",
+  heading: "Designed for Leaders Who Want More",
 
   accentColor: "bg-blue-600",
 
   items: [
     {
       id: "01",
-      label: "Entrepreneurs - Visionaries who have built successful businesses and generated economic impact.",
+      label: "Students enrolled in a degree program",
     },
     {
       id: "02",
-      label: "Business Leaders -  Executives who have transformed industries and organizations.",
+      label: "Recent graduates within 2 years",
     },
     {
       id: "03",
-      label: "Educators - Individuals contributing significantly to education and academic advancement.",
+      label: "Working professionals seeking upskilling",
     },
     {
       id: "04",
-      label: "Healthcare Professionals - Leaders creating positive healthcare outcomes and innovations.",
+      label: "Students enrolled in a degree program",
     },
     {
       id: "05",
-      label: "Artists & Creatives - Thought leaders influencing communities through knowledge and inspiration.",
+      label: "Recent graduates within 2 years",
     },
     {
       id: "06",
-      label: "Innovators & Technologists - Individuals driving technological advancement and innovation.",
+      label: "Working professionals seeking upskilling",
     },
   ],
 
@@ -289,9 +287,9 @@ const popularCourseData = {
 };
 
 const journeyData = {
-  eyebrow: "How the Recognition Process Works",
+  eyebrow: "Your DBA journey",
 
-  headingMain: "Recognition Journey",
+  headingMain: "How It Works",
 
   headingAccent: "It Works",
 
@@ -307,46 +305,46 @@ const journeyData = {
     },
     {
       id: 2,
-      title: "Achievement Evaluation",
+      title: "University Shortlisting",
       shortTitle: "University Shortlisting",
       desc: "We match you with accredited universities that align with your goals, industry, and research interests.",
     },
     {
       id: 3,
-      title: "Documentation Review",
+      title: "Admission Process",
       shortTitle: "Admission Process",
       desc: "Our team guides you through every step of the application and enrollment process seamlessly.",
     },
     {
       id: 4,
-      title: "Nomination Guidance",
+      title: "Research Proposal Development",
       shortTitle: "Research Proposal",
       desc: "You craft a focused research proposal with mentorship from our academic committee.",
     },
     {
       id: 5,
-      title: "Recognition Consideration",
+      title: "Coursework & Research",
       shortTitle: "Coursework & Research",
       desc: "Engage in rigorous coursework and begin your applied research journey under expert supervision.",
     },
     {
       id: 6,
-      title: "Award & Convocation Ceremony",
+      title: "Applied Business Research",
       shortTitle: "Applied Research",
       desc: "Conduct real-world business research that creates measurable impact in your industry.",
     },
-    // {
-    //   id: 7,
-    //   title: "Final Thesis / Project",
-    //   shortTitle: "Final Thesis",
-    //   desc: "Submit your doctoral thesis or capstone project for formal academic evaluation.",
-    // },
-    // {
-    //   id: 8,
-    //   title: "Doctoral Qualification Completion",
-    //   shortTitle: "Doctorate Awarded",
-    //   desc: "Your DBA is formally awarded and all credentials are dispatched within 30 days.",
-    // },
+    {
+      id: 7,
+      title: "Final Thesis / Project",
+      shortTitle: "Final Thesis",
+      desc: "Submit your doctoral thesis or capstone project for formal academic evaluation.",
+    },
+    {
+      id: 8,
+      title: "Doctoral Qualification Completion",
+      shortTitle: "Doctorate Awarded",
+      desc: "Your DBA is formally awarded and all credentials are dispatched within 30 days.",
+    },
   ],
 };
 
@@ -459,57 +457,44 @@ const benefitsData = {
 };
 
 const whyChooseUsData = {
-  eyebrow: "Why Individuals Pursue Honorary Recognition",
+  eyebrow: "Why Choose a Global DBA ?",
 
-  heading: "A Symbol of Achievement and Legacy",
+  heading: "Global Business Perspective. Executive Excellence.",
 
   subheading:
-    "",
+    "A Global DBA is a great way to accelerate your career and provides an excellent balance between ease of access and powerful executive outcomes.",
 
   services: [
     {
       id: 1,
       iconType: "executive",
-      title: "Global Recognition",
+      title: "Executive Credibility",
       description:
         "Strengthen your professional profile with a globally recognised doctoral credential that signals research authority to boards and clients.",
     },
     {
       id: 2,
       iconType: "strategy",
-      title: "Professional Credibility",
+      title: "Strategic Thinking",
       description:
         "Master advanced business frameworks — systems thinking, scenario planning, and evidence-based strategy — moving your organisation from reactive to proactive.",
     },
     {
       id: 3,
       iconType: "global",
-      title: "Legacy Building",
+      title: "Global Recognition",
       description:
         "A DBA is accepted across borders — opening doors in multinational corporations, international advisory roles, and top-tier academic institutions.",
     },
     {
       id: 4,
       iconType: "research",
-      title: "Personal Milestone",
+      title: "Research-Based Decisions",
       description:
         "Move beyond intuition. Apply systematic research methods to complex organisational challenges and drive measurable performance improvements.",
     },
   ],
 };
-
-const galleryData = {heading:"Life as an Honorary Doctorate Recipient",
-  subheading:"Every image reflects a journey of leadership, innovation, and impact—celebrating those who have shaped industries and left a lasting legacy.",
-  accentColor:"",
-  images:[
-    { src: "/service/Gallery1.jpeg", alt: "Campus" },
-    { src: "/service/gallery2.jpeg", alt: "Lecture" },
-    { src: "/service/gallery3.jpeg", alt: "Discussion" },
-    { src: "/service/gallery4.jpeg", alt: "Workshop" },
-    { src: "/service/gallery5.jpeg", alt: "Graduation" },
-    { src: "/service/gallery6.jpeg", alt: "Hero shot" }, // tall right panel
-  ]
-}
 
 const careerOutcomesData = {
   tagline: "CAREER OUTCOMES",
@@ -575,7 +560,7 @@ const careerOutcomesData = {
   return (
     <>
       <HeroSection {...heroSectionData} />
-     <QuickInfo items={quickInfoData} />
+      <QuickInfo items={quickInfoData} />
       <WhatIsCourse {...whatIsCourseData} />
       <WhoShould {...whoShouldJoinData}
       />
@@ -583,9 +568,6 @@ const careerOutcomesData = {
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
       <WhyInscribe  {...whyInscribeData}/>
-      <Gallery
-{...galleryData}
-/>
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData}/>
       <CareerOutcomes {...careerOutcomesData} />
@@ -594,4 +576,4 @@ const careerOutcomesData = {
   );
 }
 
-export default HonaryDoctorate;
+export default DBA;
