@@ -55,6 +55,8 @@
   }
 
   :root {
+    --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
     --background: oklch(1 0 0);
     --foreground: #1B1E1E;
     --card: oklch(1 0 0);
@@ -65,8 +67,8 @@
     --blue: #320F8C;
     --light-blue: #7A5EE9;
     --primary-foreground: #E0E8F8;
-    --secondary: #D1FC3D;
-    --secondary-foreground: oklch(0.21 0.006 285.885);
+    --secondary: #d2fa4d;
+    --secondary-foreground: #377024;
     --muted: #F8F6FC;
     --muted-foreground: #5B5A5D;
     --accent: #E7E7E9;
@@ -240,4 +242,65 @@
 
 .light-gradiant {
   background: linear-gradient(180deg, #e0e8f8e4, #f8f6fc00);
+}
+
+/* Animated hamburger → X button */
+.hamburger-btn {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition-duration: 0.5s;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger-btn.open {
+  transform: rotate(180deg);
+  transition-duration: 0.5s;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: #170545;
+  border-radius: 4px;
+  transition-duration: 0.5s;
+}
+
+.hamburger-bar-1,
+.hamburger-bar-3 {
+  width: 70%;
+}
+
+.hamburger-bar-2 {
+  transition-duration: 0.8s;
+}
+
+.hamburger-btn.open .hamburger-bar {
+  position: absolute;
+  transition-duration: 0.5s;
+}
+
+.hamburger-btn.open .hamburger-bar-2 {
+  transform: scaleX(0);
+  transition-duration: 0.5s;
+}
+
+.hamburger-btn.open .hamburger-bar-1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: 0.5s;
+}
+
+.hamburger-btn.open .hamburger-bar-3 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
-import { Phone, Mail, MapPin, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import SectionViewer from "../common/SectionViewer";
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
@@ -42,189 +43,206 @@ const resources = [
   { label: "FAQs", href: "#" },
 ];
 
-// Accordion item — only renders chevron & toggle on mobile
-const AccordionLinkGroup = ({ title, links }) => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="border-b border-slate-700/60 sm:border-none">
-      {/* Header — clickable only on mobile */}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between py-3.5 sm:py-0 sm:cursor-default sm:pointer-events-none"
-      >
-        <h3 className="text-sm font-semibold text-white tracking-wide">
-          {title}
-        </h3>
-        <ChevronDown
-          className={`h-4 w-4 text-slate-400 transition-transform duration-300 sm:hidden ${
-            open ? "rotate-180" : ""
-          }`}
-        />
-      </button>
-
-      {/* Links — always visible on sm+, toggleable on mobile */}
-      <ul
-        className={`flex flex-col gap-2.5 overflow-hidden transition-all duration-300 ease-in-out
-          sm:max-h-none sm:opacity-100 sm:pb-0 sm:mt-4
-          ${open ? "max-h-96 opacity-100 pb-3.5" : "max-h-0 opacity-0"}
-        `}
-      >
-        {links.map(({ label, href }) => (
-          <li key={label}>
-            <a
-              href={href}
-              className="text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 const Footer = () => {
   const [email, setEmail] = useState("");
 
   return (
     <footer
-      className="relative overflow-hidden text-white min-h-[75vh]
-      bg-[radial-gradient(circle_at_bottom_center,_#242E3E_0%,_#0C0E18_70%)] inter"
+      className="relative overflow-hidden text-white
+        bg-[radial-gradient(circle_at_bottom_center,_#242E3E_0%,_#0C0E18_70%)] inter"
     >
-      {/* Watermark */}
-      <div
-        className="absolute -bottom-8 left-1/2 -translate-x-1/2 pointer-events-none select-none whitespace-nowrap"
-        aria-hidden="true"
-      >
-        <span
-          className="text-[clamp(6rem,18vw,16rem)] font-extrabold tracking-[-0.04em] leading-none text-transparent bg-clip-text opacity-20"
-          style={{
-            backgroundImage:
-              "linear-gradient(to bottom, rgba(141,124,177,0.65) 0%, rgba(91,90,93,1) 100%)",
-            fontFamily: "Inter Variable, Inter, sans-serif",
-          }}
-        >
-          Inscribe IQ
-        </span>
-      </div>
+      {/* SVG filter definition for noise grain on the watermark */}
+      <svg aria-hidden="true" style={{ position: "absolute", width: 0, height: 0 }}>
+        <defs>
+          <filter id="footer-noise-filter">
+            {/* ── Inner shadow (Figma: X 0, Y 4, Blur 4, #C1E7FF @ 3%) ── */}
+            <feColorMatrix in="SourceAlpha" type="matrix"
+              values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1 1"
+              result="outside" />
+            <feFlood floodColor="#C1E7FF" floodOpacity="0.4" result="shadowColor" />
+            <feComposite in="shadowColor" in2="outside" operator="in" result="coloredOutside" />
+            <feGaussianBlur stdDeviation="4" in="coloredOutside" result="blurredShadow" />
+            <feOffset dx="0" dy="4" in="blurredShadow" result="offsetShadow" />
+            <feComposite in="offsetShadow" in2="SourceAlpha" operator="in" result="innerShadow" />
+            <feMerge result="withShadow">
+              <feMergeNode in="SourceGraphic" />
+              <feMergeNode in="innerShadow" />
+            </feMerge>
+            {/* ── Noise grain ── */}
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" result="noise" />
+            <feColorMatrix type="saturate" values="0" in="noise" result="greyNoise" />
+            <feBlend in="withShadow" in2="greyNoise" mode="overlay" result="blended" />
+            <feComposite in="blended" in2="SourceGraphic" operator="in" />
+          </filter>
+        </defs>
+      </svg>
 
-      <div className="relative z-10 container mx-auto px-5 sm:px-8 lg:px-12 pt-10 sm:pt-12 pb-6">
-        {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-5 gap-0 sm:gap-10 mb-6 sm:mb-10">
-
-          {/* Col 1: Brand — always fully visible */}
-          <div className="flex flex-col gap-4 pb-6 sm:pb-0 border-b border-slate-700/60 sm:border-none mb-2 sm:mb-0">
-            <div className="flex items-center gap-3">
-              <div className="h-auto w-auto">
-                <a href="/" className="shrink-0">
-                  <img
-                    src="/faviconIcon.png"
-                    alt="Logo"
-                    className="h-14 sm:h-10 md:h-12 w-auto"
-                  />
-                </a>
+      <SectionViewer>
+        <div className="py-6 md:py-12 xl:py-18">
+          {/* Main grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-10 mb-10">
+            {/* Col 1: Brand */}
+            <div className="flex flex-col gap-4 col-span-2">
+              <div className="flex items-center gap-2">
+                <div className="h-8 w-auto">
+                  <a href="/" className="shrink-0">
+                    <img
+                      src="/faviconIcon.png"
+                      alt="Logo"
+                      className="h-10 md:h-12 w-auto"
+                    />
+                  </a>
+                </div>
+                <span className="text-lg font-bold tracking-tight text-white">
+                  Inscribe IQ
+                </span>
               </div>
-              <span className="text-2xl sm:text-lg font-bold tracking-tight text-white">
-                Inscribe IQ
-              </span>
+              <p className="text-sm text-slate-400 leading-relaxed sm:max-w-sm">
+                Empowering your ideas with expert writing and publishing
+                solutions. Let's create impactful stories together—crafted with
+                precision, delivered with excellence.
+              </p>
+              <div className="flex items-center gap-3 mt-1">
+                {[
+                  { icon: <FacebookIcon />, label: "Facebook" },
+                  { icon: <YoutubeIcon />, label: "YouTube" },
+                  { icon: <XIcon />, label: "X" },
+                ].map(({ icon, label }) => (
+                  <a
+                    key={label}
+                    href="#"
+                    aria-label={label}
+                    className="h-8 w-8 rounded-md border border-slate-700 flex items-center justify-center text-white hover:text-white hover:border-slate-500 transition-colors"
+                  >
+                    {icon}
+                  </a>
+                ))}
+              </div>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-[280px] sm:max-w-[220px]">
-              Empowering your ideas with expert writing and publishing
-              solutions. Let's create impactful stories together—crafted with
-              precision, delivered with excellence.
-            </p>
-            <div className="flex items-center gap-3 mt-1">
-              {[
-                { icon: <FacebookIcon />, label: "Facebook" },
-                { icon: <YoutubeIcon />, label: "YouTube" },
-                { icon: <XIcon />, label: "X" },
-              ].map(({ icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="h-8 w-8 rounded-md border border-slate-700 flex items-center justify-center text-white hover:text-white hover:border-slate-500 transition-colors"
-                >
-                  {icon}
-                </a>
-              ))}
+
+            {/* Col: Company */}
+            <div>
+              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+                Company
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {company.map(({ label, href }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Col: Resources */}
+            <div>
+              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+                Resources
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {resources.map(({ label, href }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Col: Get in Touch */}
+            <div className="col-span-2 sm:col-span-1">
+              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+                Get in Touch
+              </h3>
+
+              {/* Email subscribe */}
+              <div className="flex items-center mb-5 rounded-md overflow-hidden border border-slate-700 bg-slate-800/50">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder:text-slate-500 outline-none min-w-0"
+                />
+                <button className="px-3 py-2 text-sm font-medium bg-white hover:bg-indigo-500 transition-colors text-black whitespace-nowrap">
+                  Subscribe
+                </button>
+              </div>
+
+              {/* Contact info */}
+              <ul className="flex flex-col gap-3">
+                <li className="flex items-start gap-2.5 text-sm text-slate-400">
+                  <Phone className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
+                  <span>+91 87877 34234</span>
+                </li>
+                <li className="flex items-start gap-2.5 text-sm">
+                  <Mail className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
+                  <a
+                    href="mailto:inscribe.iq@example.com"
+                    className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                  >
+                    inscribe.iq@example.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5 text-sm text-slate-400">
+                  <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
+                  <span>Rajendra Nagar, Ghaziabad, India 201007.</span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Col 2: Services */}
-          <AccordionLinkGroup title="Services" links={services} />
-
-          {/* Col 3: Company */}
-          <AccordionLinkGroup title="Company" links={company} />
-
-          {/* Col 4: Resources */}
-          <AccordionLinkGroup title="Resources" links={resources} />
-
-          {/* Col 5: Get in Touch */}
-          <div className="pt-5 sm:pt-0">
-            <h3 className="text-sm font-semibold text-white mb-4 tracking-wide">
-              Get in Touch
-            </h3>
-
-            {/* Email subscribe */}
-            <div className="flex items-center mb-5 rounded-md overflow-hidden border border-slate-700 bg-slate-800/50">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder:text-slate-500 outline-none min-w-0"
-              />
-              <button className="px-3 py-2 text-sm font-medium bg-white hover:bg-indigo-500 transition-colors text-black whitespace-nowrap">
-                Subscribe
-              </button>
+          {/* Bottom bar */}
+          <div className="relative my-2">
+            <Separator className="border-t border-dashed border-slate-600 bg-transparent" />
+            <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-[#0f172a] to-transparent" />
+            <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f172a] to-transparent" />
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+            <span>©2026 InscribeIQ • All right reserved.</span>
+            <div className="flex items-center gap-5">
+              <a href="#" className="hover:text-slate-300 transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-slate-300 transition-colors">
+                Terms of Services
+              </a>
             </div>
-
-            {/* Contact info */}
-            <ul className="flex flex-col gap-3">
-              <li className="flex items-start gap-2.5 text-sm text-slate-400">
-                <Phone className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
-                <span>+91 87877 34234</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-sm">
-                <Mail className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
-                <a
-                  href="mailto:inscribe.iq@example.com"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors"
-                >
-                  inscribe.iq@example.com
-                </a>
-              </li>
-              <li className="flex items-start gap-2.5 text-sm text-slate-400">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
-                <span>Rajendra Nagar, Ghaziabad, India 201007.</span>
-              </li>
-            </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="relative my-2">
-          <Separator className="border-t border-dashed border-slate-600 bg-transparent" />
-          <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-[#0f172a] to-transparent" />
-          <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f172a] to-transparent" />
+        {/*
+        Watermark — lives OUTSIDE SectionViewer so it spans the full footer width
+        with no horizontal padding constraints. font-size ~19vw fills the viewport
+        at any screen size; overflow-hidden on <footer> clips any excess.
+        */}
+        <div
+          className="pointer-events-none select-none overflow-hidden translate-y-4 md:translate-y-16"
+          aria-hidden="true"
+        >
+          <span
+            className="block whitespace-nowrap font-extrabold leading-none tracking-tight md:tracking-tighter text-transparent bg-clip-text"
+            style={{
+              fontSize: "clamp(3rem, 19vw, 22rem)",
+              opacity: 0.2,
+              filter: "url(#footer-noise-filter)",
+              backgroundImage:
+                "linear-gradient(to bottom, #8D7CB1A6 0%, #5B5A5D 100%)",
+            }}
+          >
+            Inscribe IQ
+          </span>
         </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 pt-2">
-          <span>©2026 InscribeIQ • All rights reserved.</span>
-          <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Terms of Services
-            </a>
-          </div>
-        </div>
-      </div>
+      </SectionViewer>
     </footer>
   );
 };
