@@ -101,8 +101,8 @@ const HeroSection = ({
         )}
 
         {/* Hero Content */}
-        <div className="container mx-auto px-5 md:px-16 lg:px-20 py-8 md:py-16 lg:py-16">
-          <div className="grid items-center gap-8 lg:gap-8 lg:grid-cols-2">
+        <div className="container mx-auto px-5 md:px-12 lg:px-16 py-8 md:py-16 lg:py-16 ">
+          <div className="grid items-start gap-8 lg:gap-8 lg:grid-cols-2">
 
             {/* Left Side */}
             <div className="order-2 lg:order-1 space-y-6 lg:space-y-8">

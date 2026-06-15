@@ -55,9 +55,9 @@ const tagColors = {
 
 const Resources = () => {
   return (
-    <section className="sm:py-12 px-6 py-8 sm:px-6 lg:px-10 bg-[#F8F6FC]">
+    <section className="sm:py-12 px-6 py-8 bg-[#F8F6FC] lg:py-20 md:py-16">
       {/* Header */}
-      <div className="max-w-7xl mx-auto mb-12 text-center">
+      <div className="max-w-7xl mx-auto mb-12 text-center ">
         <p className="text-md font-semibold tracking-[0.2em] uppercase text-[#320F8C] mb-2">
           Blog
         </p>
@@ -68,7 +68,7 @@ const Resources = () => {
       </div>
 
       {/* Content Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className=" mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 px-6 sm:px-12  lg:px-16 ">
         {/* Featured Post */}
         <div className="lg:col-span-2 overflow-hidden ">
           <div className="h-56 sm:h-64 lg:h-68 overflow-hidden">

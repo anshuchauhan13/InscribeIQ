@@ -88,7 +88,7 @@ function DBA() {
   ];
 
   const whatIsCourseData = {
-    title: "What is a DBA?",
+    tagline: "What is a DBA?",
 
     heading: "What Makes a DBA Different from a Traditional Doctorate?",
 

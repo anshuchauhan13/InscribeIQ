@@ -83,7 +83,7 @@ function PhD() {
   ];
 
   const whatIsCourseData = {
-    title: "What is a PhD?",
+    tagline: "What is a PhD?",
 
     heading: "What Makes a PhD Different from a Traditional Doctorate?",
 

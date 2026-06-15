@@ -90,7 +90,7 @@ const heroSectionData = {
   ];
 
   const whatIsCourseData = {
-    title: "What is an Honorary Doctorate?",
+    tagline: "What is an Honorary Doctorate?",
 
     heading: "A Recognition of Excellence and Impact",
 

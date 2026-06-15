@@ -9,7 +9,7 @@ const Journey = ({
   subheading ,
 }) => {
   return (
-    <section className="w-full bg-white sm:px-10 lg:px-16 font-inter overflow-hidden container mx-auto px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16">
+    <section className="w-full  font-inter overflow-hidden container px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16 mx-auto">
       {/* Heading */}
       <div className="mb-12">
         {eyebrow && (
