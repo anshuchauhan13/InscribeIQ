@@ -77,7 +77,7 @@ export default function UniversityPartnership({ className, ...props }) {
         )}
       />
 
-      <section>
+      <section className="space-y-4 md:space-y-">
        
         <div className="mx-auto my-5 h-px max-w-sm bg-border [mask-image:linear-gradient(to_right,transparent,blue,transparent)]" />
 

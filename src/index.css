@@ -244,6 +244,67 @@
   background: linear-gradient(180deg, #e0e8f8e4, #f8f6fc00);
 }
 
+/* Payment hero entrance/float — pure CSS so the above-the-fold content always
+   resolves to its visible state regardless of JS animation timing. */
+@keyframes pay-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pay-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pay-rise {
+    animation: pay-rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .pay-float {
+    animation: pay-float 6s ease-in-out infinite;
+  }
+}
+
+/* Noise overlay — works on top of any background (gradient, image, solid).
+   Add `noise` to a `position: relative` element. Intensity variants:
+   noise-subtle (3%), noise (5%), noise-strong (10%) */
+.noise,
+.noise-subtle,
+.noise-medium,
+.noise-strong {
+  position: relative;
+  isolation: isolate;
+}
+.noise::after,
+.noise-subtle::after,
+.noise-medium::after,
+.noise-strong::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  pointer-events: none;
+  z-index: -1;
+}
+.noise-subtle::after { opacity: 0.03; }
+.noise::after         { opacity: 0.06; }
+.noise-medium::after         { opacity: 0.09; }
+.noise-strong::after  { opacity: 0.12; }
+
 /* Animated hamburger → X button */
 .hamburger-btn {
   position: relative;

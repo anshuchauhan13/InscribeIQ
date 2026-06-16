@@ -8,6 +8,10 @@ import HomePage from "./modules/home/pages/HomePage";
 import HonaryDoctorate from "./modules/services/pages/HonaryDoctorate";
 import DBA from "./modules/services/pages/DBA";
 import PhD from "./modules/services/pages/PhD";
+import ContactUsPage from "./modules/contact-us/pages/ContactUsPage";
+import PartnershipPage from "./modules/partner-with-us/pages/PartnershipPage";
+import FaqsPage from "./modules/faqs/pages/FaqsPage";
+import ConsultationPage from "./modules/consultations/pages/ConsultationPage";
 
 
 function App() {
@@ -22,15 +26,19 @@ function App() {
           <Route path="/services" element={<ServicePageLayout />} />
 
           <Route path="courses" >
-            <Route index element={<DBA />} />
+            <Route path="dba" element={<DBA />} />
             <Route path="phd" element={<PhD />} />
-            <Route path="honary-doctorate" element={<HonaryDoctorate />} />
+            <Route path="honary_doctorate" element={<HonaryDoctorate />} />
           </Route>
 
+          <Route path="/consultation" element={<ConsultationPage />} />
+          <Route path="/partner_with_us" element={<PartnershipPage />} />
+          <Route path="/faqs" element={<FaqsPage />} />
 
           <Route path="/about" element={<AboutUsPage />} />
 
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/contact_us" element={<ContactUsPage />} />
         </Route>
       </Routes>
 

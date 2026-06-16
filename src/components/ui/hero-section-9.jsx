@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "motion/react";
 import { Button } from '@/components/ui/button'; // Assuming Button is in your components folder
 import { cn } from '@/lib/utils'; // Your utility for class names
 import React from 'react';
@@ -80,7 +80,7 @@ const HeroSection = ({
           <motion.div
             className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start"
             variants={itemVariants}>
-            {actions.map((action, index) => (
+            {/* {actions.map((action, index) => (
               <Button
                 key={index}
                 onClick={action.onClick}
@@ -89,12 +89,12 @@ const HeroSection = ({
                 className={action.className}>
                 {action.text}
               </Button>
-            ))}
+            ))} */}
           </motion.div>
           <motion.div
             className="mt-12 flex flex-wrap justify-center gap-8 lg:justify-start"
             variants={itemVariants}>
-            {stats.map((stat, index) => (
+            {/* {stats.map((stat, index) => (
               <div key={index} className="flex items-center gap-3">
                 <div
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">{stat.icon}</div>
@@ -103,7 +103,7 @@ const HeroSection = ({
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
                 </div>
               </div>
-            ))}
+            ))} */}
           </motion.div>
         </motion.div>
 
@@ -134,28 +134,28 @@ const HeroSection = ({
             className="absolute left-1/2 top-0 h-48 w-48 -translate-x-1/2 rounded-2xl bg-muted p-2 shadow-lg sm:h-64 sm:w-64"
             style={{ transformOrigin: 'bottom center' }}
             variants={imageVariants}>
-            <img
-              src={images[0]}
+            {/* <img
+              src={images[0] || ""}
               alt="Student learning"
-              className="h-full w-full rounded-xl object-cover" />
+              className="h-full w-full rounded-xl object-cover" /> */}
           </motion.div>
           <motion.div
             className="absolute right-0 top-1/3 h-40 w-40 rounded-2xl bg-muted p-2 shadow-lg sm:h-56 sm:w-56"
             style={{ transformOrigin: 'left center' }}
             variants={imageVariants}>
-            <img
-              src={images[1]}
+            {/* <img
+              src={images[1] || ""}
               alt="Tutor assisting"
-              className="h-full w-full rounded-xl object-cover" />
+              className="h-full w-full rounded-xl object-cover" /> */}
           </motion.div>
           <motion.div
             className="absolute bottom-0 left-0 h-32 w-32 rounded-2xl bg-muted p-2 shadow-lg sm:h-48 sm:w-48"
             style={{ transformOrigin: 'top right' }}
             variants={imageVariants}>
-            <img
-              src={images[2]}
+            {/* <img
+              src={images[2] || ""}
               alt="Collaborative discussion"
-              className="h-full w-full rounded-xl object-cover" />
+              className="h-full w-full rounded-xl object-cover" /> */}
           </motion.div>
         </motion.div>
       </div>

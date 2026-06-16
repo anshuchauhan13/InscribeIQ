@@ -149,7 +149,7 @@ function ExtendedMenu({ open, menu, onClose }) {
                               return (
                                 <Link
                                   key={item.label}
-                                  to={`/services?domain=${active.id}`}
+                                  to={item.href}
                                   onClick={onClose}
                                   className="group/item flex items-center gap-3 rounded-xl border border-border hover:border-border/30 p-3 transition-colors hover:bg-muted"
                                 >

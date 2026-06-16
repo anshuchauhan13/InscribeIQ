@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -46,6 +46,7 @@ const MenuTrigger = ({ item, isOpen, isRouteActive, onToggle }) => (
 
 export const NavbarMenu = () => {
   // Which extended menu is open (a key of EXTENDED_MENUS), or null.
+  const navigate = useNavigate()
   const [activeMenu, setActiveMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { pathname } = useLocation();
@@ -97,11 +98,11 @@ export const NavbarMenu = () => {
 
             {/* Right Section */}
             <div className="flex items-center justify-end gap-2 flex-1">
-              <Button size="lg" variant="primary" className="hidden lg:inline-flex px-5 rounded-full font-semibold">
+              <Button size="lg" variant="primary" className="hidden lg:inline-flex px-5 rounded-full font-semibold" onClick={() => navigate("/payment")}>
                 Pay Now
               </Button>
 
-              <Button size="lg" variant="gradiant" className="hidden lg:inline-flex px-5 rounded-full">
+              <Button size="lg" variant="gradiant" className="hidden lg:inline-flex px-5 rounded-full" onClick={() => navigate("/contact_us")}>
                 Contact Us
                 <ArrowRight />
               </Button>
@@ -177,10 +178,10 @@ export const NavbarMenu = () => {
                     )}
 
                     <div className="mt-6 flex gap-3">
-                      <Button size="lg" variant="primary" className="flex-1 rounded-full font-semibold">
+                      <Button size="lg" variant="primary" className="flex-1 rounded-full font-semibold" onClick={() => navigate("/payment")}>
                         Pay Now
                       </Button>
-                      <Button size="lg" variant="gradiant" className="flex-1 rounded-full">
+                      <Button size="lg" variant="gradiant" className="flex-1 rounded-full" onClick={() => navigate("/contact_us")}>
                         Contact Us
                         <ArrowRight />
                       </Button>
