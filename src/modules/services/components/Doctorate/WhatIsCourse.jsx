@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import SectionLabel from "@/components/common/SectionLabel";
 
 function ComparisonPanel({ comparison }) {
   const LeftIcon = comparison.left.icon;
@@ -111,6 +112,7 @@ const WhatIsCourse = ({
   const BadgeIcon = badge?.icon;
 
   const panelOffset = "calc(3.75rem + 0.5rem + 0.25rem + 1.5rem)";
+  
 
   return (
     <section
@@ -123,12 +125,14 @@ const WhatIsCourse = ({
 
         {/* ── Left Content ── */}
         <div className="flex flex-col">
-           <span className="text-sm font-bold uppercase tracking-[0.25em] text-light-blue">
+           {/* <span className="text-sm font-bold uppercase tracking-[0.25em] text-light-blue">
                   {tagline}
-                </span>
+                </span> */}
+
+                  <SectionLabel label={tagline} />
         
           <h3 className="mb-5 text-3xl sm:text-4xl  font-bold leading-tight">{heading}</h3>
-            <div className="mb-6 h-1 w-28 bg-light-blue rounded-full" />
+            {/* <div className="mb-6 h-1 w-28 bg-light-blue rounded-full" /> */}
 
           <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
             {description.map((item, index) => (

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SectionLabel from "@/components/common/SectionLabel";
 
 // Role → accent color + background (pill style)
 const ROLE_STYLES = [
@@ -90,9 +91,11 @@ const Benefit = ({
         {/* ── Header row ── */}
         <div className="flex flex-row justify-between items-start mb-10">
           <div>
-            <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-violet-600 mb-3">
+            {/* <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-violet-600 mb-3">
               {eyebrow}
-            </p>
+            </p> */}
+
+              <SectionLabel label={eyebrow} />
             <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-gray-900">
               {heading}
             </h2>

@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import noise from "@/assets/noise.webp";
+import SectionLabel from "@/components/common/SectionLabel";
 
 const DEFAULT_CAREERS = [
   {
@@ -95,9 +96,10 @@ const CareerOutcomes = ({
           <div className="relative z-10">
             {/* Header */}
             <div className="px-4 sm:px-8 md:px-12 py-8 sm:py-10 text-center sm:text-left">
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#7A5EE9]">
+              {/* <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#7A5EE9]">
                 {tagline}
-              </span>
+              </span> */}
+                <SectionLabel label={tagline} />
 
               <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-bold text-[#170545] leading-tight">
                 {heading}
@@ -166,9 +168,10 @@ const CareerOutcomes = ({
             >
               {/* Left: tagline + heading + description */}
               <div className="p-10 xl:p-12 2xl:p-16 flex flex-col justify-center">
-                <span className="text-sm font-bold uppercase tracking-[0.25em] text-light-blue">
+                {/* <span className="text-sm font-bold uppercase tracking-[0.25em] text-light-blue">
                   {tagline}
-                </span>
+                </span> */}
+                  <SectionLabel label={tagline}/>
 
                 <h2 className="mt-6 text-4xl xl:text-4xl 2xl:text-5xl font-bold leading-tight text-black">
                   {heading}

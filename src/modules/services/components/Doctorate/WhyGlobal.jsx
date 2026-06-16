@@ -1,5 +1,5 @@
 
-
+import SectionLabel from "@/components/common/SectionLabel";
 import { cn } from "@/lib/utils";
 
 const ICONS = {
@@ -91,7 +91,7 @@ function FeatureCard({ service }) {
 }
 
 export default function WhyChooseUs({
-  eyebrow,
+  tagline,
   heading,
   subheading,
   services = [],
@@ -119,9 +119,7 @@ export default function WhyChooseUs({
       <div className="container mx-auto px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-20">
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-light-blue mb-3">
-            {eyebrow}
-          </p>
+            <SectionLabel label={tagline} />
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
             {heading}

@@ -275,7 +275,7 @@ const popularCourseData = {
 };
 
 const journeyData = {
-  eyebrow: "Your PhD journey",
+  tagline: "Your PhD journey",
 
   headingMain: "How It Works",
 
@@ -453,7 +453,7 @@ const benefitsData = {
 };
 
 const whyChooseUsData = {
-  eyebrow: "Why Choose Global PhD Programs?",
+  tagline: "Why Choose Global PhD Programs?",
 
   heading: "Build Your Research Career with International Doctoral Opportunities",
 

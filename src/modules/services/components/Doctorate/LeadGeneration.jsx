@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-
+import SectionLabel from "@/components/common/SectionLabel";
 // ─── Static options ───────────────────────────────────────────────────────────
 
 const QUALIFICATIONS = [
@@ -198,9 +198,7 @@ const LeadGeneration = ({
             norm here, no sticky is the cleanest solution.
           */}
           <div className="lg:self-start">
-            <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-violet-500 mb-4">
-              Get Started
-            </p>
+             <SectionLabel label="Get Started" />
             <h2 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-slate-900 leading-tight mb-5">
               {heading}
             </h2>

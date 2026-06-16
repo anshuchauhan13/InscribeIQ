@@ -88,7 +88,7 @@ const HeroSection = ({
                         "transition-colors hover:text-primary-foreground",
                         index < breadcrumbs.length - 1 && "hidden sm:inline",
                         index === breadcrumbs.length - 1 &&
-                          "font-semibold text-white truncate max-w-[55vw] sm:max-w-none",
+                          "font-semibold text-secondary truncate max-w-[55vw] sm:max-w-none",
                       )}
                     >
                       {crumb}
@@ -110,11 +110,11 @@ const HeroSection = ({
             
 
               {/* Headline */}
-              <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl leading-tight font-semibold tracking-tight text-center lg:text-left text-slate-200">
+              <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight font-semibold tracking-tight text-center lg:text-left text-slate-200">
                 {titleLine1 && <span>{titleLine1}</span>}
                 {titleLine1 && titleLine2 && <br />}
                 {titleLine2 && (
-                  <span className="font-bold italic text-white text-3xl sm:text-5xl md:text-5xl lg:text-6xl">
+                  <span className="font-bold italic text-white text-3xl sm:text-5xl md:text-4xl lg:text-5xl">
                     {titleLine2}
                   </span>
                 )}
@@ -122,7 +122,7 @@ const HeroSection = ({
 
               {/* Subheadline */}
               {subheadline && (
-                <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed text-center lg:text-left max-w-lg">
+                <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed text-center lg:text-left max-w-lg ">
                   {subheadline}
                 </p>
               )}

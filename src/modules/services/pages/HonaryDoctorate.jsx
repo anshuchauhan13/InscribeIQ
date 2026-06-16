@@ -1,5 +1,26 @@
-import SectionViewer from '@/components/common/SectionViewer';
-import ServicesHeroSectionFirst from '../components/ServicesHeroSectionFirst';
+import SectionViewer from "@/components/common/SectionViewer";
+import HeroSection from "../components/Doctorate/HeroSection";
+import QuickInfo from "../components/Doctorate/QuickInfo";
+import WhoShould from "../components/Doctorate/WhoShould";
+import WhatIsCourse from "../components/Doctorate/WhatIsCourse";
+import PopularCourse from "../components/Doctorate/PopularCourse";
+import WhyGlobal from "../components/Doctorate/WhyGlobal";
+import {  Search, Target, GraduationCap } from "lucide-react";
+
+import Journey from "../components/Doctorate/Journey";
+import WhyInscribe from "../components/Doctorate/WhyInscribe";
+import Benefit from "../components/Doctorate/Benefit";
+import LeadGeneration from "../components/Doctorate/LeadGeneration";
+import CareerOutcomes from "../components/Doctorate/CareerOutcomes";
+import {
+  Megaphone,
+  DollarSign,
+  Users,
+  Settings,
+  Cpu,
+  Briefcase,
+} from "lucide-react";
+import Gallery from "../components/Doctorate/Gallery";
 
 function HonaryDoctorate() {
 const heroSectionData = {
@@ -436,7 +457,7 @@ const benefitsData = {
 };
 
 const whyChooseUsData = {
-  eyebrow: "Why Individuals Pursue Honorary Recognition",
+  tagline: "Why Individuals Pursue Honorary Recognition",
 
   heading: "A Symbol of Achievement and Legacy",
 

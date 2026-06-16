@@ -10,7 +10,7 @@ const Gallery = ({
   const s = Array.from({ length: 6 }, (_, i) => images[i] || null);
 
   return (
-    <section className={cn("w-full px-4 sm:px-8 lg:px-16 py-8 lg:py-16 container", className)}>
+    <section className={cn("w-full px-4 sm:px-8 lg:px-16 py-8 lg:py-16 container mx-auto", className)}>
       <div
         className="grid gap-2 sm:gap-3 lg:gap-4 w-full"
         style={{
