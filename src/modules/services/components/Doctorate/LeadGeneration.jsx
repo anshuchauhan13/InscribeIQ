@@ -140,7 +140,7 @@ const LeadGeneration = ({
   if (submitted) {
     return (
       <section className={cn("py-20 bg-slate-50", className)}>
-        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-10 text-center">
+        <div className="w-full container  mx-auto px-4 sm:px-6 lg:px-10 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-violet-100 mb-6">
             <svg
               className="w-7 h-7 text-violet-600"

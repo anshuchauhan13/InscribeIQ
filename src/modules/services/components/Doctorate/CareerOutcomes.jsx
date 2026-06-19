@@ -134,20 +134,14 @@ const CareerOutcomes = ({
           />
 
           {/* Dark overlay on exposed right strip */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/20" />
 
-          {/*
-            Glass panel:
-            - On xl:  75% wide (original)
-            - On 2xl+: fixed max-width so it doesn't stretch absurdly on 4K
-            - absolute inset-y-0 left-0 so it always hugs the left edge
-          */}
           <div
             className="
               absolute inset-y-0 left-0
               w-[75%]
               max-w-[1400px]
-              backdrop-blur-md bg-white/75
+              backdrop-blur-md bg-white/65
               border-r border-white/40
             "
           >

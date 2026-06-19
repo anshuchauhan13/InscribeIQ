@@ -56,12 +56,12 @@ export const navbarMenu = [
             {
               label: "Programs",
               items: [
-                { label: "Bachelor of Science (B.Sc)", href: "/services", icon: FlaskConical },
-                { label: "Bachelor of Commerce (B.Com)", href: "/services", icon: Calculator },
-                { label: "Bachelor of Arts (B.A)", href: "/services", icon: BookOpen },
-                { label: "B.Tech", href: "/services", icon: Cpu },
-                { label: "BBA", href: "/services", icon: Briefcase },
-                { label: "BCA", href: "/services", icon: Code },
+                { label: "Bachelor of Science (B.Sc)", href: "/courses/bsc", icon: FlaskConical },
+                { label: "Bachelor of Commerce (B.Com)", href: "/courses/bcom", icon: Calculator },
+                { label: "Bachelor of Arts (B.A)", href: "/courses/ba", icon: BookOpen },
+                { label: "B.Tech", href: "/courses/btech", icon: Cpu },
+                { label: "BBA", href: "/courses/bba", icon: Briefcase },
+                { label: "BCA", href: "/courses/bca", icon: Code },
               ],
             },
           ],
@@ -76,11 +76,12 @@ export const navbarMenu = [
             {
               label: "Programs",
               items: [
-                { label: "MBA", href: "/services", icon: Briefcase },
-                { label: "M.Tech", href: "/services", icon: Cpu },
-                { label: "M.Com", href: "/services", icon: Calculator },
-                { label: "M.A", href: "/services", icon: BookOpen },
-                { label: "MCA", href: "/services", icon: Code },
+                { label: "MBA", href: "/courses/mba", icon: Briefcase },
+                { label: "M.Tech", href: "/courses/mtech", icon: Cpu },
+                { label: "M.Com", href: "/courses/mcom", icon: Calculator },
+                { label: "M.A", href: "/courses/ma", icon: BookOpen },
+                { label: "MCA", href: "/courses/mca", icon: Code },
+                
               ],
             },
           ],

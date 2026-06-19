@@ -365,3 +365,13 @@
   transform: rotate(-45deg);
   transition-duration: 0.5s;
 }
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes pulseSwell {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
