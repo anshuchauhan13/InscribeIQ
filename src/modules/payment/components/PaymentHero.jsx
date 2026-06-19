@@ -16,8 +16,8 @@ const highlights = [
 function PaymentHero() {
   return (
     <div
-      className="relative overflow-hidden noise-medium"
-      style={{
+      className="relative overflow-hidden noise"
+       style={{
         background:
           "linear-gradient(160deg, #0C0E18 0%, #1a2235 50%, #242E3E 100%)",
       }}
@@ -25,7 +25,7 @@ function PaymentHero() {
       {/* Ambient glow orbs */}
       <div aria-hidden className="pointer-events-none absolute inset-0 select-none">
         <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#320F8C]/40 blur-[130px]" />
-        <div className="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-secondary/10 blur-[130px]" />
+        <div className="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-[#320F8C]/20 blur-[130px]" />
       </div>
 
       <SectionViewer className="relative z-10 py-16 md:py-24 xl:py-28">

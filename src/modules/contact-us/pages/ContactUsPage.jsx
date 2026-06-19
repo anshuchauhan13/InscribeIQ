@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import PageViewer from "@/components/common/PageViewer";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
@@ -5,6 +6,15 @@ import ContactForm from "../components/ContactForm";
 import ContactInfo from "../components/ContactInfo";
 import ContactBottomCard from "../components/ContactBottomCard";
 
+const fadeUp = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0 },
+};
+
+const stagger = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12 } },
+};
 
 export default function ContactUsPage() {
     return (
@@ -28,16 +38,31 @@ export default function ContactUsPage() {
                 />
                 <SectionViewer className="inter py-16 md:py-24 relative z-5">
                     {/* Header */}
-                    <div className="mx-auto flex flex-col items-center gap-3 text-center">
-                        <SectionLabel label="Contact Us" />
-                        <h1 className="text-3xl font-bold tracking-tight text-primary md:text-4xl xl:text-5xl leading-tight">
+                    <motion.div
+                        className="mx-auto flex flex-col items-center gap-3 text-center"
+                        variants={stagger}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }}>
+                            <SectionLabel label="Contact Us" />
+                        </motion.div>
+                        <motion.h1
+                            className="text-3xl font-bold tracking-tight text-primary md:text-4xl xl:text-5xl leading-tight"
+                            variants={fadeUp}
+                            transition={{ duration: 0.55, ease: "easeOut" }}
+                        >
                             Talk to our academic advisory team
-                        </h1>
-                        <p className="text-base text-muted-foreground leading-relaxed md:text-lg">
+                        </motion.h1>
+                        <motion.p
+                            className="text-base text-muted-foreground leading-relaxed md:text-lg"
+                            variants={fadeUp}
+                            transition={{ duration: 0.55, ease: "easeOut" }}
+                        >
                             We'll help you find the right academic path — no matter your goal or
                             where you are in your journey.
-                        </p>
-                    </div>
+                        </motion.p>
+                    </motion.div>
 
                     {/* Two-column layout: form + contact info */}
                     <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-12 lg:mt-16 lg:grid-cols-2 lg:gap-16">

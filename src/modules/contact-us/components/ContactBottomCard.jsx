@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import SectionViewer from "@/components/common/SectionViewer";
 import { PlusIcon } from "lucide-react";
 
@@ -27,17 +28,20 @@ export default function ContactBottomCard() {
 
                 <div className="-z-10 absolute top-0 left-1/2 h-full border-l border-dashed" />
 
-
-                <div className="space-y-1">
+                <motion.div
+                    className="space-y-1"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                >
                     <h2 className="text-center font-bold text-2xl">
                         Let your plans shape the future.
                     </h2>
                     <p className="text-center text-muted-foreground">
                         Start your free trial today. No credit card required.
                     </p>
-                </div>
-
-                
+                </motion.div>
             </div>
         </SectionViewer>
     );

@@ -6,68 +6,78 @@ import ProgramCard from "./ProgramCard";
 
 const FILTERS = [
   "All",
-  "Domestic",
-  "International",
-  "Business",
+  "AI & ML",
+  "Data Science",
+  "Cybersecurity",
+  "FinTech",
+  "Engineering",
   "Education",
-  "Social Work",
-  "Technology",
 ];
 
 const PROGRAMS = [
   {
-    institution: "Global Leadership Academy, India",
-    title: "Honorary Doctorate in Business Administration",
-    category: "Business",
-    region: "Domestic",
-    duration: "30 days",
-    feature: "1:1 Expert Profile Consultation",
-    image: "https://picsum.photos/seed/honorary-business/800/500",
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Foundations of Artificial Intelligence",
+    category: "AI & ML",
+    duration: "8 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-ai-foundations/800/500",
   },
   {
-    institution: "Global Leadership Academy, India",
-    title: "Honorary Doctorate in Architecture & Design",
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Applied Machine Learning",
+    category: "AI & ML",
+    duration: "10 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-machine-learning/800/500",
+  },
+  {
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Using ChatGPT and AI Tools for Teaching",
     category: "Education",
-    region: "International",
-    duration: "30 days",
-    feature: "1:1 Expert Profile Consultation",
-    image: "https://picsum.photos/seed/honorary-architecture/800/500",
+    duration: "6 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-chatgpt-teaching/800/500",
   },
   {
-    institution: "Global Leadership Academy, India",
-    title: "Honorary Doctorate in Literature & Research",
-    category: "Education",
-    region: "Domestic",
-    duration: "30 days",
-    feature: "1:1 Expert Profile Consultation",
-    image: "https://picsum.photos/seed/honorary-literature/800/500",
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Cybersecurity Fundamentals and Network Defense",
+    category: "Cybersecurity",
+    duration: "10 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-cybersecurity/800/500",
   },
   {
-    institution: "Global Leadership Academy, India",
-    title: "Honorary Doctorate in Innovation & Technology",
-    category: "Technology",
-    region: "International",
-    duration: "30 days",
-    feature: "1:1 Expert Profile Consultation",
-    image: "https://picsum.photos/seed/honorary-technology/800/500",
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in FinTech Ecosystems, Digital Banking, and Payment Systems",
+    category: "FinTech",
+    duration: "8 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-fintech/800/500",
   },
   {
-    institution: "Global Leadership Academy, India",
-    title: "Honorary Doctorate in Humanitarian Service",
-    category: "Social Work",
-    region: "Domestic",
-    duration: "30 days",
-    feature: "1:1 Expert Profile Consultation",
-    image: "https://picsum.photos/seed/honorary-humanitarian/800/500",
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Python for Engineering and Applied Sciences",
+    category: "Engineering",
+    duration: "8 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-python-eng/800/500",
   },
   {
-    institution: "Global Leadership Academy, India",
-    title: "Honorary Doctorate in Management Studies",
-    category: "Business",
-    region: "International",
-    duration: "30 days",
-    feature: "1:1 Expert Profile Consultation",
-    image: "https://picsum.photos/seed/honorary-management/800/500",
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Applied Data Mining Techniques",
+    category: "Data Science",
+    duration: "8 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-data-mining/800/500",
+  },
+  {
+    institution: "InscribeIQ Certification Academy",
+    title: "Certificate Advanced Program in Database Systems and SQL for Enterprise Application",
+    category: "Data Science",
+    duration: "8 Weeks",
+    feature: "Live Online + Industry Certificate",
+    image: "https://picsum.photos/seed/cert-database-sql/800/500",
   },
 ];
 
@@ -77,9 +87,7 @@ function Programs() {
   const filtered =
     active === "All"
       ? PROGRAMS
-      : PROGRAMS.filter(
-          (p) => p.category === active || p.region === active
-        );
+      : PROGRAMS.filter((p) => p.category === active);
 
   return (
     <SectionViewer className="py-16 md:py-24">
@@ -87,11 +95,11 @@ function Programs() {
         {/* Header */}
         <div className="flex flex-col items-center gap-3 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
-            Honorary Doctorate Programs
+            Certification Programs
           </h2>
           <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
-            Recognised by globally affiliated institutions across diverse fields
-            of human achievement
+            Industry-recognised certificates across AI, technology, data science,
+            and more — designed for working professionals
           </p>
         </div>
 

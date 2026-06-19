@@ -34,7 +34,7 @@ function HeroSection() {
             {" "}Transforming{" "}
             <span className="relative inline-block whitespace-nowrap">
               Academic Success.
-              <span className="absolute left-0 -bottom-1 h-[5px] w-full rounded-full bg-secondary" />
+              {/* <span className="absolute left-0 -bottom-1 h-[5px] w-full rounded-full bg-light-blue" /> */}
             </span>
           </h1>
 
@@ -50,14 +50,15 @@ function HeroSection() {
             <Button
               size="lg"
               variant="gradiant"
+              className={"pl-7 pr-6 rounded-full"}
             >
               Get Started Today
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="rounded-full border-primary/30 text-primary hover:bg-primary/5 px-7"
+              variant="primary"
+              className="rounded-full border border-primary/10 px-7"
             >
               Explore Services
             </Button>

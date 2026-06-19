@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import {
@@ -27,7 +27,8 @@ const EXTENDED_MENUS = Object.fromEntries(
 const MenuTrigger = ({ item, isOpen, isRouteActive, onToggle }) => (
   <button
     type="button"
-    onClick={() => onToggle(item.key)}
+    onMouseDown={(e) => e.preventDefault()}
+    onClick={(e) => { e.currentTarget.blur(); onToggle(item.key); }}
     aria-expanded={isOpen}
     className={cn(
       "!pr-3 ml-2",
@@ -54,8 +55,24 @@ export const NavbarMenu = () => {
   const toggleMenu = (key) => setActiveMenu((cur) => (cur === key ? null : key));
   const closeMenu = () => setActiveMenu(null);
 
+  // Close dropdown and mobile sheet whenever the route changes.
+  useEffect(() => {
+    closeMenu();
+    setMobileOpen(false);
+  }, [pathname]);
+
   // A menu item counts as active when the route matches its `match` prefix.
-  const isRouteActive = (item) => (item.match ? pathname.startsWith(item.match) : false);
+  // For Services, also match the sub-page prefixes that live outside /services.
+  const isRouteActive = (item) => {
+    if (!item.match) return false;
+    if (pathname.startsWith(item.match)) return true;
+    if (item.key === "services" && (
+      pathname.startsWith("/courses") ||
+      pathname.startsWith("/writing") ||
+      pathname.startsWith("/publications")
+    )) return true;
+    return false;
+  };
 
   return (
     <header className="relative z-100 sticky top-0">
@@ -86,6 +103,7 @@ export const NavbarMenu = () => {
                     key={item.to}
                     to={item.to}
                     end={item.to === "/"}
+                    onMouseDown={(e) => e.preventDefault()}
                     className={({ isActive }) =>
                       cn(navigationMenuTriggerStyle(), isActive && ACTIVE_NAV)
                     }

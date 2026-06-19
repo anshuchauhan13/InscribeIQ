@@ -90,15 +90,15 @@ export const navbarMenu = [
           label: "Writing Services",
           icon: PenLine,
           heading: "Research & Academic Writing",
-          href: "/services",
+          href: "/writing/thesis",
           groups: [
             {
               label: "Services",
               items: [
-                { label: "Thesis Writing", href: "/services", icon: FileText },
-                { label: "Dissertation Writing", href: "/services", icon: ScrollText },
-                { label: "Research & Review Papers", href: "/services", icon: BookText },
-                { label: "Other Academic Writing", href: "/services", icon: PenLine },
+                { label: "Thesis Writing", href: "/writing/thesis", icon: FileText },
+                { label: "Dissertation Writing", href: "/writing/dissertation", icon: ScrollText },
+                { label: "Research & Review Papers", href: "/writing/research_paper", icon: BookText },
+                { label: "Other Academic Writing", href: "/writing/other", icon: PenLine },
               ],
             },
           ],
@@ -108,15 +108,15 @@ export const navbarMenu = [
           label: "Publications",
           icon: BookText,
           heading: "Publication Services",
-          href: "/services",
+          href: "/publications/scopus",
           groups: [
             {
               label: "Services",
               items: [
-                { label: "Scopus Publications", href: "/services", icon: BookMarked },
-                { label: "Web of Science", href: "/services", icon: Globe },
-                { label: "ABDC Publications", href: "/services", icon: Landmark },
-                { label: "PUBMED / EMBASE", href: "/services", icon: Microscope },
+                { label: "Scopus Publications", href: "/publications/scopus", icon: BookMarked },
+                { label: "Web of Science", href: "/publications/web_of_science", icon: Globe },
+                { label: "ABDC Publications", href: "/publications/abdc", icon: Landmark },
+                { label: "PubMed / NLM", href: "/publications/pubmed", icon: Microscope },
               ],
             },
           ],

@@ -15,7 +15,7 @@ const bankFields = [
   { label: "Account Type", value: "Current Account", copyable: false },
 ];
 
-// ⚠️ Replace with the official Inscribe IQ UPI ID and QR image.
+// Replace with the official Inscribe IQ UPI ID and QR image.
 const UPI_ID = "inscribeiq@hdfcbank";
 const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(
   `upi://pay?pa=${UPI_ID}&pn=Inscribe IQ&cu=INR`

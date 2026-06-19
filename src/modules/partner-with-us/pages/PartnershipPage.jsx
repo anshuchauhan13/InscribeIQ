@@ -1,42 +1,42 @@
-
-
-
-import { HeroSection } from '@/components/ui/hero-section-2';
-import React from 'react'
+import PageViewer from "@/components/common/PageViewer";
+import { PartnershipHero } from "../components/PartnershipHero";
+import PartnerStats from "../components/PartnerStats";
+import PartnerAudience from "../components/PartnerAudience";
+import PartnershipProgram from "../components/PartnershipProgram";
+import PartnerProcess from "../components/PartnerProcess";
+import PartnerTestimonial from "../components/PartnerTestimonial";
+import PartnerApplicationForm from "../components/PartnerApplicationForm";
 
 function PartnershipPage() {
   return (
-    <div>
-        
-        <HeroSection
-        logo={{
-            url: "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_2zMtrqo9RMaaIn4f8F2z3oeY497/avatar.png",
-            alt: "Company Logo",
-            text: "Your Logo"
-        }}
-        slogan="ELEVATE YOUR PERSPECTIVE"
+    <PageViewer>
+      <PartnershipHero
         title={
           <>
-            Each Peak <br />
-            <span className="text-primary">Teaches Something</span>
+            Partner with <br />
+            <span className="text-light-blue">Inscribe IQ</span>
           </>
         }
-        subtitle="Discover breathtaking landscapes and challenge yourself with our guided mountain expeditions. Join a community of adventurers."
-        callToAction={{
-          text: "JOIN US TO EXPLORE",
-          href: "#explore",
-        }}
-        backgroundImage="https://plus.unsplash.com/premium_photo-1754738812660-11ca16e5b8bd?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D"
-        contactInfo={{
-            website: "yourwebsite.com",
-            phone: "+1 (555) 123-4567",
-            address: "20 Fieldstone Dr, Roswell, GA",
-        }}
+        subtitle="Join a fast-growing network of consultants, coaching centres and institutions earning attractive commissions by connecting scholars and professionals to world-class academic, publishing and doctorate services."
+        primaryCta={{ text: "Apply to Partner", href: "#apply" }}
+        secondaryCta={{ text: "See Partnership Tiers", href: "#programs" }}
+        badges={[
+          "Education Consultants",
+          "Coaching Centres",
+          "Corporate HR Teams",
+          "University Agents",
+        ]}
+        backgroundImage="/partner/partnerhero.jpg"
       />
-    </div>
-  )
+
+      <PartnerStats />
+      <PartnerAudience />
+      <PartnershipProgram />
+      <PartnerProcess />
+      <PartnerTestimonial />
+      <PartnerApplicationForm />
+    </PageViewer>
+  );
 }
 
-export default PartnershipPage
-
-
+export default PartnershipPage;

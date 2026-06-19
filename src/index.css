@@ -148,6 +148,14 @@
   font-family: "Manrope", sans-serif;
 }
 
+/* Smooth in-page anchor scrolling (e.g. partner CTAs jumping to #apply / #programs).
+   Respects users who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 .max-width {
   max-width: 1800px;
   width: 100%;
@@ -304,6 +312,84 @@
 .noise::after         { opacity: 0.06; }
 .noise-medium::after         { opacity: 0.09; }
 .noise-strong::after  { opacity: 0.12; }
+
+/* "How It Works" connector ray — a single blue light that travels each
+   segment between the steps, one after another, then loops. */
+@keyframes process-ray {
+  0% {
+    left: -14%;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  20% {
+    left: 100%;
+    opacity: 1;
+  }
+  24% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .process-ray {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    width: 54px;
+    margin-top: -1px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, transparent, var(--light-blue), transparent);
+    box-shadow: 0 0 10px 2px rgba(141, 116, 239, 0.1);
+    animation: process-ray 4s linear infinite;
+    will-change: left, opacity;
+  }
+}
+
+/* Vertical variant of the connector ray for the stacked (single-column)
+   layout — the light travels top → bottom, one segment after another. */
+@keyframes process-ray-v {
+  0% {
+    top: -14%;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  20% {
+    top: 100%;
+    opacity: 1;
+  }
+  24% {
+    top: 100%;
+    opacity: 0;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .process-ray-v {
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 54px;
+    margin-left: -1px;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, transparent, var(--light-blue), transparent);
+    box-shadow: 0 0 10px 2px rgba(141, 116, 239, 0.1);
+    animation: process-ray-v 4s linear infinite;
+    will-change: top, opacity;
+  }
+}
 
 /* Animated hamburger → X button */
 .hamburger-btn {
