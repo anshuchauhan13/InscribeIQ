@@ -88,7 +88,7 @@ function DBA() {
   ];
 
   const whatIsCourseData = {
-    title: "What is a DBA?",
+    tagline: "What is a DBA?",
 
     heading: "What Makes a DBA Different from a Traditional Doctorate?",
 
@@ -287,7 +287,7 @@ const popularCourseData = {
 };
 
 const journeyData = {
-  eyebrow: "Your DBA journey",
+  tagline: "Your DBA journey",
 
   headingMain: "How It Works",
 
@@ -457,7 +457,7 @@ const benefitsData = {
 };
 
 const whyChooseUsData = {
-  eyebrow: "Why Choose a Global DBA ?",
+  tagline: "Why Choose a Global DBA ?",
 
   heading: "Global Business Perspective. Executive Excellence.",
 

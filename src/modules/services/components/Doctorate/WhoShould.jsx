@@ -60,7 +60,7 @@ export default function WhoShould({
   const bottomImage = images.find((img) => img.shape === "rounded");
 
   return (
-    <section className={cn("w-full bg-white py-16 px-5 sm:px-8 lg:px-20", className)}>
+    <section className={cn("container mx-auto px-5 md:px-12 lg:px-20 py-16", className)}>
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_340px] gap-10 lg:gap-12 items-start">
 
         {/* ── Left: heading + list ── */}

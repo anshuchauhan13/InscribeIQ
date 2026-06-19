@@ -12,6 +12,19 @@ import ContactUsPage from "./modules/contact-us/pages/ContactUsPage";
 import PartnershipPage from "./modules/partner-with-us/pages/PartnershipPage";
 import FaqsPage from "./modules/faqs/pages/FaqsPage";
 import ConsultationPage from "./modules/consultations/pages/ConsultationPage";
+import BBA from "./modules/services/pages/UG/BBA";
+import BA from "./modules/services/pages/UG/BA";
+import BCom from "./modules/services/pages/UG/BCom";
+import BCA from "./modules/services/pages/UG/BCA";
+import BTech from "./modules/services/pages/UG/BTech";
+import BSc from "./modules/services/pages/UG/BSc";
+import MBA from "./modules/services/pages/PG/MBA";
+import MCom from "./modules/services/pages/PG/MCom";
+import MSc from "./modules/services/pages/PG/MSc";
+import MTech from "./modules/services/pages/PG/MTech";
+import MA from "./modules/services/pages/PG/MA";
+import MCA from "./modules/services/pages/PG/MCA";
+
 
 
 function App() {
@@ -30,6 +43,23 @@ function App() {
             <Route path="phd" element={<PhD />} />
             <Route path="honary_doctorate" element={<HonaryDoctorate />} />
           </Route>
+           <Route path="courses" >
+            <Route path="bba" element={<BBA />} />
+            <Route path="bsc" element={<BSc />} />
+            <Route path="bcom" element={<BCom />} />
+            <Route path="ba" element={<BA />} />
+             <Route path="bca" element={<BCA />} />
+              <Route path="btech" element={<BTech />} />
+          </Route>
+           <Route path="courses" >
+            <Route path="mba" element={<MBA />} />
+            <Route path="msc" element={<MSc />} />
+            <Route path="mcom" element={<MCom />} />
+            <Route path="mtech" element={<MTech />} />
+            <Route path="ma" element={<MA />} />
+            <Route path="mca" element={<MCA />} />
+          </Route>
+
 
           <Route path="/consultation" element={<ConsultationPage />} />
           <Route path="/partner_with_us" element={<PartnershipPage />} />

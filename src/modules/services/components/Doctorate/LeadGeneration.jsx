@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-
+import SectionLabel from "@/components/common/SectionLabel";
 // ─── Static options ───────────────────────────────────────────────────────────
 
 const QUALIFICATIONS = [
@@ -69,18 +69,18 @@ function FieldLabel({ children, required }) {
   );
 }
 
-
-const  LeadGeneration=({
-  heading         = "Ready to Take Your Leadership Journey to the Next Level?",
-  subheading      = "Fill in your details and our advisors will reach out within 24 hours with a personalised DBA roadmap.",
-  ctaText         = "Book a Free DBA Consultation",
+const LeadGeneration = ({
+  heading = "Ready to Take Your Leadership Journey to the Next Level?",
+  subheading =
+    "Fill in your details and our advisors will reach out within 24 hours with a personalised DBA roadmap.",
+  ctaText = "Book a Free DBA Consultation",
   onSubmit,
-  qualifications  = QUALIFICATIONS,
+  qualifications = QUALIFICATIONS,
   experienceRanges = EXPERIENCE_RANGES,
   specializations = SPECIALIZATIONS,
-  countries       = COUNTRIES,
+  countries = COUNTRIES,
   className,
-}) =>{
+}) => {
   const [values, setValues] = useState({
     name: "",
     phone: "",
@@ -104,20 +104,23 @@ const  LeadGeneration=({
 
   const validate = () => {
     const e = {};
-    if (!values.name.trim())         e.name         = "Name is required";
-    if (!values.phone.trim())        e.phone        = "Phone is required";
+    if (!values.name.trim()) e.name = "Name is required";
+    if (!values.phone.trim()) e.phone = "Phone is required";
     if (!/^\S+@\S+\.\S+$/.test(values.email)) e.email = "Enter a valid email";
-    if (!values.qualification)       e.qualification = "Select a qualification";
-    if (!values.experience)          e.experience   = "Select experience range";
-    if (!values.designation.trim())  e.designation  = "Designation is required";
-    if (!values.specialization)      e.specialization = "Select a specialization";
-    if (!values.country)             e.country      = "Select a country";
+    if (!values.qualification) e.qualification = "Select a qualification";
+    if (!values.experience) e.experience = "Select experience range";
+    if (!values.designation.trim()) e.designation = "Designation is required";
+    if (!values.specialization) e.specialization = "Select a specialization";
+    if (!values.country) e.country = "Select a country";
     return e;
   };
 
   const handleSubmit = async () => {
     const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
+    }
     setErrors({});
     setLoading(true);
     try {
@@ -128,7 +131,6 @@ const  LeadGeneration=({
     }
   };
 
-  // ── error helper ──
   const err = (key) =>
     errors[key] ? (
       <p className="mt-1 text-[11px] text-rose-500">{errors[key]}</p>
@@ -138,16 +140,29 @@ const  LeadGeneration=({
   if (submitted) {
     return (
       <section className={cn("py-20 bg-slate-50", className)}>
-        <div className="max-w-2xl mx-auto px-6 text-center">
+        <div className="w-full container  mx-auto px-4 sm:px-6 lg:px-10 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-violet-100 mb-6">
-            <svg className="w-7 h-7 text-violet-600" viewBox="0 0 24 24" fill="none">
-              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              className="w-7 h-7 text-violet-600"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M5 13l4 4L19 7"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-3">You're on the list!</h3>
+          <h3 className="text-2xl font-bold text-slate-900 mb-3">
+            You're on the list!
+          </h3>
           <p className="text-slate-500 text-sm leading-relaxed">
-            Our DBA advisors will reach out within 24 hours with a tailored roadmap.
-            Keep an eye on <strong className="text-slate-700">{values.email}</strong>.
+            Our DBA advisors will reach out within 24 hours with a tailored
+            roadmap. Keep an eye on{" "}
+            <strong className="text-slate-700">{values.email}</strong>.
           </p>
         </div>
       </section>
@@ -155,21 +170,39 @@ const  LeadGeneration=({
   }
 
   return (
-    <section className={cn("", className)}>
-      <div className="container  mx-auto px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16">
+    <section className={cn("w-full", className)}>
+      {/*
+        Outer constraint: max-width caps on large screens,
+        consistent horizontal padding across all breakpoints
+      */}
+      <div className="container mx-auto px-5 md:px-12 lg:px-20 py-16">
 
-        {/* ── Two-column wrapper ── */}
-        <div className="grid lg:grid-cols-[1fr_1.7fr] gap-12 items-start">
+        {/*
+          Two-column layout on lg+.
+          Key fix: NO sticky on either column.
+          Both columns scroll naturally together.
+          The left col is naturally shorter than the form, so it doesn't need
+          sticky — they visually align at the top and the form scrolls past.
+        */}
+        <div className="grid lg:grid-cols-[1fr_1.7fr] gap-10 xl:gap-16 items-start">
 
-          {/* ── Left: headline ── */}
-          <div className="lg:sticky lg:top-24">
-            <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-violet-500 mb-4">
-              Get Started
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-5">
+          {/* ── Left: headline + trust signals ── */}
+          {/*
+            lg:self-start + lg:sticky lg:top-8 ONLY when left content
+            is taller than viewport would need it — but here left is always
+            shorter than the form, so sticky would cause it to scroll away.
+            Fix: remove sticky entirely. Left col sits at the top, form scrolls.
+            If you want left to follow the form: use lg:sticky with a top value
+            equal to navbar height, AND ensure the section itself is the scroll
+            container (overflow-auto) — not the page. Since page scroll is the
+            norm here, no sticky is the cleanest solution.
+          */}
+          <div className="lg:self-start">
+             <SectionLabel label="Get Started" />
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-slate-900 leading-tight mb-5">
               {heading}
             </h2>
-            <p className="text-sm text-slate-500 leading-relaxed mb-8">
+            <p className="text-sm 2xl:text-base text-slate-500 leading-relaxed mb-8">
               {subheading}
             </p>
 
@@ -180,10 +213,23 @@ const  LeadGeneration=({
                 "Response within 24 hours",
                 "Personalised DBA roadmap",
               ].map((t) => (
-                <li key={t} className="flex items-center gap-2.5 text-sm text-slate-600">
+                <li
+                  key={t}
+                  className="flex items-center gap-2.5 text-sm 2xl:text-base text-slate-600"
+                >
                   <span className="w-5 h-5 rounded-full bg-violet-100 flex items-center justify-center shrink-0">
-                    <svg className="w-3 h-3 text-violet-600" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg
+                      className="w-3 h-3 text-violet-600"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                    >
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </span>
                   {t}
@@ -193,17 +239,20 @@ const  LeadGeneration=({
           </div>
 
           {/* ── Right: form card ── */}
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 lg:p-10">
+          <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 lg:p-10 2xl:p-12">
 
             {/* Row 1: Name + Phone */}
-            <div className="grid sm:grid-cols-2 gap-5 mb-5">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-4 sm:mb-5">
               <div>
                 <FieldLabel required>Full Name</FieldLabel>
                 <Input
                   placeholder="Dr. Arjun Mehta"
                   value={values.name}
                   onChange={set("name")}
-                  className={cn("h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500", errors.name && "border-rose-400")}
+                  className={cn(
+                    "h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500",
+                    errors.name && "border-rose-400"
+                  )}
                 />
                 {err("name")}
               </div>
@@ -213,14 +262,17 @@ const  LeadGeneration=({
                   placeholder="+91 98765 43210"
                   value={values.phone}
                   onChange={set("phone")}
-                  className={cn("h-11 text-sm rounded-md border-slate-200 focus-visible:ring-violet-500", errors.phone && "border-rose-400")}
+                  className={cn(
+                    "h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500",
+                    errors.phone && "border-rose-400"
+                  )}
                 />
                 {err("phone")}
               </div>
             </div>
 
             {/* Row 2: Email + Designation */}
-            <div className="grid sm:grid-cols-2 gap-5 mb-5">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-4 sm:mb-5">
               <div>
                 <FieldLabel required>Email Address</FieldLabel>
                 <Input
@@ -228,7 +280,10 @@ const  LeadGeneration=({
                   placeholder="arjun@company.com"
                   value={values.email}
                   onChange={set("email")}
-                  className={cn("h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500", errors.email && "border-rose-400")}
+                  className={cn(
+                    "h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500",
+                    errors.email && "border-rose-400"
+                  )}
                 />
                 {err("email")}
               </div>
@@ -238,23 +293,36 @@ const  LeadGeneration=({
                   placeholder="VP Strategy"
                   value={values.designation}
                   onChange={set("designation")}
-                  className={cn("h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500", errors.designation && "border-rose-400")}
+                  className={cn(
+                    "h-11 text-sm rounded-xl border-slate-200 focus-visible:ring-violet-500",
+                    errors.designation && "border-rose-400"
+                  )}
                 />
                 {err("designation")}
               </div>
             </div>
 
             {/* Row 3: Qualification + Experience */}
-            <div className="grid sm:grid-cols-2 gap-5 mb-5">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-4 sm:mb-5">
               <div>
                 <FieldLabel required>Highest Qualification</FieldLabel>
-                <Select onValueChange={setSelect("qualification")} value={values.qualification}>
-                  <SelectTrigger className={cn("h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500", errors.qualification && "border-rose-400")}>
+                <Select
+                  onValueChange={setSelect("qualification")}
+                  value={values.qualification}
+                >
+                  <SelectTrigger
+                    className={cn(
+                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      errors.qualification && "border-rose-400"
+                    )}
+                  >
                     <SelectValue placeholder="Select qualification" />
                   </SelectTrigger>
                   <SelectContent>
                     {qualifications.map((q) => (
-                      <SelectItem key={q} value={q}>{q}</SelectItem>
+                      <SelectItem key={q} value={q}>
+                        {q}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -262,13 +330,23 @@ const  LeadGeneration=({
               </div>
               <div>
                 <FieldLabel required>Years of Experience</FieldLabel>
-                <Select onValueChange={setSelect("experience")} value={values.experience}>
-                  <SelectTrigger className={cn("h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500", errors.experience && "border-rose-400")}>
+                <Select
+                  onValueChange={setSelect("experience")}
+                  value={values.experience}
+                >
+                  <SelectTrigger
+                    className={cn(
+                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      errors.experience && "border-rose-400"
+                    )}
+                  >
                     <SelectValue placeholder="Select range" />
                   </SelectTrigger>
                   <SelectContent>
                     {experienceRanges.map((r) => (
-                      <SelectItem key={r} value={r}>{r}</SelectItem>
+                      <SelectItem key={r} value={r}>
+                        {r}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -277,16 +355,26 @@ const  LeadGeneration=({
             </div>
 
             {/* Row 4: Specialization + Country */}
-            <div className="grid sm:grid-cols-2 gap-5 mb-8">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-6 sm:mb-8">
               <div>
                 <FieldLabel required>Preferred Specialization</FieldLabel>
-                <Select onValueChange={setSelect("specialization")} value={values.specialization}>
-                  <SelectTrigger className={cn("h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500", errors.specialization && "border-rose-400")}>
+                <Select
+                  onValueChange={setSelect("specialization")}
+                  value={values.specialization}
+                >
+                  <SelectTrigger
+                    className={cn(
+                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      errors.specialization && "border-rose-400"
+                    )}
+                  >
                     <SelectValue placeholder="Select specialization" />
                   </SelectTrigger>
                   <SelectContent>
                     {specializations.map((s) => (
-                      <SelectItem key={s} value={s}>{s}</SelectItem>
+                      <SelectItem key={s} value={s}>
+                        {s}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -294,13 +382,23 @@ const  LeadGeneration=({
               </div>
               <div>
                 <FieldLabel required>Country Preference</FieldLabel>
-                <Select onValueChange={setSelect("country")} value={values.country}>
-                  <SelectTrigger className={cn("h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500", errors.country && "border-rose-400")}>
+                <Select
+                  onValueChange={setSelect("country")}
+                  value={values.country}
+                >
+                  <SelectTrigger
+                    className={cn(
+                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      errors.country && "border-rose-400"
+                    )}
+                  >
                     <SelectValue placeholder="Select country" />
                   </SelectTrigger>
                   <SelectContent>
                     {countries.map((c) => (
-                      <SelectItem key={c} value={c}>{c}</SelectItem>
+                      <SelectItem key={c} value={c}>
+                        {c}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -329,17 +427,19 @@ const  LeadGeneration=({
 
             <p className="mt-4 text-center text-[11px] text-slate-400">
               By submitting, you agree to our{" "}
-              <a href="#" className="underline underline-offset-2 hover:text-violet-600 transition-colors">
+              <a
+                href="#"
+                className="underline underline-offset-2 hover:text-violet-600 transition-colors"
+              >
                 Privacy Policy
               </a>
               . No spam, ever.
             </p>
-
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default LeadGeneration;

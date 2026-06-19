@@ -1,5 +1,5 @@
 
-
+import SectionLabel from "@/components/common/SectionLabel";
 import { cn } from "@/lib/utils";
 
 const ICONS = {
@@ -91,7 +91,7 @@ function FeatureCard({ service }) {
 }
 
 export default function WhyChooseUs({
-  eyebrow,
+  tagline,
   heading,
   subheading,
   services = [],
@@ -105,23 +105,32 @@ export default function WhyChooseUs({
       )}
     >
       {/* Decorative Shapes */}
-      <div className="absolute top-40 right-20 hidden lg:block pointer-events-none">
-        <div className="relative w-36 h-36">
-          <div className="absolute inset-0 rounded-full bg-yellow-300/70" />
-          <div className="absolute top-0 right-0 w-24 h-24 bg-orange-400 rounded-full" />
-        </div>
-      </div>
+{/* Yellow + Orange group */}
+<div
+  className="absolute top-40 right-20 hidden lg:block pointer-events-none"
+  style={{ animation: 'floatBob 4s ease-in-out infinite' }}
+>
+  <div className="relative w-36 h-36">
+    <div className="absolute inset-0 rounded-full bg-yellow-300/70" />
+    <div
+      className="absolute top-0 right-0 w-24 h-24 bg-orange-400 rounded-full"
+      style={{ animation: 'pulseSwell 3.5s ease-in-out infinite' }}
+    />
+  </div>
+</div>
 
-      <div className="absolute bottom-5 left-10 hidden lg:block pointer-events-none">
-        <div className="w-28 h-28 rounded-full bg-blue-500/80" />
-      </div>
+{/* Blue ball */}
+<div
+  className="absolute bottom-5 left-10 hidden lg:block pointer-events-none"
+  style={{ animation: 'floatBob 5s ease-in-out infinite 1s' }}
+>
+  <div className="w-28 h-28 rounded-full bg-blue-500/80" />
+</div>
 
       <div className="container mx-auto px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-20">
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-light-blue mb-3">
-            {eyebrow}
-          </p>
+            <SectionLabel label={tagline} />
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
             {heading}

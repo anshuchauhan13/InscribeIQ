@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import SectionLabel from "@/components/common/SectionLabel";
 
 function ComparisonPanel({ comparison }) {
   const LeftIcon = comparison.left.icon;
@@ -99,7 +100,7 @@ function ComparisonPanel({ comparison }) {
 // ─── Main WhatIsCourse Component ─────────────────────────────────────────────
 
 const WhatIsCourse = ({
-  title,
+  tagline,
   heading,
   description = [],
   sideImage,
@@ -111,21 +112,27 @@ const WhatIsCourse = ({
   const BadgeIcon = badge?.icon;
 
   const panelOffset = "calc(3.75rem + 0.5rem + 0.25rem + 1.5rem)";
+  
 
   return (
     <section
       className={cn(
-        "container mx-auto px-5 md:px-12 lg:px-20 py-16",
+        "container px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16 mx-auto",
         className
       )}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-8 lg:gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-8 lg:gap-14 items-start">
 
         {/* ── Left Content ── */}
         <div className="flex flex-col">
-          <h2 className="mb-2 text-5xl font-bold tracking-tight">{title}</h2>
-          <div className="mb-6 h-1 w-28 bg-light-blue rounded-full" />
-          <h3 className="mb-5 text-3xl sm:text-4xl font-bold leading-tight">{heading}</h3>
+           {/* <span className="text-sm font-bold uppercase tracking-[0.25em] text-light-blue">
+                  {tagline}
+                </span> */}
+
+                  <SectionLabel label={tagline} />
+        
+          <h3 className="mb-5 text-3xl sm:text-4xl  font-bold leading-tight">{heading}</h3>
+            {/* <div className="mb-6 h-1 w-28 bg-light-blue rounded-full" /> */}
 
           <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
             {description.map((item, index) => (
@@ -138,7 +145,7 @@ const WhatIsCourse = ({
               <img
                 src={"/service/hero4.png"}
                 alt=""
-                className="h-[260px] w-full rounded-3xl object-cover"
+                className="max-h-[260px] w-full rounded-3xl object-cover"
               />
               {badge && BadgeIcon && (
                 <div
