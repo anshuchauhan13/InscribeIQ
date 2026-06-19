@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import SectionViewer from "@/components/common/SectionViewer";
 
 const Gallery = ({
   heading = "Life as an Honorary Doctorate Recipient",
@@ -10,7 +11,7 @@ const Gallery = ({
   const s = Array.from({ length: 6 }, (_, i) => images[i] || null);
 
   return (
-    <section className={cn("w-full px-4 sm:px-8 lg:px-16 py-8 lg:py-16 container mx-auto", className)}>
+    <SectionViewer className={cn("py-8 lg:py-16", className)}>
       <div
         className="grid gap-2 sm:gap-3 lg:gap-4 w-full"
         style={{
@@ -60,7 +61,7 @@ const Gallery = ({
           </div>
         </div>
       </div>
-    </section>
+    </SectionViewer>
   );
 };
 

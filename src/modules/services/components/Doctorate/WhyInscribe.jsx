@@ -1,5 +1,6 @@
-import { ArrowDown, BookOpen, FileText, FlaskConical, GraduationCap, LayoutGrid, Microscope, ScrollText } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import SectionViewer from "@/components/common/SectionViewer";
 
 
 // ─── SUB-COMPONENTS ────────────────────────────────────────────────────────────
@@ -121,7 +122,8 @@ const WhyInscribe = ({
   cards = {},
 }) => {
   return (
-    <section className="bg-light-blue/10 font-inter  px-6 md:px-16 lg:px-34 py-12 md:py-16 lg:py-16">
+    <section className="bg-light-blue/10">
+      <SectionViewer className="py-12 md:py-16">
 
       {/* ── TOP HEADING ── */}
       <div className="mb-8 md:mb-11">
@@ -154,6 +156,7 @@ const WhyInscribe = ({
         <DarkCard data={cards.darkCard2} />
 
       </div>
+      </SectionViewer>
     </section>
   );
 };

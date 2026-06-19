@@ -1,4 +1,4 @@
-import SectionViewer from "@/components/common/SectionViewer";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../components/Doctorate/HeroSection";
 import QuickInfo from "../components/Doctorate/QuickInfo";
 import WhoShould from "../components/Doctorate/WhoShould";
@@ -53,7 +53,7 @@ const heroSectionData = {
   credentialLabel: "Distinguished Achievements",
 
   breadcrumbs: [
-    "Home",
+    "Services",
     "Doctorate Courses",
     "Honorary Doctorate in Business Administration",
   ],
@@ -573,24 +573,20 @@ const careerOutcomesData = {
   secondaryCta: "Visit Site",
 };
   return (
-    <>
+    <PageViewer>
       <HeroSection {...heroSectionData} />
-     <QuickInfo items={quickInfoData} />
+      <QuickInfo items={quickInfoData} />
       <WhatIsCourse {...whatIsCourseData} />
-      <WhoShould {...whoShouldJoinData}
-      />
-
+      <WhoShould {...whoShouldJoinData} />
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
-      <WhyInscribe  {...whyInscribeData}/>
-      <Gallery
-{...galleryData}
-/>
+      <WhyInscribe {...whyInscribeData} />
+      <Gallery {...galleryData} />
       <Benefit {...benefitsData} />
-      <WhyGlobal {...whyChooseUsData}/>
+      <WhyGlobal {...whyChooseUsData} />
       <CareerOutcomes {...careerOutcomesData} />
       <LeadGeneration />
-    </>
+    </PageViewer>
   );
 }
 

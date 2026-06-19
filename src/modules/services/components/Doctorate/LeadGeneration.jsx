@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 // ─── Static options ───────────────────────────────────────────────────────────
 
 const QUALIFICATIONS = [
@@ -140,7 +141,7 @@ const LeadGeneration = ({
   if (submitted) {
     return (
       <section className={cn("py-20 bg-slate-50", className)}>
-        <div className="w-full container  mx-auto px-4 sm:px-6 lg:px-10 text-center">
+        <SectionViewer className="text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-violet-100 mb-6">
             <svg
               className="w-7 h-7 text-violet-600"
@@ -164,7 +165,7 @@ const LeadGeneration = ({
             roadmap. Keep an eye on{" "}
             <strong className="text-slate-700">{values.email}</strong>.
           </p>
-        </div>
+        </SectionViewer>
       </section>
     );
   }
@@ -175,7 +176,7 @@ const LeadGeneration = ({
         Outer constraint: max-width caps on large screens,
         consistent horizontal padding across all breakpoints
       */}
-      <div className="container mx-auto px-5 md:px-12 lg:px-20 py-16">
+      <SectionViewer className="py-16">
 
         {/*
           Two-column layout on lg+.
@@ -437,7 +438,7 @@ const LeadGeneration = ({
             </p>
           </div>
         </div>
-      </div>
+      </SectionViewer>
     </section>
   );
 };

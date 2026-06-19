@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import SectionViewer from '@/components/common/SectionViewer';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Star } from 'lucide-react';
@@ -9,24 +10,38 @@ const AVATARS = [
   { initials: "NJ", bg: "bg-muted-foreground" },
 ];
 
+const EASE = [0.22, 0.61, 0.36, 1];
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 22 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: EASE, delay },
+});
+
 function HeroSection() {
   return (
-    <div >
+    <div>
       <SectionViewer className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10 pt-14 pb-6 md:pt-16 md:pb-10">
 
         {/* LEFT */}
         <div className="w-full md:w-1/2 flex flex-col gap-6">
 
           {/* Trust badge */}
-          <div className="inline-flex items-center gap-2 self-start rounded-full bg-light-blue/10 px-4 py-1.5">
+          <motion.div
+            {...fadeUp(0.1)}
+            className="inline-flex items-center gap-2 self-start rounded-full bg-light-blue/10 px-4 py-1.5"
+          >
             <span className="h-2 w-2 rounded-full bg-light-blue animate-pulse" />
             <span className="text-sm font-medium text-light-blue">
               Trusted by 10,000+ Scholars &amp; Researchers
             </span>
-          </div>
+          </motion.div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl xl:text-[3.5rem] font-bold leading-[1.15] tracking-tight text-primary">
+          <motion.h1
+            {...fadeUp(0.2)}
+            className="text-4xl md:text-5xl xl:text-[3.5rem] font-bold leading-[1.15] tracking-tight text-primary"
+          >
             Empowering{" "}
             <span className="text-light-blue">Researchers.</span>
             {" "}Supporting{" "}
@@ -34,19 +49,21 @@ function HeroSection() {
             {" "}Transforming{" "}
             <span className="relative inline-block whitespace-nowrap">
               Academic Success.
-              {/* <span className="absolute left-0 -bottom-1 h-[5px] w-full rounded-full bg-light-blue" /> */}
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Description */}
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-lg">
+          <motion.p
+            {...fadeUp(0.3)}
+            className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-lg"
+          >
             End-to-end academic support — from PhD guidance and thesis writing
             to global publication and honorary doctorate facilitation. Built for
             scholars. Designed for excellence.
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-3">
+          <motion.div {...fadeUp(0.38)} className="flex flex-wrap items-center gap-3">
             <Button
               size="lg"
               variant="gradiant"
@@ -62,10 +79,10 @@ function HeroSection() {
             >
               Explore Services
             </Button>
-          </div>
+          </motion.div>
 
           {/* Social proof */}
-          <div className="flex items-center gap-4 pt-1">
+          <motion.div {...fadeUp(0.48)} className="flex items-center gap-4 pt-1">
             <div className="flex -space-x-3">
               {AVATARS.map(({ initials, bg }) => (
                 <div
@@ -85,18 +102,23 @@ function HeroSection() {
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">500+ Happy Scholars</p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
-        {/* RIGHT */}
-        <div className="w-full md:w-1/2">
+        {/* RIGHT — image slides in from the right */}
+        <motion.div
+          className="w-full md:w-1/2"
+          initial={{ opacity: 0, x: 36 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: EASE, delay: 0.15 }}
+        >
           <img
             src="/home/HeroImage.png"
             alt="hero"
             className="w-full h-auto object-contain"
           />
-        </div>
+        </motion.div>
 
       </SectionViewer>
     </div>

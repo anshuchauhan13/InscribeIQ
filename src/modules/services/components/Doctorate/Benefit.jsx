@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 
 // Role → accent color + background (pill style)
 const ROLE_STYLES = [
@@ -86,7 +87,7 @@ const Benefit = ({
 
   return (
     <section className={cn("py-12 md:py-16 bg-white text-gray-900", className)}>
-      <div className="container mx-auto px-6 md:px-16 lg:px-20">
+      <SectionViewer>
 
         {/* ── Header row ── */}
         <div className="flex flex-row justify-between items-start mb-10">
@@ -141,7 +142,7 @@ const Benefit = ({
           ))}
         </div>
 
-      </div>
+      </SectionViewer>
     </section>
   );
 };

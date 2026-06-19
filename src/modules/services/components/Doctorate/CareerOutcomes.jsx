@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import noise from "@/assets/noise.webp";
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 
 const DEFAULT_CAREERS = [
   {
@@ -79,7 +79,7 @@ const CareerOutcomes = ({
   return (
     <section className={cn("w-full py-12 lg:py-20 2xl:py-28", className)}>
       {/* Outer wrapper: constrain max width on very large screens, center the content */}
-      <div className="w-full max-w-screen-2xl mx-auto  ">
+      <div className="w-full">
 
         {/* ─── Mobile / Tablet Layout (< xl) ─── */}
         <div className="xl:hidden relative overflow-hidden bg-light-blue/30 rounded-sm">
@@ -95,7 +95,7 @@ const CareerOutcomes = ({
           {/* Content */}
           <div className="relative z-10">
             {/* Header */}
-            <div className="px-4 sm:px-8 md:px-12 py-8 sm:py-10 text-center sm:text-left">
+            <SectionViewer className="py-8 sm:py-10 text-center sm:text-left">
               {/* <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#7A5EE9]">
                 {tagline}
               </span> */}
@@ -108,7 +108,7 @@ const CareerOutcomes = ({
               <p className="mt-4 text-sm md:text-base leading-relaxed text-[#5B5A5D] max-w-2xl mx-auto sm:mx-0">
                 {description}
               </p>
-            </div>
+            </SectionViewer>
 
             {/* Career Cards: 1 col on xs, 2 cols on sm+ */}
             <div className="grid grid-cols-1 sm:grid-cols-2">

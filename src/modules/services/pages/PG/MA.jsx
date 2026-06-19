@@ -1,4 +1,5 @@
 import React from "react";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../../components/PG/HeroSection";
 import ProgramOverview from "../../components/PG/ProgramOverview";
 import WhyChooseThisProgram from "../../components/UG/WhyChoooseThisProgram";
@@ -242,7 +243,7 @@ const keySubjects = {
 
 const MA = () => {
   return (
-    <>
+    <PageViewer>
       <HeroSection
         backgroundImage="/service/career.jpg"
         title="Expand Your Knowledge & Career Opportunities with a M.A"
@@ -289,7 +290,7 @@ const MA = () => {
       <FAQs></FAQs>
       <Banner
 />
-    </>
+    </PageViewer>
   );
 };
 

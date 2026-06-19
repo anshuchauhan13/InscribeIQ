@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 
 const stagger = {
   hidden: {},
@@ -15,108 +16,118 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-// Hero "draft document" mock — a manuscript being written/edited, with a
-// chapter checklist and a Topic → Submission progress bar. Pure CSS, so it
-// reads as a writing workspace (distinct from the publication journal card).
-function DraftDocument({ draft, ServiceIcon }) {
+// Default hero portrait — overridable per dataset via `hero.image`.
+const DEFAULT_IMAGE = "/service/arts.jpg";
+
+// Writing hero visual: an arch-framed portrait of a scholar at work, with the
+// service's live "draft" data floating over it as glass cards. The arch shape +
+// lime/editing motifs keep it distinct from the UG capsule hero and from the
+// publication hero's rectangular journal card.
+function WritingVisual({ draft, image, ServiceIcon }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 40, rotate: -1.5 }}
-      animate={{ opacity: 1, x: 0, rotate: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-      className="relative mx-auto w-full max-w-md"
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+      className="relative mx-auto w-full max-w-[19rem] sm:max-w-sm lg:mr-2"
     >
+      {/* Ambient glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-light-blue/15 blur-3xl"
+        className="pointer-events-none absolute -inset-6 -z-10 rounded-full bg-light-blue/15 blur-3xl"
       />
 
-      {/* Document sheet */}
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-white shadow-xl shadow-light-blue/10">
-        {/* Window bar */}
-        <div className="flex items-center justify-between border-b border-border bg-muted/60 px-5 py-3">
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-          </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-light-blue/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-light-blue">
-            <ServiceIcon className="h-3 w-3" />
-            {draft.docType}
-          </span>
-        </div>
+      {/* Offset arch outline behind the photo — adds depth + the lime accent */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-0 translate-x-4 translate-y-4 rounded-t-[140px] rounded-b-[2rem] border-2 border-secondary/60"
+      />
 
-        {/* Body */}
-        <div className="space-y-5 px-6 py-6">
-          {/* Title + writing lines */}
-          <div className="space-y-2.5">
-            <div className="flex items-center gap-2">
-              <h3 className="text-base font-bold text-primary">{draft.title}</h3>
-              <motion.span
-                aria-hidden
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
-                className="inline-block h-4 w-0.5 bg-light-blue"
-              />
-            </div>
-            <div className="h-2 w-full rounded-full bg-muted" />
-            <div className="h-2 w-11/12 rounded-full bg-muted" />
-            <div className="h-2 w-9/12 rounded-full bg-muted" />
-          </div>
-
-          {/* Chapter checklist */}
-          <div className="space-y-2 rounded-2xl bg-muted/50 p-4">
-            {draft.chapters.map((c, i) => (
-              <div key={c} className="flex items-center gap-2.5">
-                <span
-                  className={`flex h-5 w-5 items-center justify-center rounded-full ${
-                    i < draft.chapters.length - 1
-                      ? "bg-secondary/30 text-secondary-foreground"
-                      : "border-2 border-light-blue/40 text-light-blue"
-                  }`}
-                >
-                  {i < draft.chapters.length - 1 ? (
-                    <Check className="h-3 w-3" strokeWidth={3} />
-                  ) : (
-                    <span className="h-1.5 w-1.5 rounded-full bg-light-blue" />
-                  )}
-                </span>
-                <span className="text-sm font-medium text-primary/80">{c}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Progress */}
-          <div>
-            <div className="mb-1.5 flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
-              <span>{draft.progressLabel}</span>
-              <span>{draft.progressEnd}</span>
-            </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${draft.progress}%` }}
-                transition={{ duration: 1.1, ease: "easeOut", delay: 0.5 }}
-                className="h-full rounded-full bg-gradient-to-r from-light-blue to-[#6B52F9]"
-              />
-            </div>
-          </div>
-        </div>
+      {/* Arch photo */}
+      <div className="relative overflow-hidden rounded-t-[140px] rounded-b-[2rem] border border-white/70 shadow-xl shadow-light-blue/20">
+        <img
+          src={image}
+          alt="Research scholar working on academic writing"
+          className="h-[420px] w-full object-cover object-[50%_22%] sm:h-[460px]"
+          loading="eager"
+          decoding="async"
+        />
+        {/* Soft top scrim so the floating pill stays legible */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent"
+        />
       </div>
 
-      {/* Floating "editing" badge */}
+      {/* Floating "live editing" pill — top right */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-2xl border border-border bg-white px-4 py-3 shadow-lg shadow-primary/10"
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="absolute -right-3 top-7 flex items-center gap-2 rounded-2xl border border-border bg-white/90 px-3.5 py-2.5 shadow-lg shadow-primary/10 backdrop-blur-sm"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
-          <PenLine className="h-4 w-4" />
+        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white">
+          <PenLine className="h-3.5 w-3.5" />
         </span>
         <div className="leading-tight">
-          <p className="text-sm font-bold text-primary">Expert editing</p>
-          <p className="text-[10px] text-muted-foreground">Structure & language</p>
+          <p className="flex items-center gap-1 text-xs font-bold text-primary">
+            {draft.docType}
+            <motion.span
+              aria-hidden
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
+              className="inline-block h-3 w-0.5 bg-light-blue"
+            />
+          </p>
+          <p className="text-[10px] text-muted-foreground">Live editing</p>
+        </div>
+      </motion.div>
+
+      {/* Floating progress card (glass) — bottom left */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, delay: 0.6 }}
+        className="absolute -bottom-6 -left-3 w-[15rem] rounded-2xl border border-white/70 bg-white/85 p-4 shadow-xl shadow-primary/10 backdrop-blur-md sm:-left-6"
+      >
+        <div className="mb-2.5 flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-secondary/30 text-secondary-foreground">
+            <ServiceIcon className="h-3.5 w-3.5" />
+          </span>
+          <p className="text-xs font-bold text-primary">{draft.title}</p>
+        </div>
+
+        <div className="mb-1.5 flex items-center justify-between text-[10px] font-semibold text-muted-foreground">
+          <span>{draft.progressLabel}</span>
+          <span>{draft.progressEnd}</span>
+        </div>
+        <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${draft.progress}%` }}
+            transition={{ duration: 1.1, ease: "easeOut", delay: 0.9 }}
+            className="h-full rounded-full bg-gradient-to-r from-light-blue to-[#6B52F9]"
+          />
+        </div>
+
+        {/* Chapter chips — completed vs in-progress */}
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {draft.chapters.map((c, i) => {
+            const done = i < draft.chapters.length - 1;
+            return (
+              <span
+                key={c}
+                className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold ${
+                  done
+                    ? "bg-secondary/25 text-secondary-foreground"
+                    : "bg-light-blue/10 text-light-blue"
+                }`}
+              >
+                {done && <Check className="h-2.5 w-2.5" strokeWidth={3} />}
+                {c}
+              </span>
+            );
+          })}
         </div>
       </motion.div>
     </motion.div>
@@ -144,6 +155,14 @@ export default function WritingHero({ data }) {
             className="flex flex-col gap-5"
           >
             <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }}>
+              <Breadcrumbs
+                className="mb-4"
+                items={[
+                  { label: "Services", to: "/services" },
+                  { label: "Writing" },
+                  { label: data.name },
+                ]}
+              />
               <SectionLabel label={hero.label} />
             </motion.div>
 
@@ -224,9 +243,13 @@ export default function WritingHero({ data }) {
             </motion.div>
           </motion.div>
 
-          {/* Right — draft document visual */}
+          {/* Right — arch-framed portrait visual */}
           <div className="relative">
-            <DraftDocument draft={hero.draft} ServiceIcon={ServiceIcon} />
+            <WritingVisual
+              draft={hero.draft}
+              image={hero.image || DEFAULT_IMAGE}
+              ServiceIcon={ServiceIcon}
+            />
           </div>
         </div>
       </SectionViewer>

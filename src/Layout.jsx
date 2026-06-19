@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { NavbarMenu } from "./components/Navbar/NavbarMenu";
 import Footer from "./components/Footer/Footer";
+import BackToTop from "./components/common/BackToTop";
 
 const Layout = () => {
   return (
@@ -13,6 +14,9 @@ const Layout = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating scroll-to-top control (appears after scrolling down) */}
+      <BackToTop />
     </div>
   );
 };

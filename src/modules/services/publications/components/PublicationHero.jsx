@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
-import { ArrowRight, BadgeCheck, Quote, Sparkles } from "lucide-react";
+import { ArrowRight, BadgeCheck, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 
 const stagger = {
   hidden: {},
@@ -15,15 +16,20 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-// The hero "publication" visual — a featured journal card with floating
-// indexing badges. Pure CSS/SVG so it always renders crisply (no image deps).
-function FeaturedJournalCard({ featured, ServiceIcon }) {
+// Default hero portrait — overridable per dataset via `hero.image`.
+const DEFAULT_IMAGE = "/service/herograduation.jpg";
+
+// Publication hero visual: a rectangular "achievement" portrait with the
+// featured journal rendered as a glass card overlapping its base, plus a
+// purple quartile badge and a floating verification stamp. The rectangular
+// frame + purple/indexing system keeps it distinct from the writing arch hero.
+function PublicationVisual({ featured, image, ServiceIcon }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 40, rotate: 1.5 }}
-      animate={{ opacity: 1, x: 0, rotate: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-      className="relative mx-auto w-full max-w-md"
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+      className="relative mx-auto w-full max-w-[19rem] sm:max-w-sm lg:mr-2"
     >
       {/* Soft glow behind the stack */}
       <div
@@ -31,88 +37,84 @@ function FeaturedJournalCard({ featured, ServiceIcon }) {
         className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-light-blue/15 blur-3xl"
       />
 
-      {/* Back card (depth) */}
-      <div className="absolute -right-3 -top-3 h-full w-full rounded-3xl border border-light-blue/20 bg-white/50 shadow-sm" />
-      <div className="absolute -left-3 top-4 h-full w-full rounded-3xl border border-light-blue/10 bg-white/30" />
+      {/* Stacked depth cards */}
+      <div
+        aria-hidden
+        className="absolute -right-3 -top-3 h-full w-full rounded-[2rem] border border-light-blue/20 bg-white/40"
+      />
+      <div
+        aria-hidden
+        className="absolute -left-3 top-5 h-full w-full rounded-[2rem] border border-light-blue/10 bg-white/20"
+      />
 
-      {/* Front card */}
-      <div className="relative overflow-hidden rounded-3xl border border-light-blue/20 bg-white shadow-xl shadow-light-blue/10">
-        {/* Header band */}
+      {/* Main image card */}
+      <div className="relative overflow-hidden rounded-[2rem] border border-white/70 shadow-xl shadow-light-blue/20">
+        <img
+          src={image}
+          alt="Researcher with a published manuscript"
+          className="h-[440px] w-full object-cover object-[50%_12%] sm:h-[480px]"
+          loading="eager"
+          decoding="async"
+        />
+        {/* Bottom scrim for the overlay card */}
         <div
-          className="relative px-6 py-5"
-          style={{
-            background:
-              "linear-gradient(135deg, #170545 0%, #320F8C 55%, #6B52F9 100%)",
-          }}
-        >
-          <div className="flex items-center justify-between">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold tracking-wide text-white backdrop-blur-sm">
-              <Sparkles className="h-3 w-3 text-secondary" />
-              {featured.badge}
-            </span>
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white">
-              <ServiceIcon className="h-4.5 w-4.5" />
-            </span>
-          </div>
-          <p className="mt-4 text-[11px] uppercase tracking-widest text-white/55">
-            Featured Journal Option
-          </p>
-          <h3 className="mt-1 text-lg font-bold leading-snug text-white">
-            {featured.name}
-          </h3>
-        </div>
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/5 to-transparent"
+        />
 
-        {/* Body */}
-        <div className="space-y-4 px-6 py-5">
-          <div className="flex items-start gap-2.5">
-            <Quote className="mt-0.5 h-4 w-4 shrink-0 text-light-blue" />
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {featured.field}
-            </p>
-          </div>
+        {/* Quartile / tier badge — top left */}
+        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-primary shadow-sm backdrop-blur-sm">
+          <Sparkles className="h-3 w-3 text-light-blue" />
+          {featured.badge}
+        </span>
 
-          <div className="flex items-center justify-between rounded-xl bg-muted px-4 py-3">
+        {/* Glass journal card overlapping the base of the photo */}
+        <div className="absolute inset-x-3 bottom-3 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg backdrop-blur-md">
+          <div className="flex items-start justify-between gap-2">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                ISSN
+                Featured Journal
               </p>
-              <p className="text-sm font-bold text-primary">{featured.issn}</p>
+              <h3 className="mt-0.5 text-sm font-bold leading-snug text-primary">
+                {featured.name}
+              </h3>
             </div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/25 px-3 py-1 text-[11px] font-bold text-secondary-foreground">
-              <BadgeCheck className="h-3.5 w-3.5" />
-              Indexed
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] text-white">
+              <ServiceIcon className="h-4 w-4" />
             </span>
           </div>
 
-          <div className="flex items-center gap-2 border-t border-border pt-4">
-            <div className="flex -space-x-2">
-              {["#320F8C", "#6B52F9", "#7A5EE9"].map((c) => (
-                <span
-                  key={c}
-                  className="h-6 w-6 rounded-full border-2 border-white"
-                  style={{ background: c }}
-                />
-              ))}
+          <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
+            {featured.field}
+          </p>
+
+          <div className="mt-2.5 flex items-center justify-between border-t border-border pt-2.5">
+            <div>
+              <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground">
+                ISSN
+              </p>
+              <p className="text-xs font-bold text-primary">{featured.issn}</p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              Reviewed by our publication experts
-            </p>
+            <span className="inline-flex items-center gap-1 rounded-full bg-secondary/30 px-2.5 py-1 text-[10px] font-bold text-secondary-foreground">
+              <BadgeCheck className="h-3 w-3" />
+              Indexed
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Floating mini badge */}
+      {/* Floating verification stamp — top right */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-2xl border border-border bg-white px-4 py-3 shadow-lg shadow-primary/10"
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="absolute -right-3 top-9 flex items-center gap-2 rounded-2xl border border-border bg-white/90 px-3.5 py-2.5 shadow-lg shadow-primary/10 backdrop-blur-sm"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary/30 text-secondary-foreground">
+        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-secondary/30 text-secondary-foreground">
           <BadgeCheck className="h-4 w-4" />
         </span>
         <div className="leading-tight">
-          <p className="text-sm font-bold text-primary">Verified</p>
+          <p className="text-xs font-bold text-primary">Verified</p>
           <p className="text-[10px] text-muted-foreground">Journal status</p>
         </div>
       </motion.div>
@@ -142,6 +144,14 @@ export default function PublicationHero({ data }) {
             className="flex flex-col gap-5"
           >
             <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }}>
+              <Breadcrumbs
+                className="mb-4"
+                items={[
+                  { label: "Services", to: "/services" },
+                  { label: "Publications" },
+                  { label: data.name },
+                ]}
+              />
               <SectionLabel label={hero.label} />
             </motion.div>
 
@@ -223,9 +233,13 @@ export default function PublicationHero({ data }) {
             </motion.div>
           </motion.div>
 
-          {/* Right — featured journal visual */}
+          {/* Right — achievement portrait + journal overlay */}
           <div className="relative">
-            <FeaturedJournalCard featured={hero.featured} ServiceIcon={ServiceIcon} />
+            <PublicationVisual
+              featured={hero.featured}
+              image={hero.image || DEFAULT_IMAGE}
+              ServiceIcon={ServiceIcon}
+            />
           </div>
         </div>
       </SectionViewer>

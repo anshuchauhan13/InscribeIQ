@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
+import SectionViewer from "@/components/common/SectionViewer";
 
 const Banner = ({
   badge = "🚀 YOUR FUTURE STARTS HERE",
@@ -47,7 +48,7 @@ const Banner = ({
           </svg>
         </div>
 
-       <div className="relative z-10 px-5 sm:px-8 md:px-12 lg:px-16 py-10 sm:py-12 lg:py-14">
+       <SectionViewer className="relative z-10 py-10 sm:py-12 lg:py-14">
   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 lg:gap-12">
     
     {/* Content */}
@@ -94,7 +95,7 @@ const Banner = ({
     </div>
 
   </div>
-</div>
+</SectionViewer>
       </div>
     </section>
   );

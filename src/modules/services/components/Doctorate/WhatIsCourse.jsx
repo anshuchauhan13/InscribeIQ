@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 
 function ComparisonPanel({ comparison }) {
   const LeftIcon = comparison.left.icon;
@@ -115,12 +116,7 @@ const WhatIsCourse = ({
   
 
   return (
-    <section
-      className={cn(
-        "container px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16 mx-auto",
-        className
-      )}
-    >
+    <SectionViewer className={cn("py-12 md:py-16", className)}>
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-8 lg:gap-14 items-start">
 
         {/* ── Left Content ── */}
@@ -178,7 +174,7 @@ const WhatIsCourse = ({
         )}
 
       </div>
-    </section>
+    </SectionViewer>
   );
 };
 

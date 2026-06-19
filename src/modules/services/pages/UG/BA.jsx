@@ -1,3 +1,4 @@
+import PageViewer from "@/components/common/PageViewer";
 import React from "react";
 
 import Hero from "../../components/UG/Hero";
@@ -27,7 +28,7 @@ import {
 /* ================= HERO ================= */
 const heroData = {
   badgeText: "Admissions Open",
-  title: "Shape Your Future with a " ,
+  title: "Shape Your Future with a ",
   highlightedText: "Bachelor of Arts ",
   description:
     "Develop communication, critical thinking, and leadership skills through a comprehensive humanities and social sciences education.",
@@ -78,9 +79,9 @@ const programOverview = {
       description: "Develop analytical and reasoning skills.",
     },
   ],
-   quoteStat :{
-    quote:"Turn your passion for ideas, creativity, and society into a future filled with possibilities.",
-},
+  quoteStat: {
+    quote: "Turn your passion for ideas, creativity, and society into a future filled with possibilities.",
+  },
 };
 
 /* ================= WHY CHOOSE ================= */
@@ -241,7 +242,7 @@ const whyInscribeData = {
       title: "Best Arts Universities",
       sub: "Choose from top accredited universities.",
       tags: ["BA English", "BA History", "BA Political Science"],
-       img: "/service/hero1.png",
+      img: "/service/hero1.png",
     },
 
     lightCard: {
@@ -283,7 +284,7 @@ const whyChooseUsData = {
       description:
         "Learn to inspire teams, drive organizational growth, and make impactful decisions in dynamic business environments.",
     },
-   
+
     {
       id: 3,
       iconType: "strategy",
@@ -305,15 +306,15 @@ const whyChooseUsData = {
       description:
         "Strengthen your ability to analyze challenges, evaluate solutions, and make informed decisions under pressure.",
     },
-  
+
   ],
 };
 /* ================= PAGE ================= */
 const BA = () => {
   return (
-    <>
+    <PageViewer>
       <Hero {...heroData} />
-     < UniversityPartnership/>
+      < UniversityPartnership />
       <ProgramOverview {...programOverview} />
 
       <WhyChooseThisProgram {...whyChooseThisProgram} />
@@ -322,18 +323,18 @@ const BA = () => {
 
       <CareerOutcomes {...careerOutcomesData} />
 
- 
+
 
 
       <Admission {...admissionData} />
- <WhyChooseUs {...whyChooseUsData}/>
+      <WhyChooseUs {...whyChooseUsData} />
       <WhyInscribe {...whyInscribeData} />
 
       <LeadGeneration />
 
       <FAQs />
-      <Banner/>
-    </>
+      <Banner />
+    </PageViewer>
   );
 };
 

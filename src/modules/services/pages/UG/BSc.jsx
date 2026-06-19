@@ -1,3 +1,4 @@
+import PageViewer from "@/components/common/PageViewer";
 import React from "react";
 
 import Hero from "../../components/UG/Hero";
@@ -307,7 +308,7 @@ const whyChooseUsData = {
 /* ================= PAGE ================= */
 const BSc = () => {
   return (
-    <>
+    <PageViewer>
       <Hero {...heroData} />
       <UniversityPartnership/>
 
@@ -329,7 +330,7 @@ const BSc = () => {
 
       <FAQs />
       <Banner></Banner>
-    </>
+    </PageViewer>
   );
 };
 

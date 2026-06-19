@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
 
@@ -47,8 +48,25 @@ const SERVICES = [
   },
 ];
 
+const EASE = [0.22, 0.61, 0.36, 1];
+
+const headerVar = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+};
+
+const gridContainerVar = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const cardVar = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+};
+
 const ServiceCard = ({ icon: Icon, title, description, accent, image }) => (
-  <div className="group flex flex-col gap-3 cursor-pointer">
+  <motion.div variants={cardVar} className="group flex flex-col gap-3 cursor-pointer">
     {/* Image / Placeholder */}
     <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-muted flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
       {image ? (
@@ -72,7 +90,7 @@ const ServiceCard = ({ icon: Icon, title, description, accent, image }) => (
         Learn more <ArrowRight className="h-3.5 w-3.5" />
       </span>
     </div>
-  </div>
+  </motion.div>
 );
 
 export default function CoreServices() {
@@ -81,9 +99,20 @@ export default function CoreServices() {
       <div className="flex flex-col gap-12">
 
         {/* Header */}
-        <div className="flex flex-col gap-3 items-start">
-          <SectionLabel label="Core Services" />
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 w-full">
+        <motion.div
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col gap-3 items-start"
+        >
+          <motion.div variants={headerVar}>
+            <SectionLabel label="Core Services" />
+          </motion.div>
+          <motion.div
+            variants={headerVar}
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 w-full"
+          >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-primary max-w-xl leading-tight">
               Everything Scholars Need,{" "}
               <span className="text-light-blue">Under One Roof</span>
@@ -91,15 +120,21 @@ export default function CoreServices() {
             <p className="text-base text-muted-foreground max-w-sm leading-relaxed">
               From doctoral research to global publication — our six core pillars cover every stage of your academic journey.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <motion.div
+          variants={gridContainerVar}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+        >
           {SERVICES.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </SectionViewer>

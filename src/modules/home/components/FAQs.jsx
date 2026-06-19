@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionViewer from "@/components/common/SectionViewer";
@@ -21,7 +22,6 @@ const faqData = {
       q: "Do I need a PhD or academic background to be eligible?",
       a: "Absolutely not. An Honorary Doctorate is awarded based on real-world impact, leadership, and contribution — not academic credentials or thesis submission.",
     },
- 
   ],
   "Honorary Doctorate": [
     {
@@ -81,6 +81,18 @@ const faqData = {
 
 const categories = Object.keys(faqData);
 
+const EASE = [0.22, 0.61, 0.36, 1];
+
+const questionsContainerVar = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+};
+
+const questionItemVar = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
+};
+
 const FAQs = () => {
   const [activeCategory, setActiveCategory] = useState("Common Doubts");
 
@@ -88,17 +100,23 @@ const FAQs = () => {
 
   return (
     <SectionViewer className="sm:py-16 py-12">
-      <div className="">
+      <div>
         {/* Header */}
-        <div className="mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55, ease: EASE }}
+          className="mb-10"
+        >
           <p className="text-sm font-semibold text-[#320F8C] tracking-widest uppercase mb-2">
             FAQs
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
             Let's Clear Things Up
           </h2>
-          <div className="w-20 h-1 bg-[#320F8C] " />
-        </div>
+          <div className="w-20 h-1 bg-[#320F8C]" />
+        </motion.div>
 
         {/* Body */}
         <div className="flex flex-col lg:flex-row gap-12">
@@ -129,35 +147,39 @@ const FAQs = () => {
             })}
           </aside>
 
-          {/* Questions Panel */}
-          <div className="flex-1  -mt-6">
-            {questions.map((item, idx) => (
-              <div key={idx} className="flex gap-4 py-4 sm:gap-6 ">
-                {/* Number */}
-                <span
-                  className="
-    flex items-center justify-center
-    w-8 h-8 shrink-0
-    rounded-md
-    bg-[#F8F6FC]
-    text-base font-bold text-[#170545] 
-    mt-0.5
-    shadow-[0_4px_12px_rgba(105,97,188,0.25)]
-  "
-                >
-                  {idx + 1}.
-                </span>
-                {/* Content */}
-                <div>
-                  <h4 className="text-md sm:text-lg font-bold text-slate-900 mb-2 leading-snug">
-                    {item.q}
-                  </h4>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    {item.a}
-                  </p>
-                </div>
-              </div>
-            ))}
+          {/* Questions Panel — AnimatePresence swaps categories smoothly */}
+          <div className="flex-1 -mt-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                variants={questionsContainerVar}
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, y: -8, transition: { duration: 0.2, ease: EASE } }}
+              >
+                {questions.map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    variants={questionItemVar}
+                    className="flex gap-4 py-4 sm:gap-6"
+                  >
+                    {/* Number */}
+                    <span className="flex items-center justify-center w-8 h-8 shrink-0 rounded-md bg-[#F8F6FC] text-base font-bold text-[#170545] mt-0.5 shadow-[0_4px_12px_rgba(105,97,188,0.25)]">
+                      {idx + 1}.
+                    </span>
+                    {/* Content */}
+                    <div>
+                      <h4 className="text-md sm:text-lg font-bold text-slate-900 mb-2 leading-snug">
+                        {item.q}
+                      </h4>
+                      <p className="text-sm text-slate-500 leading-relaxed">
+                        {item.a}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import SectionViewer from "@/components/common/SectionViewer";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../components/Doctorate/HeroSection";
 import QuickInfo from "../components/Doctorate/QuickInfo";
 import WhoShould from "../components/Doctorate/WhoShould";
@@ -54,7 +54,7 @@ function PhD() {
   credential: "UGC Recognized Options",
   credentialLabel: "Flexible Learning",
 
-  breadcrumbs: ["Home", "Doctorate Courses", "PhD"],
+  breadcrumbs: ["Services", "Doctorate Courses", "PhD"],
 
   applyLabel: "Apply for this program",
   expertLabel: "Talk to Expert",
@@ -556,21 +556,19 @@ const careerOutcomesData = {
   secondaryCta: "Visit Site",
 };
   return (
-    <>
+    <PageViewer>
       <HeroSection {...heroSectionData} />
       <QuickInfo items={quickInfoData} />
       <WhatIsCourse {...whatIsCourseData} />
-      <WhoShould {...whoShouldJoinData}
-      />
-
+      <WhoShould {...whoShouldJoinData} />
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
-      <WhyInscribe  {...whyInscribeData}/>
+      <WhyInscribe {...whyInscribeData} />
       <Benefit {...benefitsData} />
-      <WhyGlobal {...whyChooseUsData}/>
+      <WhyGlobal {...whyChooseUsData} />
       <CareerOutcomes {...careerOutcomesData} />
       <LeadGeneration />
-    </>
+    </PageViewer>
   );
 }
 

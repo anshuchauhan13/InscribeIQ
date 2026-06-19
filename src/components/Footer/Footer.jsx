@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import { Separator } from "@/components/ui/separator";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 import SectionViewer from "../common/SectionViewer";
 
 const FacebookIcon = () => (
@@ -43,8 +44,36 @@ const resources = [
   { label: "FAQs", href: "#" },
 ];
 
+const contactDetails = [
+  {
+    icon: Phone,
+    label: "+91 87877 34234",
+    href: "tel:+918787734234",
+  },
+  {
+    icon: Mail,
+    label: "inscribe.iq@example.com",
+    href: "mailto:inscribe.iq@example.com",
+  },
+  {
+    icon: MapPin,
+    label: "Rajendra Nagar, Ghaziabad, India 201007.",
+    href: "https://maps.google.com/?q=Rajendra+Nagar+Ghaziabad+India+201007",
+  },
+];
+
 const Footer = () => {
   const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    const value = email.trim();
+    if (!value) return;
+    toast.success("You're subscribed!", {
+      description: "We'll keep you posted on academic insights & updates.",
+    });
+    setEmail("");
+  };
 
   return (
     <footer
@@ -164,39 +193,51 @@ const Footer = () => {
                 Get in Touch
               </h3>
 
-              {/* Email subscribe */}
-              <div className="flex items-center mb-5 rounded-md overflow-hidden border border-slate-700 bg-slate-800/50">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder:text-slate-500 outline-none min-w-0"
-                />
-                <button className="px-3 py-2 text-sm font-medium bg-white hover:bg-indigo-500 transition-colors text-black whitespace-nowrap">
-                  Subscribe
-                </button>
-              </div>
+              {/* Newsletter subscribe */}
+              <form onSubmit={handleSubscribe} className="mb-6">
+                <label
+                  htmlFor="footer-email"
+                  className="mb-2 block text-xs leading-relaxed text-slate-400"
+                >
+                  Subscribe for academic insights & updates.
+                </label>
+                <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/40 p-1 transition-colors focus-within:border-light-blue/70 focus-within:ring-2 focus-within:ring-light-blue/20">
+                  <input
+                    id="footer-email"
+                    type="email"
+                    required
+                    placeholder="you@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder:text-slate-500 outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] px-3.5 py-2 text-sm font-semibold text-white shadow-sm shadow-light-blue/30 transition-transform duration-200 hover:-translate-y-0.5"
+                  >
+                    <Send className="h-3.5 w-3.5" />
+                    Join
+                  </button>
+                </div>
+              </form>
 
               {/* Contact info */}
-              <ul className="flex flex-col gap-3">
-                <li className="flex items-start gap-2.5 text-sm text-slate-400">
-                  <Phone className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
-                  <span>+91 87877 34234</span>
-                </li>
-                <li className="flex items-start gap-2.5 text-sm">
-                  <Mail className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
-                  <a
-                    href="mailto:inscribe.iq@example.com"
-                    className="text-indigo-400 hover:text-indigo-300 transition-colors"
-                  >
-                    inscribe.iq@example.com
-                  </a>
-                </li>
-                <li className="flex items-start gap-2.5 text-sm text-slate-400">
-                  <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-slate-500" />
-                  <span>Rajendra Nagar, Ghaziabad, India 201007.</span>
-                </li>
+              <ul className="flex flex-col gap-2.5">
+                {contactDetails.map(({ icon: Icon, label, href }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={href.startsWith("http") ? "noreferrer" : undefined}
+                      className="group flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-light-blue transition-colors group-hover:border-light-blue/50 group-hover:bg-slate-800/70">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="min-w-0 break-words">{label}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

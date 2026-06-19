@@ -1,4 +1,4 @@
-import SectionViewer from "@/components/common/SectionViewer";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../components/Doctorate/HeroSection";
 import QuickInfo from "../components/Doctorate/QuickInfo";
 import WhoShould from "../components/Doctorate/WhoShould";
@@ -52,7 +52,7 @@ function DBA() {
   credentialLabel: "Flexible Learning Pathways",
 
   breadcrumbs: [
-    "Home",
+    "Services",
     "Doctorate Courses",
     "Doctor of Business Administration",
   ],
@@ -558,21 +558,19 @@ const careerOutcomesData = {
   secondaryCta: "Visit Site",
 };
   return (
-    <>
+    <PageViewer>
       <HeroSection {...heroSectionData} />
       <QuickInfo items={quickInfoData} />
       <WhatIsCourse {...whatIsCourseData} />
-      <WhoShould {...whoShouldJoinData}
-      />
-
+      <WhoShould {...whoShouldJoinData} />
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
-      <WhyInscribe  {...whyInscribeData}/>
+      <WhyInscribe {...whyInscribeData} />
       <Benefit {...benefitsData} />
-      <WhyGlobal {...whyChooseUsData}/>
+      <WhyGlobal {...whyChooseUsData} />
       <CareerOutcomes {...careerOutcomesData} />
       <LeadGeneration />
-    </>
+    </PageViewer>
   );
 }
 

@@ -1,13 +1,11 @@
 import {
-  MapPin,
-  Clock,
-  FileText,
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import noise from "@/assets/noise.webp";
+import SectionViewer from "@/components/common/SectionViewer";
 
 const HeroSection = ({
   // Left side
@@ -78,7 +76,7 @@ const HeroSection = ({
         {/* Breadcrumb */}
         {breadcrumbs.length > 0 && (
           <div className="pt-4">
-            <div className="container">
+            <SectionViewer>
               <div className="inline-flex flex-wrap items-center gap-1.5 rounded-r-full bg-muted-foreground/80 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm text-primary-foreground/80 max-w-[90vw]">
                 {breadcrumbs.map((crumb, index) => (
                   <div key={index} className="flex items-center gap-1.5 min-w-0">
@@ -96,12 +94,12 @@ const HeroSection = ({
                   </div>
                 ))}
               </div>
-            </div>
+            </SectionViewer>
           </div>
         )}
 
         {/* Hero Content */}
-        <div className="container mx-auto px-5 md:px-12 lg:px-16 py-8 md:py-16 lg:py-16 ">
+        <SectionViewer className="py-8 md:py-16">
           <div className="grid items-start gap-8 lg:gap-8 lg:grid-cols-2">
 
             {/* Left Side */}
@@ -201,7 +199,7 @@ const HeroSection = ({
             </div>
 
           </div>
-        </div>
+        </SectionViewer>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
-import { Eye, Tag, Globe, Headphones, BrainCircuit, Zap, ArrowRight } from "lucide-react";
+import { Eye, Tag, Globe, Headphones, BrainCircuit, Zap } from "lucide-react";
+import { motion } from "motion/react";
 import { Warp } from "@paper-design/shaders-react";
 import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
@@ -42,7 +43,6 @@ const FEATURES = [
   },
 ];
 
-// On-brand shader presets (purple / blue family) cycled across the cards.
 const SHADER_CONFIGS = [
   {
         proportion: 0.3,
@@ -106,11 +106,28 @@ const SHADER_CONFIGS = [
       },
 ];
 
+const EASE = [0.22, 0.61, 0.36, 1];
+
+const headerVar = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+};
+
+const gridContainerVar = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+
+const cardVar = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+};
+
 const FeatureCard = ({ icon: Icon, title, description, index }) => {
   const shader = SHADER_CONFIGS[index % SHADER_CONFIGS.length];
 
   return (
-    <div className="group relative cursor-pointer">
+    <motion.div variants={cardVar} className="group relative cursor-pointer">
       {/* Animated shader background */}
       <div className="absolute inset-0 rounded-3xl overflow-hidden">
         <Warp
@@ -143,7 +160,7 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => {
           {description}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -156,25 +173,42 @@ const WhyInscribe = ({
   return (
     <SectionViewer className="py-16 md:py-24">
       <div className="flex flex-col gap-12">
-        {/* Header — matches CoreServices / site pattern */}
-        <div className="flex flex-col gap-3 items-start">
-          <SectionLabel label={subtitle} />
+        {/* Header */}
+        <motion.div
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col gap-3 items-start"
+        >
+          <motion.div variants={headerVar}>
+            <SectionLabel label={subtitle} />
+          </motion.div>
           <div className="flex flex-col gap-4 w-full">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-primary leading-tight">
+            <motion.h2
+              variants={headerVar}
+              className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-primary leading-tight"
+            >
               {title}
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed">
+            </motion.h2>
+            <motion.p variants={headerVar} className="text-base text-muted-foreground leading-relaxed">
               {description}
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Grid of shader cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={gridContainerVar}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {items.map((feature, index) => (
             <FeatureCard key={feature.title} index={index} {...feature} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </SectionViewer>
   );

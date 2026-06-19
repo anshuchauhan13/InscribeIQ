@@ -1,3 +1,4 @@
+import PageViewer from "@/components/common/PageViewer";
 
 import React from "react";
 
@@ -374,7 +375,7 @@ const whyChooseUsData = {
 /* ================= PAGE ================= */
 const BCA = () => {
   return (
-    <>
+    <PageViewer>
       <Hero {...heroData} />
 
       <UniversityPartnership />
@@ -398,7 +399,7 @@ const BCA = () => {
 
       <FAQs faqData={faqData} />
       <Banner></Banner>
-    </>
+    </PageViewer>
   );
 };
 

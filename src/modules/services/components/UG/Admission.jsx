@@ -8,6 +8,7 @@ BadgeCheck,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import SectionViewer from "@/components/common/SectionViewer";
 
 
 const DEFAULT_ICONS = [
@@ -93,7 +94,7 @@ function Admission({
 
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <SectionViewer className="relative z-10 py-20 md:py-28">
 
         {/* HEADER */}
         <div className="mb-16 md:mb-24 text-center">
@@ -234,7 +235,7 @@ function Admission({
           })}
         </motion.div>
 
-      </div>
+      </SectionViewer>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
+import ScrollToTop from "./components/common/ScrollToTop";
 import Layout from './Layout'
 import ServicePageLayout from "./modules/services/pages/ServicePageLayout";
 import AboutUsPage from "./modules/about/pages/AboutUsPage";
@@ -38,6 +39,8 @@ function App() {
 
   return (
     <Router>
+      {/* Reset scroll to the top on each route change */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

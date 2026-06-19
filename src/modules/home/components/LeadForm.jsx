@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 import { format } from "date-fns";
-import { CalendarIcon, SunIcon as Sunburst } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import SectionViewer from "@/components/common/SectionViewer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +30,8 @@ const SERVICES = [
   "UG/PG Admissions",
   "Certification Programs",
 ];
+
+const EASE = [0.22, 0.61, 0.36, 1];
 
 export default function LeadForm() {
   const [form, setForm] = useState({
@@ -84,8 +87,14 @@ export default function LeadForm() {
         <div className="w-[15rem] h-[15rem] bg-orange-500 absolute z-1 rounded-full bottom-0"></div>
         <div className="w-[8rem] h-[5rem] bg-white absolute z-1 rounded-full bottom-0"></div>
 
-        {/* Left panel */}
-        <div className="bg-primary text-white p-8 md:p-12 md:w-1/2 relative rounded-bl-3xl overflow-hidden">
+        {/* Left panel — slides in from the left */}
+        <motion.div
+          initial={{ opacity: 0, x: -32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: EASE }}
+          className="bg-primary text-white p-8 md:p-12 md:w-1/2 relative rounded-bl-3xl overflow-hidden"
+        >
           <h1 className="text-2xl md:text-3xl font-medium leading-tight z-10 tracking-tight relative">
             How Can We Help You?
           </h1>
@@ -93,10 +102,16 @@ export default function LeadForm() {
             Tell us what you need and pick a time that works for you. One of our
             academic advisors will reach out to guide you through the next steps.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Right panel — form */}
-        <div className="p-8 md:p-12 md:w-1/2 flex flex-col bg-muted z-15">
+        {/* Right panel — slides in from the right */}
+        <motion.div
+          initial={{ opacity: 0, x: 32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
+          className="p-8 md:p-12 md:w-1/2 flex flex-col bg-muted z-15"
+        >
           <div className="flex flex-col mb-8">
             <h2 className="text-3xl font-medium mb-2 tracking-tight">Get Started</h2>
             <p className="opacity-80">Fill in your details and we'll be in touch.</p>
@@ -231,7 +246,7 @@ export default function LeadForm() {
               Submit your Inquiry
             </Button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </SectionViewer>
   );

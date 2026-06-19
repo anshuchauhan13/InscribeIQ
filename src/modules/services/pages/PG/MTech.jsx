@@ -1,4 +1,5 @@
 import React from "react";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../../components/PG/HeroSection";
 import ProgramOverview from "../../components/PG/ProgramOverview";
 import WhyChooseThisProgram from "../../components/UG/WhyChoooseThisProgram";
@@ -311,7 +312,7 @@ const keySubjects = {
 
 const MTech = () => {
   return (
-    <>
+    <PageViewer>
       <HeroSection {...heroData} />
       <ProgramOverview {...programOverviewData}/>
       <WhyChooseThisProgram {...whyChooseThisProgram} />
@@ -322,7 +323,7 @@ const MTech = () => {
       <LeadGeneration/>
       <FAQs></FAQs>
       <Banner></Banner>
-    </>
+    </PageViewer>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../../components/PG/HeroSection";
 import ProgramOverview from "../../components/PG/ProgramOverview";
 import WhyChooseThisProgram from "../../components/UG/WhyChoooseThisProgram";
@@ -234,7 +235,7 @@ const keySubjects = {
 
 const MCA = () => {
   return (
-    <>
+    <PageViewer>
       <HeroSection
         backgroundImage="/service/career.jpg"
         title="Master Emerging Technologies with MCA (AI Integrated)"
@@ -280,7 +281,7 @@ const MCA = () => {
       <LeadGeneration></LeadGeneration>
       <FAQs></FAQs>
       <Banner></Banner>
-    </>
+    </PageViewer>
   );
 };
 

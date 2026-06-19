@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, GraduationCap, Crown, ArrowRight } from "lucide-react";
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 
 const ShapeImage = ({ src, shape = "circle", dashed = false, className = "" }) => {
   return (
@@ -182,7 +183,7 @@ const ProgramOverview = ({
 
   return (
 <section className="relative overflow-hidden bg-gradient-to-b from-white via-light-blue/15 to-white">
-      <div className="container mx-auto px-5 md:px-12 lg:px-16 py-8 md:py-16 lg:py-16 ">
+      <SectionViewer className="py-8 md:py-16">
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -275,7 +276,7 @@ const ProgramOverview = ({
 
         </div>
 
-      </div>
+      </SectionViewer>
     </section>
   );
 };

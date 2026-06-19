@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
+import SectionViewer from "@/components/common/SectionViewer";
 
 const Eligibility = ({
   title = "Eligibility Criteria",
@@ -12,7 +13,7 @@ const Eligibility = ({
 }) => {
   return (
     <section className="py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <SectionViewer>
         <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#F8F6FC] via-white to-[#F4F0FF]">
 
           {/* Background Glow */}
@@ -87,7 +88,7 @@ const Eligibility = ({
             </svg>
           </div>
         </div>
-      </div>
+      </SectionViewer>
     </section>
   );
 };

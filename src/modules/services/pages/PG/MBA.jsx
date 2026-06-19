@@ -1,4 +1,5 @@
 import React from "react";
+import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../../components/PG/HeroSection";
 import ProgramOverview from "../../components/PG/ProgramOverview";
 import WhyChooseThisProgram from "../../components/UG/WhyChoooseThisProgram";
@@ -303,7 +304,7 @@ const keySubjects = {
 
 const MBA = () => {
   return (
-    <>
+    <PageViewer>
       <HeroSection {...heroData} />
       <UniversityPartnership/>
       <ProgramOverview {...programOverviewData}/>
@@ -318,7 +319,7 @@ const MBA = () => {
        <Banner></Banner>
       
 
-    </>
+    </PageViewer>
   );
 };
 

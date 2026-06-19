@@ -11,6 +11,7 @@ import {
   Settings,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SectionViewer from "@/components/common/SectionViewer";
 
 
 const ACCENTS = [
@@ -120,7 +121,7 @@ const KeySubject = ({
         <rect width="100%" height="100%" filter="url(#keysubject-grain)" />
       </svg>
 
-      <div className="relative container mx-auto px-5 md:px-12 lg:px-16">
+      <SectionViewer className="relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* LEFT */}
@@ -166,7 +167,7 @@ const KeySubject = ({
           </div>
 
         </div>
-      </div>
+      </SectionViewer>
     </section>
   );
 };

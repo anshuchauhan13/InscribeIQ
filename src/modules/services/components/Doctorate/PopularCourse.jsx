@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-
 import noise from "@/assets/noise.webp";
+import SectionViewer from "@/components/common/SectionViewer";
 
 
 function SpecCard({ item }) {
@@ -56,7 +56,7 @@ const PopularCourse = ({
     : [heading];
 
   return (
-    <section className="container mx-auto px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16">
+    <SectionViewer className="py-12 md:py-16">
       {/* Heading */}
       <div className="mb-6">
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-snug">
@@ -110,7 +110,7 @@ const PopularCourse = ({
           </div>
         </div>
       </div>
-    </section>
+    </SectionViewer>
   );
 };
 

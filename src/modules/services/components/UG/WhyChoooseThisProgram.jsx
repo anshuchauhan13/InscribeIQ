@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import noise from "@/assets/noise.webp";
 import { motion } from "framer-motion";
+import SectionViewer from "@/components/common/SectionViewer";
 import {
   GraduationCap,
   Users,
@@ -106,7 +107,7 @@ const WhyChooseThisProgram = ({
     : [heading];
 
   return (
-    <section className="container mx-auto px-5 md:px-12 lg:px-16 py-12 md:py-16 lg:py-16">
+    <SectionViewer className="py-12 md:py-16">
       
       {/* Heading */}
       <div className="mb-6">
@@ -147,7 +148,7 @@ const WhyChooseThisProgram = ({
           </div>
         </div>
       </div>
-    </section>
+    </SectionViewer>
   );
 };
 

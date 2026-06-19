@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 
 
 const Journey = ({
@@ -10,7 +11,7 @@ const Journey = ({
   subheading ,
 }) => {
   return (
-    <section className="w-full  font-inter overflow-hidden container px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-16 mx-auto">
+    <SectionViewer className="py-12 md:py-16 overflow-hidden">
       {/* Heading */}
       <div className="mb-12">
         {/* {eyebrow && (
@@ -49,7 +50,7 @@ const Journey = ({
     <MobileStep key={step.id} step={step} isLast={i === steps.length - 1} />
   ))}
 </div>
-    </section>
+    </SectionViewer>
   );
 };
 

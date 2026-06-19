@@ -1,5 +1,6 @@
 
 import SectionLabel from "@/components/common/SectionLabel";
+import SectionViewer from "@/components/common/SectionViewer";
 import { cn } from "@/lib/utils";
 
 const ICONS = {
@@ -127,7 +128,7 @@ export default function WhyChooseUs({
   <div className="w-28 h-28 rounded-full bg-blue-500/80" />
 </div>
 
-      <div className="container mx-auto px-5 md:px-16 lg:px-20 py-12 md:py-16 lg:py-20">
+      <SectionViewer className="py-12 md:py-20">
         {/* Header */}
         <div className="max-w-3xl mb-12">
             <SectionLabel label={tagline} />
@@ -150,7 +151,7 @@ export default function WhyChooseUs({
             />
           ))}
         </div>
-      </div>
+      </SectionViewer>
     </section>
   );
 }

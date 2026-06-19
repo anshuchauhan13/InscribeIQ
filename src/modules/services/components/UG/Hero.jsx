@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, GraduationCap, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SectionViewer from "@/components/common/SectionViewer";
 
 
 const HighlightItem = ({ text }) => (
@@ -55,7 +56,7 @@ const Hero = ({
 
   return (
   <section className="relative overflow-hidden bg-gradient-to-b from-light-blue/15 via-white to-white">
-      <div className="container mx-auto px-5 md:px-12 lg:px-16 py-8 md:py-16 lg:py-16">
+      <SectionViewer className="py-8 md:py-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 ">
 
           {/* LEFT */}
@@ -181,7 +182,7 @@ const Hero = ({
           </motion.div>
 
         </div>
-      </div>
+      </SectionViewer>
     </section>
   );
 };
