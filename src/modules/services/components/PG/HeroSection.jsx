@@ -10,7 +10,7 @@ const HeroSection = ({
   subtitle = "There are many variations of passages available but the majority have suffered alteration in some repeat predefined chunks form injected humour.",
   primaryCta = { label: "Apply Now", onClick: () => {} },
   secondaryCta = { label: "Learn More", onClick: () => {} },
-  backgroundImage = "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80",
+  backgroundImage = "",
   features = [
     {
       icon: <GraduationCap size={20} strokeWidth={2} />,
