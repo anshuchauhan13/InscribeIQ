@@ -14,36 +14,36 @@ const headerVar = {
 export default function UniversityPartnership({ className, ...props }) {
   const logos = [
   {
-    src: "https://svgl.app/library/nvidia-wordmark-light.svg",
-    alt: "Nvidia Logo",
+    src: "/gla-logo.webp",
+    alt: "GLA University",
   },
   {
-    src: "https://svgl.app/library/supabase_wordmark_light.svg",
-    alt: "Supabase Logo",
+    src: "/cu.png",
+    alt: "Chandigrah University",
   },
   {
-    src: "https://svgl.app/library/openai_wordmark_light.svg",
-    alt: "OpenAI Logo",
+    src: "/dpu.png",
+    alt: "Dr Patil University",
   },
   {
-    src: "https://svgl.app/library/turso-wordmark-light.svg",
-    alt: "Turso Logo",
+    src: "/euroasian.png",
+    alt: "EuroAsian ",
   },
   {
-    src: "https://svgl.app/library/vercel_wordmark.svg",
-    alt: "Vercel Logo",
+    src: "/jain.png",
+    alt: "Jain University",
   },
   {
-    src: "https://svgl.app/library/github_wordmark_light.svg",
-    alt: "GitHub Logo",
+    src: "/lpu-logo.svg",
+    alt: "Lovely Professional University",
   },
   {
-    src: "https://svgl.app/library/claude-ai-wordmark-icon_light.svg",
-    alt: "Claude AI Logo",
+    src: "/mizoram.png",
+    alt: "Mizoram University",
   },
   {
-    src: "https://svgl.app/library/clerk-wordmark-light.svg",
-    alt: "Clerk Logo",
+    src: "/amu.png",
+    alt: "aligarh muslim university",
   },
 ];
 
@@ -120,7 +120,7 @@ export function LogoCloud({ className, logos, reverse = false, ...props }) {
         {logos.map((logo) => (
           <img
             alt={logo.alt}
-            className="pointer-events-none h-6 select-none md:h-10 brightness-0 opacity-70"
+            className="pointer-events-none h-6 select-none md:h-10 "
             height={logo.height || "auto"}
             key={`logo-${logo.alt}`}
             loading="lazy"

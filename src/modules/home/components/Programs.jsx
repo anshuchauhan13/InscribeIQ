@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import SectionViewer from "@/components/common/SectionViewer";
-import ProgramCard from "./ProgramCard";
+// import ProgramCard from "./ProgramCard";
+
 
 const FILTERS = [
   "All",

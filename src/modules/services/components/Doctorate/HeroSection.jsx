@@ -45,7 +45,7 @@ const HeroSection = ({
   return (
     <section
       className={cn(
-        "relative w-full overflow-hidden text-primary-foreground",
+        "relative w-full overflow-hidden text-primary-foreground ",
         className,
       )}
       style={{

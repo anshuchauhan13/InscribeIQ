@@ -3,13 +3,13 @@ import { LogoCloud } from "@/modules/home/components/UniversityPartnership";
 import SectionViewer from "@/components/common/SectionViewer";
 
 const logos = [
-  { src: "https://svgl.app/library/nvidia-wordmark-light.svg", alt: "Nvidia" },
-  { src: "https://svgl.app/library/supabase_wordmark_light.svg", alt: "Supabase" },
-  { src: "https://svgl.app/library/openai_wordmark_light.svg", alt: "OpenAI" },
-  { src: "https://svgl.app/library/turso-wordmark-light.svg", alt: "Turso" },
-  { src: "https://svgl.app/library/vercel_wordmark.svg", alt: "Vercel" },
-  { src: "https://svgl.app/library/github_wordmark_light.svg", alt: "GitHub" },
-  { src: "https://svgl.app/library/clerk-wordmark-light.svg", alt: "Clerk" },
+  { src: "/gla-logo.webp", alt: "GLA" },
+  { src: "/lpu-logo.svg", alt: "LPU" },
+  { src: "/kuru.png", alt: "Kurushetra" },
+  { src: "/euroasian.png", alt: "Amity" },
+  { src: "/amu.png", alt: "AMU" },
+  { src: "/jain.png", alt: "Jain University" },
+  { src: "/Kennedy.png", alt: "Kennedy" },
 ];
 
 export default function ConsultationTrust() {

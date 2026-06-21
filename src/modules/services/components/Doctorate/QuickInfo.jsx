@@ -36,7 +36,7 @@ const QuickInfo = ({ items = [], className }) => {
   }, [singleSetWidth]);
 
   return (
-    <section className={cn("bg-light-blue/10 py-2 overflow-hidden w-full", className)}>
+    <section className={cn("bg-light-blue/10 py-2 overflow-hidden w-full  ", className)}>
       <div ref={scrollerRef} className="flex items-center">
         {repeatedItems.map((item, index) => (
           <div key={index} className="flex items-center min-w-max">
