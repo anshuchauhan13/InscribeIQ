@@ -4,9 +4,9 @@ import Impact from '../components/Impact';
 import WhyInscribe from '../components/WhyInscribe';
 import CoreServices from '../components/CoreServices';
 import Flow from '../components/Flow';
-import Programs from '../components/Programs';
-import Testimonials from '../components/Testimonials';
-import Outcome from '../components/Outcome';
+// import Programs from '../components/Programs';
+// import Testimonials from '../components/Testimonials';
+// import Outcome from '../components/Outcome';
 import UniversityPartnership from '../components/UniversityPartnership';
 import LeadForm from '../components/LeadForm';
 import FAQs from '../components/FAQs';
@@ -22,9 +22,9 @@ function HomePage() {
       <WhyInscribe />
       <CoreServices />
       <Flow />
-      <Outcome />
+      {/* <Outcome />
       <Programs />
-      <Testimonials />
+      <Testimonials /> */}
       <UniversityPartnership />
       <LeadForm />
       <Resources />
