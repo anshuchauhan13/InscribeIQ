@@ -313,7 +313,7 @@ const LeadGeneration = ({
                 >
                   <SelectTrigger
                     className={cn(
-                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      "w-full !h-11 text-sm rounded-xl border-slate-200 ",
                       errors.qualification && "border-rose-400"
                     )}
                   >
@@ -337,7 +337,7 @@ const LeadGeneration = ({
                 >
                   <SelectTrigger
                     className={cn(
-                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      "!h-11 text-sm rounded-xl border-slate-200 w-full",
                       errors.experience && "border-rose-400"
                     )}
                   >
@@ -365,7 +365,7 @@ const LeadGeneration = ({
                 >
                   <SelectTrigger
                     className={cn(
-                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      "!h-11 text-sm rounded-xl border-slate-200 w-full",
                       errors.specialization && "border-rose-400"
                     )}
                   >
@@ -389,7 +389,7 @@ const LeadGeneration = ({
                 >
                   <SelectTrigger
                     className={cn(
-                      "h-11 text-sm rounded-xl border-slate-200 focus:ring-violet-500",
+                      "!h-11 text-sm rounded-xl border-slate-200  w-full",
                       errors.country && "border-rose-400"
                     )}
                   >
@@ -411,7 +411,7 @@ const LeadGeneration = ({
             <Button
               onClick={handleSubmit}
               disabled={loading}
-              className="w-full h-12 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm tracking-wide transition-colors"
+              className="w-full h-12 rounded-xl bg-light-blue hover:bg-blue text-white font-semibold text-sm tracking-wide transition-colors"
             >
               {loading ? (
                 <>

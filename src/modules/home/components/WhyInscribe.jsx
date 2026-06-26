@@ -9,37 +9,37 @@ const FEATURES = [
     icon: Eye,
     title: "Transparency",
     description:
-      "Full visibility into every step of your project — no hidden fees, no surprises. You always know exactly where things stand.",
+      "Every project milestone is visible to you. You know what is happening, who is working on it, and what comes next. Always.",
   },
   {
     icon: Tag,
     title: "Competitive Pricing",
     description:
-      "Premium academic support at market-leading rates, with flexible packages designed to fit every budget and requirement.",
+      "Serious academic support at rates that make sense. Flexible packages are available to match your goals and your budget without compromise.",
   },
   {
     icon: Globe,
     title: "Global Network",
     description:
-      "Connected to universities, indexed journals, and academic bodies across 50+ countries to give your work the widest possible reach.",
+      "From indexed journals to accredited universities and academic bodies, our network spans more than 50 countries and continues to grow.",
   },
   {
     icon: Headphones,
     title: "Dedicated Support",
     description:
-      "A personal point of contact from start to finish — always available to answer questions and keep your project on track.",
+      "One point of contact from start to finish. Someone who knows your case, picks up when you call, and keeps your project on track.",
   },
   {
     icon: BrainCircuit,
     title: "SME Expert Team",
     description:
-      "Our subject-matter experts bring years of domain-specific academic and research experience to every engagement.",
+      "Every engagement is handled by a domain expert with real academic credentials. Your work is never passed to someone unfamiliar with your field.",
   },
   {
     icon: Zap,
     title: "Fast Response",
     description:
-      "Prompt communication guaranteed — we respond within hours, not days, because your deadlines matter as much to us as they do to you.",
+      "We reply within hours because academic timelines do not wait. You will never be left wondering if your message was received.",
   },
 ];
 
@@ -165,9 +165,9 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => {
 };
 
 const WhyInscribe = ({
-  subtitle = "Why Inscribe IQ",
-  title = "The Difference That Drives Results",
-  description = "We don't just deliver services — we deliver confidence. Every engagement is built on honesty, expertise, and a genuine commitment to your academic success.",
+  subtitle = "Why InscribeIQ",
+  title = "The Academic Partner Serious Scholars Have Been Looking For",
+  description = "InscribeIQ was built by people who understood what scholars actually needed and built every service around that answer.",
   items = FEATURES,
 }) => {
   return (

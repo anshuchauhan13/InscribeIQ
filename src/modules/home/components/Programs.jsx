@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import SectionViewer from "@/components/common/SectionViewer";
-// import ProgramCard from "./ProgramCard";
+import ProgramCard from "./ProgramCard";
 
 
 const FILTERS = [
@@ -151,7 +151,7 @@ function Programs() {
         {/* Grid — cards animate in on filter change */}
         <motion.div
           layout
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((program, index) => (

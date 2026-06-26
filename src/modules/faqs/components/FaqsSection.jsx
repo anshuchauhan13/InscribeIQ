@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ChevronDown,
   ChevronsRight,
   ChevronRight,
   X,
@@ -22,7 +21,6 @@ const FAQ_DATA = [
     icon: HelpCircle,
     color: "text-violet-500",
     bg: "bg-violet-50",
-    activeBg: "bg-violet-500/10",
     questions: [
       {
         q: "What is InscribeIQ and what services do you offer?",
@@ -51,7 +49,6 @@ const FAQ_DATA = [
     icon: Award,
     color: "text-amber-500",
     bg: "bg-amber-50",
-    activeBg: "bg-amber-500/10",
     questions: [
       {
         q: "Is an Honorary Doctorate a real and recognised degree?",
@@ -80,7 +77,6 @@ const FAQ_DATA = [
     icon: GraduationCap,
     color: "text-blue-500",
     bg: "bg-blue-50",
-    activeBg: "bg-blue-500/10",
     questions: [
       {
         q: "What programs are available under InscribeIQ?",
@@ -109,7 +105,6 @@ const FAQ_DATA = [
     icon: CreditCard,
     color: "text-emerald-500",
     bg: "bg-emerald-50",
-    activeBg: "bg-emerald-500/10",
     questions: [
       {
         q: "What is the cost of the Honorary Doctorate program?",
@@ -138,7 +133,6 @@ const FAQ_DATA = [
     icon: BookOpen,
     color: "text-rose-500",
     bg: "bg-rose-50",
-    activeBg: "bg-rose-500/10",
     questions: [
       {
         q: "What publication support services does InscribeIQ offer?",
@@ -164,75 +158,19 @@ const FAQ_DATA = [
   },
 ];
 
-function AccordionItem({ item, index, isOpen, onToggle, setRef }) {
-  return (
-    <div
-      ref={setRef}
-      className={cn(
-        "rounded-xl border overflow-hidden transition-colors duration-200",
-        isOpen
-          ? "border-primary/15 bg-primary/2 shadow-sm shadow-blue/10"
-          : "border-border bg-white hover:border-blue/20"
-      )}
-    >
-      <button
-        className="flex w-full items-start justify-between gap-4 px-5 xl:px-7 py-4 xl:py-5 text-left"
-        onClick={onToggle}
-      >
-        <div className="flex items-center gap-3.5">
-          <span
-            className={cn(
-              "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-bold mt-0.5 transition-colors",
-              isOpen
-                ? "bg-primary text-white"
-                : "bg-muted text-muted-foreground"
-            )}
-          >
-            {index + 1}
-          </span>
-          <span
-            className={cn(
-              "text-sm md:text-base xl:text-lg font-semibold leading-snug transition-colors",
-              isOpen ? "text-primary" : "text-foreground"
-            )}
-          >
-            {item.q}
-          </span>
-        </div>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="mt-0.5 shrink-0"
-        >
-          <ChevronDown
-            className={cn(
-              "h-4 w-4 transition-colors",
-              isOpen ? "text-blue" : "text-muted-foreground"
-            )}
-          />
-        </motion.span>
-      </button>
+const EASE = [0.22, 0.61, 0.36, 1];
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <p className="pr-5 xl:pr-7 pb-5 xl:pb-6 text-sm md:text-base leading-relaxed text-muted-foreground pl-[3.375rem] xl:pl-[4.25rem]">
-              {item.a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+const questionsContainerVar = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+};
 
-function CategoryButton({ data, isActive, onClick, showCount = true }) {
+const questionItemVar = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
+};
+
+function CategoryButton({ data, isActive, onClick }) {
   const { category, icon: Icon, color, bg } = data;
   return (
     <button
@@ -258,16 +196,14 @@ function CategoryButton({ data, isActive, onClick, showCount = true }) {
         />
       </span>
       <span className="flex-1 leading-tight">{category}</span>
-      {showCount && (
-        <span
-          className={cn(
-            "shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tabular-nums transition-colors",
-            isActive ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
-          )}
-        >
-          {data.questions.length}
-        </span>
-      )}
+      <span
+        className={cn(
+          "shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tabular-nums transition-colors",
+          isActive ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
+        )}
+      >
+        {data.questions.length}
+      </span>
       <ChevronRight
         className={cn(
           "h-3.5 w-3.5 shrink-0 transition-all",
@@ -288,28 +224,16 @@ const scrollToEl = (el, offset = 96) => {
 
 export default function FaqsSection() {
   const [activeCategory, setActiveCategory] = useState(FAQ_DATA[0].category);
-  const [openIndex, setOpenIndex] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const panelRef = useRef(null);
-  const itemRefs = useRef([]);
 
   const activeData = FAQ_DATA.find((d) => d.category === activeCategory);
 
   const handleCategoryChange = (cat) => {
-    itemRefs.current = [];
     setActiveCategory(cat);
-    setOpenIndex(0);
     setSidebarOpen(false);
     setTimeout(() => scrollToEl(panelRef.current), 60);
-  };
-
-  const toggleItem = (idx) => {
-    const next = openIndex === idx ? null : idx;
-    setOpenIndex(next);
-    if (next !== null) {
-      setTimeout(() => scrollToEl(itemRefs.current[next]), 60);
-    }
   };
 
   return (
@@ -336,7 +260,6 @@ export default function FaqsSection() {
               </a>
             </p>
           </div>
-          {/* Decorative rule */}
           <div className="mt-1 h-px bg-gradient-to-r from-blue/30 via-light-blue/20 to-transparent" />
         </motion.div>
 
@@ -345,7 +268,6 @@ export default function FaqsSection() {
 
           {/* ── Mobile trigger ── */}
           <div className="lg:hidden">
-            {/* >> Tab on the left edge */}
             <motion.button
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
@@ -359,7 +281,6 @@ export default function FaqsSection() {
               </span>
             </motion.button>
 
-            {/* Active category pill */}
             <div className="flex items-center gap-2">
               {activeData && (
                 <>
@@ -382,7 +303,6 @@ export default function FaqsSection() {
           <AnimatePresence>
             {sidebarOpen && (
               <>
-                {/* Backdrop */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -392,7 +312,6 @@ export default function FaqsSection() {
                   onClick={() => setSidebarOpen(false)}
                 />
 
-                {/* Drawer panel */}
                 <motion.div
                   initial={{ x: "-100%" }}
                   animate={{ x: 0 }}
@@ -400,7 +319,6 @@ export default function FaqsSection() {
                   transition={{ type: "spring", stiffness: 320, damping: 32 }}
                   className="fixed left-0 top-[4.5rem] bottom-0 z-50 flex w-78 flex-col bg-white shadow-2xl lg:hidden h-[calc(100svh-4.5rem)]"
                 >
-                  {/* Drawer header */}
                   <div className="flex items-center justify-between border-b px-5 py-4">
                     <div className="flex items-center gap-2">
                       <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10">
@@ -416,7 +334,6 @@ export default function FaqsSection() {
                     </button>
                   </div>
 
-                  {/* Drawer category list */}
                   <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
                     {FAQ_DATA.map((data) => (
                       <CategoryButton
@@ -428,7 +345,6 @@ export default function FaqsSection() {
                     ))}
                   </div>
 
-                  {/* Drawer footer */}
                   <div className="border-t p-4">
                     <p className="text-xs text-muted-foreground text-center">
                       Can't find what you're looking for?{" "}
@@ -450,7 +366,6 @@ export default function FaqsSection() {
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
             className="hidden lg:flex flex-col gap-2.5 w-68 xl:w-80 shrink-0 sticky top-24"
           >
-            {/* Sidebar label */}
             <p className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               Categories
             </p>
@@ -463,7 +378,6 @@ export default function FaqsSection() {
               />
             ))}
 
-            {/* Help card */}
             <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4 text-center">
               <p className="text-xs lg:text-sm font-semibold text-primary">Still have questions?</p>
               <p className="mt-1 text-[11px] lg:text-xs text-muted-foreground">
@@ -478,38 +392,46 @@ export default function FaqsSection() {
             </div>
           </motion.aside>
 
-          {/* ── FAQ Accordion Panel ── */}
+          {/* ── Questions Panel ── */}
           <div ref={panelRef} className="flex-1 min-w-0">
+            {/* Category heading (desktop) */}
+            <div className="hidden lg:flex items-center justify-between mb-6">
+              {activeData && (
+                <>
+                  <h3 className="text-base lg:text-lg font-bold text-primary leading-none">{activeCategory}</h3>
+                  <p className="text-xs lg:text-sm text-muted-foreground">
+                    {activeData.questions.length} questions
+                  </p>
+                </>
+              )}
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.28, ease: "easeOut" }}
-                className="flex flex-col gap-3"
+                variants={questionsContainerVar}
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, y: -8, transition: { duration: 0.2, ease: EASE } }}
               >
-                {/* Category heading row (desktop) */}
-                <div className="hidden lg:flex items-center gap-3 mb-2">
-                  {activeData && ( 
-                      <div className="w-full flex flex-row items-center justify-between">
-                        <h3 className="text-base lg:text-lg font-bold text-primary leading-none">{activeCategory}</h3>
-                        <p className="mt-0.5 text-xs lg:text-sm text-muted-foreground">
-                          {activeData.questions.length} questions
-                        </p>
-                      </div>
-                  )}
-                </div>
-
                 {activeData?.questions.map((item, idx) => (
-                  <AccordionItem
-                    key={`${activeCategory}-${idx}`}
-                    item={item}
-                    index={idx}
-                    isOpen={openIndex === idx}
-                    onToggle={() => toggleItem(idx)}
-                    setRef={(el) => { itemRefs.current[idx] = el; }}
-                  />
+                  <motion.div
+                    key={idx}
+                    variants={questionItemVar}
+                    className="flex gap-4 sm:gap-6 py-5 border-b border-border/50 last:border-0"
+                  >
+                    <span className="flex items-center justify-center w-8 h-8 shrink-0 rounded-md bg-white text-base font-bold text-primary mt-0.5 shadow-[0_4px_12px_rgba(105,97,188,0.18)]">
+                      {idx + 1}.
+                    </span>
+                    <div>
+                      <h4 className="text-base lg:text-lg font-bold text-foreground mb-2 leading-snug">
+                        {item.q}
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.a}
+                      </p>
+                    </div>
+                  </motion.div>
                 ))}
               </motion.div>
             </AnimatePresence>

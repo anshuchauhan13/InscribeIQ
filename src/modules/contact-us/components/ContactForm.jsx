@@ -238,7 +238,7 @@ function ContactForm() {
                 transition={{ duration: 0.45, ease: "easeOut" }}
             >
                 <Label>Services</Label>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
                     {SERVICES.map((service) => {
                         const id = `service-${service}`;
                         return (

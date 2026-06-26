@@ -1,85 +1,107 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, HelpCircle, Award, GraduationCap, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionViewer from "@/components/common/SectionViewer";
 
-const faqData = {
-  "Common Doubts": [
-    {
-      q: "What is an Honorary Doctorate and who can receive it?",
-      a: "An Honorary Doctorate is a prestigious title awarded to individuals for exceptional contributions in business, education, social work, innovation, arts, or public service. It is conferred without exams or coursework.",
-    },
-    {
-      q: "Is an Honorary Doctorate a real and recognised degree?",
-      a: "Yes. It is a legitimate and globally respected title awarded by affiliated institutions to honour lifetime achievements, leadership, and impact. While not a traditional academic degree, it carries immense professional and social value worldwide.",
-    },
-    {
-      q: "How can I apply for an Honorary Doctorate?",
-      a: "Apply through InscribeIQ. We evaluate your profile, achievements, and eligibility, then guide you through a seamless application process with our university partners.",
-    },
-    {
-      q: "Do I need a PhD or academic background to be eligible?",
-      a: "Absolutely not. An Honorary Doctorate is awarded based on real-world impact, leadership, and contribution — not academic credentials or thesis submission.",
-    },
-  ],
-  "Honorary Doctorate": [
-    {
-      q: "What is the difference between an Honorary Doctorate and a PhD?",
-      a: "A PhD requires years of coursework and original research. An Honorary Doctorate is awarded in recognition of extraordinary real-world achievements and contributions — no thesis or exams required.",
-    },
-    {
-      q: "Can I use the 'Dr.' title after receiving an Honorary Doctorate?",
-      a: "Yes, in most professional and social contexts you may use the 'Dr.' prefix. However, conventions vary — it is advisable to clarify the honorary nature in strictly academic settings.",
-    },
-    {
-      q: "Which institutions confer Honorary Doctorates?",
-      a: "Globally recognised universities and affiliated institutions partner with InscribeIQ to award honorary degrees to deserving professionals across industries.",
-    },
-    {
-      q: "Is my Honorary Doctorate internationally recognised?",
-      a: "Yes. Degrees are awarded through accredited partner institutions and hold recognition across professional, corporate, and public service domains worldwide.",
-    },
-  ],
-  Programs: [
-    {
-      q: "What programs are available under InscribeIQ?",
-      a: "InscribeIQ offers honorary doctorate programs across disciplines including Business Leadership, Social Impact, Education, Arts & Culture, Technology Innovation, and Public Service.",
-    },
-    {
-      q: "Can I choose the field of my Honorary Doctorate?",
-      a: "Yes. During your application, you select a field that best aligns with your professional background, achievements, and areas of contribution.",
-    },
-    {
-      q: "Are there different tiers or levels of the program?",
-      a: "Programs are offered at various prestige levels depending on the awarding institution, your profile, and the depth of your contributions. Our advisors help match you with the right fit.",
-    },
-    {
-      q: "Does the program include a physical convocation ceremony?",
-      a: "Select programs include an in-person or virtual convocation ceremony. Physical ceremonies are conducted at partner university campuses or prestigious affiliated venues.",
-    },
-  ],
-  Payment: [
-    {
-      q: "What is the cost of the Honorary Doctorate program?",
-      a: "Program fees vary based on the institution and tier selected. Detailed pricing is provided after an initial eligibility assessment at no cost.",
-    },
-    {
-      q: "Are there any hidden charges beyond the program fee?",
-      a: "No. InscribeIQ maintains full fee transparency. All charges — including documentation, processing, and ceremony fees (if applicable) — are disclosed upfront.",
-    },
-    {
-      q: "What payment methods are accepted?",
-      a: "We accept all major credit/debit cards, net banking, UPI, and international bank transfers. EMI options are also available for select programs.",
-    },
-    {
-      q: "Is the fee refundable if I am found ineligible?",
-      a: "Yes. If your application is assessed and found ineligible after payment, InscribeIQ offers a full refund as per our transparency-first policy.",
-    },
-  ],
-};
-
-const categories = Object.keys(faqData);
+const faqData = [
+  {
+    category: "Common Doubts",
+    icon: HelpCircle,
+    color: "text-violet-500",
+    bg: "bg-violet-50",
+    questions: [
+      {
+        q: "What is an Honorary Doctorate and who qualifies for one?",
+        a: "An Honorary Doctorate is a formal academic title awarded by an affiliated institution to recognise extraordinary contributions in fields such as business, education, public service, arts, technology, or social work. It is based entirely on achievement and impact, with no exams, coursework, or thesis required.",
+      },
+      {
+        q: "Is an Honorary Doctorate genuinely recognised?",
+        a: "Yes. It is a legitimate title conferred by accredited academic institutions. While it differs from an earned research doctorate, it is widely respected in professional, academic, and social circles worldwide and carries real credibility across most industries and countries.",
+      },
+      {
+        q: "How does the application process work at InscribeIQ?",
+        a: "You begin by sharing your profile with our team. We review your background, assess your eligibility, identify the most suitable affiliated institution, and guide you through the entire documentation and nomination process from start to finish.",
+      },
+      {
+        q: "Do I need any academic qualifications to apply?",
+        a: "No academic background is required. An Honorary Doctorate is awarded purely on the strength of your professional achievements, contributions, and the difference you have made in your field or community.",
+      },
+    ],
+  },
+  {
+    category: "Honorary Doctorate",
+    icon: Award,
+    color: "text-amber-500",
+    bg: "bg-amber-50",
+    questions: [
+      {
+        q: "What is the difference between an Honorary Doctorate and a PhD?",
+        a: "A PhD is an earned research degree that requires years of academic study, original research, and thesis submission. An Honorary Doctorate is a formal title awarded by an accredited institution to individuals who have made extraordinary contributions to their field, society, or profession. No coursework, exams, or thesis is involved.",
+      },
+      {
+        q: "Can I use the Dr. title after receiving an Honorary Doctorate?",
+        a: "Yes. In most professional, corporate, and social settings, you may use the Dr. prefix following your honorary award. It is advisable to acknowledge the honorary nature of the title when introducing yourself in strictly academic or research-focused environments.",
+      },
+      {
+        q: "Which institutions confer Honorary Doctorates through InscribeIQ?",
+        a: "InscribeIQ works with a curated network of globally affiliated and accredited universities that award honorary degrees to deserving professionals across industries. Each institution is carefully vetted to ensure your credentials are genuinely recognized and respected.",
+      },
+      {
+        q: "Is my Honorary Doctorate internationally recognised?",
+        a: "Yes. All honorary degrees facilitated through InscribeIQ are awarded by accredited partner institutions whose credentials are acknowledged across professional, corporate, academic, and public service domains worldwide.",
+      },
+    ],
+  },
+  {
+    category: "Programs",
+    icon: GraduationCap,
+    color: "text-blue-500",
+    bg: "bg-blue-50",
+    questions: [
+      {
+        q: "What programmes are available under InscribeIQ?",
+        a: "InscribeIQ offers honorary doctorate programmes spanning multiple disciplines, including Business Leadership, Social Impact, Education, Arts and Culture, Technology Innovation, Humanitarian Service, and Public Service. New fields are added regularly based on applicant profiles and institutional availability.",
+      },
+      {
+        q: "Can I choose the field of my Honorary Doctorate?",
+        a: "Yes. During the application process, you select a field that best reflects your professional background, areas of contribution, and the impact you have created over your career. Our advisors help you make the right choice based on your profile.",
+      },
+      {
+        q: "Are there different tiers or levels within the programme?",
+        a: "Yes. Programmes are offered at various prestige levels depending on the awarding institution, the depth of your contributions, and your overall professional profile. Our academic advisors assess your background and match you with the tier that best represents your achievements.",
+      },
+      {
+        q: "Does the programme include a physical convocation ceremony?",
+        a: "Select programmes include both in-person and virtual convocation ceremonies. Physical ceremonies are held at partner university campuses or affiliated prestigious venues. Your advisor will confirm ceremony details based on the programme you are enrolled in.",
+      },
+    ],
+  },
+  {
+    category: "Payment",
+    icon: CreditCard,
+    color: "text-emerald-500",
+    bg: "bg-emerald-50",
+    questions: [
+      {
+        q: "What is the cost of an Honorary Doctorate programme?",
+        a: "Programme fees vary based on the institution selected and the prestige tier of the award. A detailed fee structure is shared with you after your initial eligibility assessment, which is conducted at no cost.",
+      },
+      {
+        q: "Are there any hidden charges beyond the programme fee?",
+        a: "No. InscribeIQ maintains complete fee transparency. All applicable charges, including documentation, processing, and ceremony fees, are disclosed upfront before you make any commitment or payment.",
+      },
+      {
+        q: "What payment methods does InscribeIQ accept?",
+        a: "We accept all major credit and debit cards, net banking, UPI, and international bank transfers. EMI options are also available for select programmes to make the process more accessible.",
+      },
+      {
+        q: "Is the fee refundable if I am found ineligible?",
+        a: "Yes. If your application is assessed and found ineligible after payment has been made, InscribeIQ offers a full refund in line with our transparency-first policy. You will never be charged for an outcome we cannot deliver.",
+      },
+    ],
+  },
+];
 
 const EASE = [0.22, 0.61, 0.36, 1];
 
@@ -93,10 +115,50 @@ const questionItemVar = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
 };
 
-const FAQs = () => {
-  const [activeCategory, setActiveCategory] = useState("Common Doubts");
+function CategoryButton({ data, isActive, onClick }) {
+  const { category, icon: Icon, color, bg } = data;
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "group flex w-full items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm font-medium transition-all duration-200",
+        isActive
+          ? "border-primary bg-primary text-white shadow-md shadow-primary/20"
+          : "border-border bg-white text-foreground hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+      )}
+    >
+      <span
+        className={cn(
+          "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors",
+          isActive ? "bg-white/20" : bg
+        )}
+      >
+        <Icon className={cn("h-4 w-4 transition-colors", isActive ? "text-white" : color)} />
+      </span>
+      <span className="flex-1 leading-tight">{category}</span>
+      <span
+        className={cn(
+          "shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tabular-nums transition-colors",
+          isActive ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
+        )}
+      >
+        {data.questions.length}
+      </span>
+      <ChevronRight
+        className={cn(
+          "h-3.5 w-3.5 shrink-0 transition-all",
+          isActive ? "text-white translate-x-0.5" : "text-muted-foreground/40 group-hover:text-primary/60"
+        )}
+      />
+    </button>
+  );
+}
 
-  const questions = faqData[activeCategory];
+const FAQs = () => {
+  const [activeCategory, setActiveCategory] = useState(faqData[0].category);
+
+  const activeData = faqData.find((d) => d.category === activeCategory);
+  const questions = activeData?.questions ?? [];
 
   return (
     <SectionViewer className="sm:py-16 py-12">
@@ -113,7 +175,7 @@ const FAQs = () => {
             FAQs
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
-            Let's Clear Things Up
+            Questions We Hear Every Day, Answered Honestly
           </h2>
           <div className="w-20 h-1 bg-[#320F8C]" />
         </motion.div>
@@ -121,33 +183,18 @@ const FAQs = () => {
         {/* Body */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Category Sidebar */}
-          <aside className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible lg:w-80 shrink-0 pb-1 lg:pb-0">
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={cn(
-                    "flex items-center justify-between gap-2 whitespace-nowrap lg:whitespace-normal text-sm font-medium px-4 py-3 rounded-lg border transition-all duration-200 text-left w-full",
-                    isActive
-                      ? "bg-[#170545] text-white border-violet-900 shadow-md"
-                      : "bg-white text-slate-700 border-slate-200 hover:border-[#170545] hover:text-[#170545]",
-                  )}
-                >
-                  <span>{cat}</span>
-                  <ChevronRight
-                    className={cn(
-                      "w-4 h-4 shrink-0 transition-transform duration-200",
-                      isActive ? "text-white" : "text-slate-400",
-                    )}
-                  />
-                </button>
-              );
-            })}
+          <aside className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible lg:w-72 shrink-0 pb-1 lg:pb-0 no-scrollbar">
+            {faqData.map((data) => (
+              <CategoryButton
+                key={data.category}
+                data={data}
+                isActive={activeCategory === data.category}
+                onClick={() => setActiveCategory(data.category)}
+              />
+            ))}
           </aside>
 
-          {/* Questions Panel — AnimatePresence swaps categories smoothly */}
+          {/* Questions Panel */}
           <div className="flex-1 -mt-6">
             <AnimatePresence mode="wait">
               <motion.div
@@ -163,11 +210,9 @@ const FAQs = () => {
                     variants={questionItemVar}
                     className="flex gap-4 py-4 sm:gap-6"
                   >
-                    {/* Number */}
-                    <span className="flex items-center justify-center w-8 h-8 shrink-0 rounded-md bg-[#F8F6FC] text-base font-bold text-[#170545] mt-0.5 shadow-[0_4px_12px_rgba(105,97,188,0.25)]">
+                    <span className="flex items-center justify-center w-8 h-8 shrink-0 rounded-md bg-white text-base font-bold text-[#170545] mt-0.5 shadow-[0_4px_12px_rgba(105,97,188,0.25)]">
                       {idx + 1}.
                     </span>
-                    {/* Content */}
                     <div>
                       <h4 className="text-md sm:text-lg font-bold text-slate-900 mb-2 leading-snug">
                         {item.q}

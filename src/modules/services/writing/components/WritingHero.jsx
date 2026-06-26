@@ -155,14 +155,14 @@ export default function WritingHero({ data }) {
             className="flex flex-col gap-5"
           >
             <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }}>
-              <Breadcrumbs
+              {/* <Breadcrumbs
                 className="mb-4"
                 items={[
                   { label: "Services", to: "/services" },
                   { label: "Writing" },
                   { label: data.name },
                 ]}
-              />
+              /> */}
               <SectionLabel label={hero.label} />
             </motion.div>
 

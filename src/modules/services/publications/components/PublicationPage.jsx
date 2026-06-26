@@ -19,7 +19,7 @@ import PublicationFinalCta from "./PublicationFinalCta";
 export default function PublicationPage({ data }) {
   // Land at the top whenever the active service changes.
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [data.slug]);
 
   return (

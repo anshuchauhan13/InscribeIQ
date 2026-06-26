@@ -182,7 +182,7 @@ const ProgramOverview = ({
   const titleParts = title.split(highlightWord);
 
   return (
-<section className="relative overflow-hidden bg-gradient-to-b from-white via-light-blue/15 to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-light-blue/15 to-white">
       <SectionViewer className="py-8 md:py-16">
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -221,22 +221,7 @@ const ProgramOverview = ({
           {/* RIGHT CONTENT */}
           <div>
 
-            <span
-              className="
-                inline-flex
-                items-center
-                gap-2
-                text-md
-                font-semibold
-                tracking-[0.2em]
-                uppercase
-                text-blue
-              "
-            >
-              {badge}
-            </span>
-         
-
+            <SectionLabel label={badge} />
             <h2
               className="
                 mt-3

@@ -7,42 +7,42 @@ const SERVICES = [
   {
     title: "PhD / DBA Programs",
     description:
-      "End-to-end doctoral guidance — from research topic selection and proposal writing to final viva defence, backed by domain-expert mentors.",
+      "Doctoral support that covers every stage from choosing your research topic and writing your proposal to clearing your final viva, with expert mentors beside you throughout.",
     accent: "bg-blue/10 text-blue",
     image: "https://picsum.photos/seed/phd-research/800/450",
   },
   {
     title: "Publication Services",
     description:
-      "Get your research published in Scopus, UGC, or Web of Science indexed journals with full editorial, formatting, and submission support.",
+      "Research that deserves to be read deserves the right journal. We support you through editing, formatting, and submission to Scopus, UGC, and Web of Science-indexed publications.",
     accent: "bg-light-blue/10 text-light-blue",
     image: "https://picsum.photos/seed/journal-publish/800/450",
   },
   {
     title: "Thesis Writing",
     description:
-      "Structured thesis writing, chapter-wise editing, plagiarism reduction, and formatting aligned to your university guidelines.",
+      "Structured, chapter-wise writing support with academic editing, plagiarism reduction, and formatting aligned precisely to your university requirements.",
     accent: "bg-primary/10 text-primary",
     image: "https://picsum.photos/seed/thesis-writing/800/450",
   },
   {
     title: "Honorary Doctorate",
     description:
-      "Facilitating globally recognised honorary doctorate nominations for distinguished achievers across diverse fields of human achievement.",
+      "For individuals whose contributions to their field, community, or society have been exceptional. We facilitate the nomination process with accredited institutions worldwide.",
     accent: "bg-secondary/40 text-blue",
     image: "https://picsum.photos/seed/honorary-degree/800/450",
   },
   {
     title: "UG / PG Admissions",
     description:
-      "Personalised admissions consulting to secure seats at top universities — domestically and internationally — across all disciplines.",
+      "Personalised guidance to secure your seat at the right university, in the right programme, across India and internationally, in any discipline.",
     accent: "bg-blue/10 text-blue",
     image: "https://picsum.photos/seed/university-campus/800/450",
   },
   {
     title: "Certification Programs",
     description:
-      "Industry-aligned certification courses built for working professionals, designed to accelerate career growth and domain expertise.",
+      "Short, focused, industry-relevant certification courses for working professionals who want to grow faster and stay ahead in their domain.",
     accent: "bg-light-blue/10 text-light-blue",
     image: "https://picsum.photos/seed/certification-course/800/450",
   },
@@ -114,11 +114,12 @@ export default function CoreServices() {
             className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 w-full"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-primary max-w-xl leading-tight">
-              Everything Scholars Need,{" "}
-              <span className="text-light-blue">Under One Roof</span>
+              One Platform.{" "}
+              <span className="text-light-blue">Six Paths</span>{" "}
+              to Academic Success.
             </h2>
             <p className="text-base text-muted-foreground max-w-sm leading-relaxed">
-              From doctoral research to global publication — our six core pillars cover every stage of your academic journey.
+              Each service is built for a specific stage of your academic journey, so you get focused support exactly where you need it.
             </p>
           </motion.div>
         </motion.div>

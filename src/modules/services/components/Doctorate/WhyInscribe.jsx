@@ -35,7 +35,7 @@ function StatCard({ data }) {
           {data.stat}
         </p>
         <p className="text-[12px] text-light-blue mb-4">{data.statLabel}</p>
-        <div className="inline-block bg-primary text-white text-[12px] font-semibold px-3 py-2.5 rounded-[10px] leading-snug whitespace-pre-line">
+        <div className="inline-block bg-primary text-white text-[12px] font-semibold px-5 py-2.5 rounded-[10px] leading-snug">
           {data.badgeText}
         </div>
       </div>

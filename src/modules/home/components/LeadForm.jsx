@@ -93,14 +93,14 @@ export default function LeadForm() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="bg-primary text-white p-8 md:p-12 md:w-1/2 relative rounded-bl-3xl overflow-hidden"
+          className="bg-[#0b0122] text-white p-8 md:p-12 md:w-1/2 relative rounded-bl-3xl overflow-hidden"
         >
           <h1 className="text-2xl md:text-3xl font-medium leading-tight z-10 tracking-tight relative">
-            How Can We Help You?
+            Speak to an Academic Advisor Today
           </h1>
           <p className="text-xs md:text-sm text-muted mt-4 z-10 relative">
-            Tell us what you need and pick a time that works for you. One of our
-            academic advisors will reach out to guide you through the next steps.
+            Share your goal and choose a time that suits you. An InscribeIQ academic
+            advisor will reach out personally to walk you through the right path forward.
           </p>
         </motion.div>
 
@@ -113,8 +113,8 @@ export default function LeadForm() {
           className="p-8 md:p-12 md:w-1/2 flex flex-col bg-muted z-15"
         >
           <div className="flex flex-col mb-8">
-            <h2 className="text-3xl font-medium mb-2 tracking-tight">Get Started</h2>
-            <p className="opacity-80">Fill in your details and we'll be in touch.</p>
+            <h2 className="text-3xl font-medium mb-2 tracking-tight text-primary">Start the Conversation</h2>
+            <p className="opacity-80">Leave your details and we will be in touch within hours.</p>
           </div>
 
           <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
@@ -243,7 +243,7 @@ export default function LeadForm() {
             </div>
 
             <Button type="submit" size="lg" variant="gradiant" className="mt-2">
-              Submit your Inquiry
+              Send My Inquiry
             </Button>
           </form>
         </motion.div>

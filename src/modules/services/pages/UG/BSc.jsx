@@ -1,10 +1,8 @@
 import PageViewer from "@/components/common/PageViewer";
-import React from "react";
 
 import Hero from "../../components/UG/Hero";
 import ProgramOverview from "../../components/UG/ProgramOverview";
 import WhyChooseThisProgram from "../../components/UG/WhyChoooseThisProgram";
-import Eligibility from "../../components/UG/Eligibilty";
 import KeySubject from "../../components/UG/KeySubject";
 import CareerOutcomes from "../../components/Doctorate/CareerOutcomes";
 import WhyInscribe from "../../components/Doctorate/WhyInscribe";

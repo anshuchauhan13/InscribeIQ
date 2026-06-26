@@ -1,60 +1,7 @@
 import { cn } from "@/lib/utils";
-import noise from "@/assets/noise.webp";
 import { motion } from "framer-motion";
 import SectionViewer from "@/components/common/SectionViewer";
-import {
-  GraduationCap,
-  Users,
-  Briefcase,
-  Rocket,
-  Compass,
-  Building2,
-} from "lucide-react";
-
-const DEFAULT_ITEMS = [
-  {
-    id: "01",
-    icon: Building2,
-    title: "Strong Business Foundation",
-    description:
-      "Develop a comprehensive understanding of business operations, management principles, and organizational practices.",
-  },
-  {
-    id: "02",
-    icon: Users,
-    title: "Leadership Development",
-    description:
-      "Build communication, leadership, and team-management skills required for modern organizations.",
-  },
-  {
-    id: "03",
-    icon: Briefcase,
-    title: "Industry Exposure",
-    description:
-      "Gain practical knowledge through projects, case studies, and interaction with industry professionals.",
-  },
-  {
-    id: "04",
-    icon: Rocket,
-    title: "Entrepreneurial Mindset",
-    description:
-      "Learn innovation, critical thinking, and business problem-solving to create future opportunities.",
-  },
-  {
-    id: "05",
-    icon: Compass,
-    title: "Diverse Career Opportunities",
-    description:
-      "Explore multiple career paths in finance, marketing, operations, HR, consulting, and more.",
-  },
-  {
-    id: "06",
-    icon: GraduationCap,
-    title: "Higher Education Pathways",
-    description:
-      "Prepare for MBA programs, specialized postgraduate studies, and global academic opportunities.",
-  },
-];
+import SectionLabel from "@/components/common/SectionLabel";
 
 function ReasonCard({ item }) {
   const Icon = item.icon;
@@ -91,7 +38,6 @@ const WhyChooseThisProgram = ({
   badge = "Why Choose This Program",
   heading = "Build Skills. Gain Confidence. Create Your Future.",
   highlight = "Create Your Future.",
-  accentColor = "bg-purple-600",
   items = [],
   columns = 3,
   containerClass,
@@ -108,19 +54,16 @@ const WhyChooseThisProgram = ({
 
   return (
     <SectionViewer className="py-12 md:py-16">
-      
+
       {/* Heading */}
       <div className="mb-6">
-        <div className="text-md font-semibold tracking-[0.2em] uppercase text-blue">
-          {badge}
-        </div>
-
+        <SectionLabel label={badge} />
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-snug">
           {headingParts.map((part, i) =>
             part.toLowerCase() === highlight?.toLowerCase() ? (
               <span key={i} className="relative inline-block">
                 {part}
-               
+
               </span>
             ) : (
               <span key={i}>{part}</span>
@@ -132,7 +75,7 @@ const WhyChooseThisProgram = ({
       {/* Dark container */}
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl p-6 sm:p-8 lg:p-12",
+          "relative overflow-hidden rounded-3xl p-6 sm:p-8 lg:p-12",
           containerClass
         )}
         style={{
@@ -141,7 +84,7 @@ const WhyChooseThisProgram = ({
         }}
       >
         <div className="relative z-10">
-          <div className={cn("grid gap-4 sm:gap-6", colClass)}>
+          <div className={cn("grid gap-4 md:gap-6 lg:gap-10", colClass)}>
             {items.map((item) => (
               <ReasonCard key={item.id} item={item} />
             ))}

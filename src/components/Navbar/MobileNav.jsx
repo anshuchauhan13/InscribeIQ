@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -60,14 +60,14 @@ function MobileHomeAccordion() {
         <AccordionContent>
           <div className="grid grid-cols-1 gap-0.5">
             {homeFeatures.map((feature, index) => (
-              <a
-                href={feature.href}
+              <Link
+                to={feature.href}
                 key={index}
                 className="rounded-md p-3 transition-colors hover:bg-muted/70"
               >
                 <p className="text-sm font-semibold text-foreground">{feature.title}</p>
                 <p className="text-xs text-muted-foreground mt-0.5">{feature.description}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </AccordionContent>
@@ -96,9 +96,9 @@ export function MobileNav() {
       <SheetContent side="top" className="max-h-[90dvh] overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
-            <a href="/" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <img src="/logo.png" className="max-h-8 w-auto" alt="Logo" />
-            </a>
+            </Link>
           </SheetTitle>
         </SheetHeader>
 
@@ -131,12 +131,12 @@ export function MobileNav() {
 
           {/* Simple links */}
           <div className="flex flex-col gap-0.5 mt-2 border-t border-border pt-4">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-sm font-medium py-2 px-1 text-foreground hover:text-[#6B52F9] transition-colors"
             >
               FAQs
-            </a>
+            </Link>
             <a
               href="#"
               className="text-sm font-medium py-2 px-1 text-foreground hover:text-[#6B52F9] transition-colors"

@@ -73,7 +73,7 @@ function FeatureCard({ service }) {
         "bg-white rounded-2xl p-6",
         "border border-gray-100 shadow-sm",
         "hover:shadow-lg transition-all duration-300",
-        "hover:-translate-y-1"
+        "hover:-translate-y-1 relative z-2"
       )}
     >
       <div className="mb-4">
@@ -106,32 +106,32 @@ export default function WhyChooseUs({
       )}
     >
       {/* Decorative Shapes */}
-{/* Yellow + Orange group */}
-<div
-  className="absolute top-40 right-20 hidden lg:block pointer-events-none"
-  style={{ animation: 'floatBob 4s ease-in-out infinite' }}
->
-  <div className="relative w-36 h-36">
-    <div className="absolute inset-0 rounded-full bg-yellow-300/70" />
-    <div
-      className="absolute top-0 right-0 w-24 h-24 bg-orange-400 rounded-full"
-      style={{ animation: 'pulseSwell 3.5s ease-in-out infinite' }}
-    />
-  </div>
-</div>
+      {/* Yellow + Orange group */}
+      <div
+        className="absolute top-40 right-20 hidden lg:block pointer-events-none"
+        style={{ animation: 'floatBob 4s ease-in-out infinite' }}
+      >
+        <div className="relative w-36 h-36">
+          <div className="absolute z-0 inset-0 rounded-full bg-yellow-300/70" />
+          <div
+            className="absolute top-0 right-0 w-24 h-24 bg-orange-400 rounded-full"
+            style={{ animation: 'pulseSwell 3.5s ease-in-out infinite' }}
+          />
+        </div>
+      </div>
 
-{/* Blue ball */}
-<div
-  className="absolute bottom-5 left-10 hidden lg:block pointer-events-none"
-  style={{ animation: 'floatBob 5s ease-in-out infinite 1s' }}
->
-  <div className="w-28 h-28 rounded-full bg-blue-500/80" />
-</div>
+      {/* Blue ball */}
+      <div
+        className="absolute z-0 bottom-5 left-10 hidden lg:block pointer-events-none"
+        style={{ animation: 'floatBob 5s ease-in-out infinite 1s' }}
+      >
+        <div className="w-28 h-28 rounded-full bg-blue-500/80" />
+      </div>
 
       <SectionViewer className="py-12 md:py-20">
         {/* Header */}
         <div className="max-w-3xl mb-12">
-            <SectionLabel label={tagline} />
+          <SectionLabel label={tagline} />
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
             {heading}

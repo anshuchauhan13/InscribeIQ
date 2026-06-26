@@ -1,17 +1,25 @@
 import { motion } from "motion/react";
 import { MessageSquareText, Send, Phone, ArrowRight } from "lucide-react";
 import { IconBrandX } from "@tabler/icons-react";
-import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { LogoCloud } from "@/modules/home/components/UniversityPartnership";
 
-const UNIVERSITIES = [
-    "Global Leadership Academy",
-    "Cambridge International Institute",
-    "Pacific State University",
-    "Heritage School of Business",
-    "Meridian University",
-    "Atlantic Institute of Technology",
-    "Northgate University",
-    "Royal Academy of Sciences",
+const LOGOS_1 = [
+    { src: "/lpu.jpg",       alt: "Lovely Professional University" },
+    { src: "/mizoram.png",   alt: "Mizoram University" },
+    { src: "/amu.png",       alt: "Aligarh Muslim University" },
+    { src: "/Kennedy.png",   alt: "Kennedy University" },
+    { src: "/jamia.png",     alt: "Jamia Hamdard" },
+    { src: "/kuru.png",      alt: "Kurukshetra University" },
+    { src: "/dyp.webp",      alt: "Dr. DY Patil, Pune" },
+];
+
+const LOGOS_2 = [
+    { src: "/amity.jpeg",    alt: "Amity University" },
+    { src: "/gla-logo.webp", alt: "GLA University" },
+    { src: "/cu.png",        alt: "Chandigarh University" },
+    { src: "/dpu.png",       alt: "Dr Patil University" },
+    { src: "/euroasian.png", alt: "EuroAsian University" },
+    { src: "/jain.png",      alt: "Jain University" },
 ];
 
 const slideRight = {
@@ -105,28 +113,9 @@ export default function ContactInfo() {
                     <p className="mt-1 text-sm text-muted-foreground">
                         Recognised by institutions and academic bodies worldwide.
                     </p>
-                    <div className="mt-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] space-y-3">
-                        <InfiniteSlider gap={28} duration={48} durationOnHover={1000}>
-                            {UNIVERSITIES.map((name) => (
-                                <span
-                                    key={name}
-                                    className="whitespace-nowrap text-sm font-semibold text-muted-foreground/80"
-                                >
-                                    {name}
-                                </span>
-                            ))}
-                        </InfiniteSlider>
-
-                        <InfiniteSlider gap={28} duration={48} durationOnHover={1000} reverse={true}>
-                            {UNIVERSITIES.map((name) => (
-                                <span
-                                    key={name}
-                                    className="whitespace-nowrap text-sm font-semibold text-muted-foreground/80"
-                                >
-                                    {name}
-                                </span>
-                            ))}
-                        </InfiniteSlider>
+                    <div className="mt-4">
+                        <LogoCloud imageClass={"!h-8"} logos={LOGOS_1} reverse={false} />
+                        <LogoCloud imageClass={"!h-8"} logos={LOGOS_2} reverse={true} />
                     </div>
                 </motion.div>
             </motion.div>

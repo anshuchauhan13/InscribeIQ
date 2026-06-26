@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const EASE = [0.22, 0.61, 0.36, 1];
 
@@ -11,41 +12,64 @@ const headerVar = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
-export default function UniversityPartnership({ className, ...props }) {
-  const logos = [
-  {
-    src: "/gla-logo.webp",
-    alt: "GLA University",
-  },
-  {
-    src: "/cu.png",
-    alt: "Chandigrah University",
-  },
-  {
-    src: "/dpu.png",
-    alt: "Dr Patil University",
-  },
-  {
-    src: "/euroasian.png",
-    alt: "EuroAsian ",
-  },
-  {
-    src: "/jain.png",
-    alt: "Jain University",
-  },
-  {
-    src: "/lpu-logo.svg",
-    alt: "Lovely Professional University",
-  },
-  {
-    src: "/mizoram.png",
-    alt: "Mizoram University",
-  },
-  {
-    src: "/amu.png",
-    alt: "aligarh muslim university",
-  },
-];
+export default function UniversityPartnership() {
+  const logos1 = [
+    {
+      src: "/lpu.jpg",
+      alt: "Lovely Professional University",
+    },
+    {
+      src: "/mizoram.png",
+      alt: "Mizoram University",
+    },
+    {
+      src: "/amu.png",
+      alt: "aligarh muslim university",
+    },
+    {
+      src: "/Kennedy.png",
+      alt: "Kenedy University",
+    },
+    {
+      src: "/jamia.png",
+      alt: "Jamia Hamdard",
+    },
+    {
+      src: "/kuru.png",
+      alt: "Kurukshetra University",
+    },
+    {
+      src: "/dyp.webp",
+      alt: "Dr. DY Patil, Pune",
+    },
+  ];
+  
+   const logos2 = [
+    {
+      src: "/amity.jpeg",
+      alt: "Amity University",
+    },
+    {
+      src: "/gla-logo.webp",
+      alt: "GLA University",
+    },
+    {
+      src: "/cu.png",
+      alt: "Chandigrah University",
+    },
+    {
+      src: "/dpu.png",
+      alt: "Dr Patil University",
+    },
+    {
+      src: "/euroasian.png",
+      alt: "EuroAsian ",
+    },
+    {
+      src: "/jain.png",
+      alt: "Jain University",
+    },
+  ];
 
   return (
     <SectionViewer className="py-14 md:py-24">
@@ -64,14 +88,14 @@ export default function UniversityPartnership({ className, ...props }) {
           variants={headerVar}
           className="text-3xl font-bold tracking-tight text-primary md:text-4xl xl:text-5xl leading-tight"
         >
-          Recognised by Institutions Worldwide
+          Academic <span className="text-light-blue">Partnerships</span> <br /> Built on <span className="text-light-blue">Credibility</span>
         </motion.h2>
         <motion.p
           variants={headerVar}
-          className="max-w-2xl text-base text-muted-foreground leading-relaxed md:text-lg"
+          className="max-w-3xl text-base text-muted-foreground leading-relaxed md:text-lg"
         >
-          We collaborate with globally affiliated universities and academic
-          bodies to make your credentials count, wherever you go.
+          InscribeIQ works exclusively with affiliated universities and accredited academic bodies,
+          ensuring that every credential earned through our platform has genuine global standing.
         </motion.p>
       </motion.div>
 
@@ -94,8 +118,8 @@ export default function UniversityPartnership({ className, ...props }) {
         <section>
           <div className="mx-auto my-5 h-px max-w-sm bg-border [mask-image:linear-gradient(to_right,transparent,blue,transparent)]" />
 
-          <LogoCloud logos={logos} reverse={false} />
-          <LogoCloud logos={logos} reverse={true} />
+          <LogoCloud logos={logos1} reverse={false} />
+          <LogoCloud logos={logos2} reverse={true} />
 
           <div className="mt-5 h-px bg-border [mask-image:linear-gradient(to_right,transparent,blue,transparent)]" />
         </section>
@@ -107,7 +131,8 @@ export default function UniversityPartnership({ className, ...props }) {
 
 
 
-export function LogoCloud({ className, logos, reverse = false, ...props }) {
+export function LogoCloud({ className, imageClass, logos, reverse = false, ...props }) {
+  const isMobile = useIsMobile()
   return (
     <div
       {...props}
@@ -116,11 +141,11 @@ export function LogoCloud({ className, logos, reverse = false, ...props }) {
         className
       )}
     >
-      <InfiniteSlider gap={54} reverse={reverse} duration={80} durationOnHover={25}>
+      <InfiniteSlider gap={isMobile ? 54 : 60} reverse={reverse} duration={80} durationOnHover={25}>
         {logos.map((logo) => (
           <img
             alt={logo.alt}
-            className="pointer-events-none h-6 select-none md:h-10 "
+            className={cn("pointer-events-none h-6 select-none md:h-10 lg:h-12", imageClass)}
             height={logo.height || "auto"}
             key={`logo-${logo.alt}`}
             loading="lazy"

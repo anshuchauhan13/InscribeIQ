@@ -21,7 +21,7 @@ import WritingFinalCta from "./WritingFinalCta";
 // sections render themselves from it — one layout, four datasets.
 export default function WritingPage({ data }) {
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [data.slug]);
 
   return (

@@ -14,7 +14,7 @@ import SectionLabel from "@/components/common/SectionLabel";
 
 const STEPS = [
   { icon: UserRound, title: "Aspirant", desc: "Your journey starts here" },
-  { icon: Users, title: "Advisor", desc: "1:1 expert consultation" },
+  { icon: Users, title: "Advisor", desc: "Expert consultation" },
   { icon: FileText, title: "Documentation", desc: "We prepare your file" },
   { icon: ClipboardCheck, title: "Enrolment", desc: "Secure your seat" },
   { icon: UserCheck, title: "Mentorship", desc: "Personalised guidance" },
@@ -110,7 +110,7 @@ function Flow() {
                     <h3 className="mb-1 text-xs font-semibold leading-snug text-white/90 transition-colors duration-300 group-hover:text-secondary">
                       {step.title}
                     </h3>
-                    <p className="text-[10px] leading-relaxed text-white/35">{step.desc}</p>
+                    <p className="text-[10px] leading-relaxed text-white/55">{step.desc}</p>
                   </div>
                 </motion.div>
               );

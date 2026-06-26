@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
 import SectionViewer from "../common/SectionViewer";
 import ExtendedMenu from "./ExtendedMenu";
 import { navbarMenu } from "./navbarMenu.data";
+import { ScrollArea } from "../ui/scroll-area";
 
 // Styling for a nav item whose route is currently active.
 const ACTIVE_NAV =
@@ -22,6 +24,18 @@ const ACTIVE_NAV =
 const EXTENDED_MENUS = Object.fromEntries(
   navbarMenu.filter((item) => item.menu).map((item) => [item.key, item.menu])
 );
+
+// Returns the domain.id whose items contain the current pathname (for auto-expand).
+function getActiveDomainId(domains, pathname) {
+  for (const domain of domains) {
+    for (const group of domain.groups ?? []) {
+      if (group.items.some((it) => pathname === it.href || pathname.startsWith(it.href + "/"))) {
+        return domain.id;
+      }
+    }
+  }
+  return undefined;
+}
 
 // A center-nav button that opens an extended menu (used for items with children).
 const MenuTrigger = ({ item, isOpen, isRouteActive, onToggle }) => (
@@ -150,50 +164,93 @@ export const NavbarMenu = () => {
                   </SheetHeader>
 
                   <div className="flex flex-col p-4">
-                    {navbarMenu.map((item) =>
-                      item.menu ? (
-                        <Accordion key={item.key} type="single" collapsible>
-                          <AccordionItem value={item.key} className="border-none">
-                            <AccordionTrigger className="px-4 py-3 text-sm font-medium hover:no-underline">
+                    <ScrollArea>
+                      <div className="max-h-[65svh] flex flex-col">
+                        {navbarMenu.map((item) =>
+                          item.menu ? (
+                            /* Level 1 — top-level label (e.g. "Services") */
+                            <Accordion
+                              key={item.key}
+                              type="single"
+                              collapsible
+                              defaultValue={isRouteActive(item) ? item.key : undefined}
+                            >
+                              <AccordionItem value={item.key} className="border-none">
+                                <AccordionTrigger className="px-4 py-3 text-sm font-medium hover:no-underline">
+                                  {item.label}
+                                </AccordionTrigger>
+                                <AccordionContent className="!h-fit pb-0">
+                                  {/* Level 2 — domains (Doctoral, UG, PG, Writing, Publications) */}
+                                  <Accordion
+                                    type="single"
+                                    collapsible
+                                    defaultValue={getActiveDomainId(item.menu.domains, pathname)}
+                                    className="pl-2"
+                                  >
+                                    {item.menu.domains.map((domain) => {
+                                      const Icon = domain.icon;
+                                      const allItems = domain.groups?.flatMap((g) => g.items) ?? [];
+                                      return (
+                                        <AccordionItem key={domain.id} value={domain.id} className="border-none">
+                                          <AccordionTrigger className="px-3 py-2.5 text-sm font-medium hover:no-underline rounded-lg hover:bg-muted/60">
+                                            <span className="flex items-center gap-2.5">
+                                              <Icon className="h-4 w-4 shrink-0 text-blue" />
+                                              {domain.label}
+                                            </span>
+                                          </AccordionTrigger>
+                                          <AccordionContent className="pb-1 !h-fit">
+                                            {/* Level 3 — individual program / service links */}
+                                            <div className="flex flex-col gap-0.5 pl-6">
+                                              {allItems.map((prog) => {
+                                                const PIcon = prog.icon;
+                                                const isActive =
+                                                  pathname === prog.href ||
+                                                  pathname.startsWith(prog.href + "/");
+                                                return (
+                                                  <Link
+                                                    key={prog.href}
+                                                    to={prog.href}
+                                                    onClick={() => setMobileOpen(false)}
+                                                    className={cn(
+                                                      "flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors",
+                                                      isActive
+                                                        ? "text-blue font-semibold bg-blue/8"
+                                                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                                                    )}
+                                                  >
+                                                    <PIcon className="h-3.5 w-3.5 shrink-0 text-blue/60" />
+                                                    {prog.label}
+                                                  </Link>
+                                                );
+                                              })}
+                                            </div>
+                                          </AccordionContent>
+                                        </AccordionItem>
+                                      );
+                                    })}
+                                  </Accordion>
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                          ) : (
+                            <NavLink
+                              key={item.to}
+                              to={item.to}
+                              end={item.to === "/"}
+                              onClick={() => setMobileOpen(false)}
+                              className={({ isActive }) =>
+                                cn(
+                                  "rounded-md px-4 py-3 font-medium",
+                                  isActive ? ACTIVE_NAV : "hover:bg-muted"
+                                )
+                              }
+                            >
                               {item.label}
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="flex flex-col gap-1">
-                                {item.menu.domains.map((domain) => {
-                                  const Icon = domain.icon;
-                                  return (
-                                    <Link
-                                      key={domain.id}
-                                      to={`${domain.href}?domain=${domain.id}`}
-                                      onClick={() => setMobileOpen(false)}
-                                      className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-foreground transition-colors hover:bg-muted hover:text-blue"
-                                    >
-                                      <Icon className="h-5 w-5 shrink-0 text-blue" />
-                                      <span className="font-medium">{domain.label}</span>
-                                    </Link>
-                                  );
-                                })}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      ) : (
-                        <NavLink
-                          key={item.to}
-                          to={item.to}
-                          end={item.to === "/"}
-                          onClick={() => setMobileOpen(false)}
-                          className={({ isActive }) =>
-                            cn(
-                              "rounded-md px-4 py-3 font-medium",
-                              isActive ? ACTIVE_NAV : "hover:bg-muted"
-                            )
-                          }
-                        >
-                          {item.label}
-                        </NavLink>
-                      )
-                    )}
+                            </NavLink>
+                          )
+                        )}
+                      </div>
+                    </ScrollArea>
 
                     <div className="mt-6 flex gap-3">
                       <Button size="lg" variant="primary" className="flex-1 rounded-full font-semibold" onClick={() => navigate("/payment")}>
