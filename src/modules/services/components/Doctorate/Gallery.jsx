@@ -21,7 +21,7 @@ const Gallery = ({
       >
         {/* ── Col 1-2, Rows 1-2 : Heading ── */}
         <div style={{ gridColumn: "1 / 3", gridRow: "1 / 3" }} className="flex items-center">
-          <h2 className="text-xl sm:text-3xl lg:text-5xl font-extrabold text-foreground leading-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-5xl font-semibold text-foreground leading-tight">
             {heading}
           </h2>
         </div>

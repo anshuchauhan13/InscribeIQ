@@ -234,10 +234,7 @@ const ProgramOverview = ({
             <h2
               className="
                 mt-3
-                text-3xl
-                sm:text-4xl
-                lg:text-5xl
-                2xl:text-6xl
+               text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem]
                 font-bold
                 leading-tight
                 text-white

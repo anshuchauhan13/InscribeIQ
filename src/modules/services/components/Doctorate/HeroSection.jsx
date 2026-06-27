@@ -85,12 +85,11 @@ const HeroSection = ({
               {/* Headline */}
               <motion.h1
                 {...fadeUp(0)}
-                className="text-3xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight font-semibold tracking-tight text-center lg:text-left text-slate-200"
-              >
+             className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-primary max-w-xl  leading-tight text-center lg:text-left text-slate-200" >
                 {titleLine1 && <span>{titleLine1}</span>}
                 {titleLine1 && titleLine2 && <br />}
                 {titleLine2 && (
-                  <span className="font-bold italic text-white text-3xl sm:text-5xl md:text-4xl lg:text-5xl">
+                  <span className="font-bold italic text-white  text-3xl md:text-4xl xl:text-5xl ">
                     {titleLine2}
                   </span>
                 )}
@@ -100,7 +99,7 @@ const HeroSection = ({
               {subheadline && (
                 <motion.p
                   {...fadeUp(0.12)}
-                  className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed text-center lg:text-left max-w-lg"
+                  className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed text-center lg:text-left max-w-2xl"
                 >
                   {subheadline}
                 </motion.p>
@@ -132,7 +131,7 @@ const HeroSection = ({
                   <Button
                     onClick={onApply}
                     size="lg"
-                    className="rounded-full bg-white px-8 py-6 text-base font-semibold text-black hover:bg-white/90 transition-all w-full sm:w-auto"
+                    className="rounded-full bg-white px-8 cursor-pointer py-6 text-base font-semibold text-black hover:bg-white/90 transition-all w-full sm:w-auto"
                   >
                     {applyLabel}
                     <ArrowRight size={16} />
@@ -143,7 +142,7 @@ const HeroSection = ({
                     variant="outline"
                     onClick={onTalkToExpert}
                     size="lg"
-                    className="rounded-full border-white/30 bg-transparent px-8 py-6 text-base font-semibold text-white hover:bg-white/10 transition-all w-full sm:w-auto"
+                    className="rounded-full border-white/30 bg-transparent px-8 py-6 text-base font-semibold text-white  cursor-pointer transition-all w-full sm:w-auto"
                   >
                     {expertLabel}
                     <ArrowRight size={16} />

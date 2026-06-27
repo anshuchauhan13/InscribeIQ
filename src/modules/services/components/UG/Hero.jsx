@@ -86,7 +86,7 @@ const Hero = ({
             {/* Title */}
             <motion.h1
               {...fadeUp(0.1, 26)}
-              className="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight tracking-tight text-foreground"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold leading-tight tracking-tight text-foreground"
             >
               {title}{" "}
               <span className="text-blue relative inline-block">

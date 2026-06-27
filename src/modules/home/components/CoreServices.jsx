@@ -9,42 +9,42 @@ const SERVICES = [
     description:
       "Doctoral support that covers every stage from choosing your research topic and writing your proposal to clearing your final viva, with expert mentors beside you throughout.",
     accent: "bg-blue/10 text-blue",
-    image: "https://picsum.photos/seed/phd-research/800/450",
+    image: "/home/phd1.jpg",
   },
   {
     title: "Publication Services",
     description:
       "Research that deserves to be read deserves the right journal. We support you through editing, formatting, and submission to Scopus, UGC, and Web of Science-indexed publications.",
     accent: "bg-light-blue/10 text-light-blue",
-    image: "https://picsum.photos/seed/journal-publish/800/450",
+    image: "/home/hero-3.jpg",
   },
   {
     title: "Thesis Writing",
     description:
       "Structured, chapter-wise writing support with academic editing, plagiarism reduction, and formatting aligned precisely to your university requirements.",
     accent: "bg-primary/10 text-primary",
-    image: "https://picsum.photos/seed/thesis-writing/800/450",
+    image: "/home/graduationcapwithbooks.jpg",
   },
   {
     title: "Honorary Doctorate",
     description:
       "For individuals whose contributions to their field, community, or society have been exceptional. We facilitate the nomination process with accredited institutions worldwide.",
     accent: "bg-secondary/40 text-blue",
-    image: "https://picsum.photos/seed/honorary-degree/800/450",
+    image: "/home/honary.jpg",
   },
   {
     title: "UG / PG Admissions",
     description:
       "Personalised guidance to secure your seat at the right university, in the right programme, across India and internationally, in any discipline.",
     accent: "bg-blue/10 text-blue",
-    image: "https://picsum.photos/seed/university-campus/800/450",
+    image: "/service/BTech-hero2.jpg",
   },
   {
     title: "Certification Programs",
     description:
       "Short, focused, industry-relevant certification courses for working professionals who want to grow faster and stay ahead in their domain.",
     accent: "bg-light-blue/10 text-light-blue",
-    image: "https://picsum.photos/seed/certification-course/800/450",
+    image: "/home/certification.jpg",
   },
 ];
 

@@ -10,7 +10,7 @@ const OUTCOMES = [
     category: "PhD / DBA",
     title: "Step Into the World as a Doctoral Scholar",
     description: "Guided by expert mentors through every stage — from proposal to viva — with full institutional support.",
-    image: "https://picsum.photos/seed/phd-graduation/700/480",
+    image: "/home/phd1.jpg",
   },
   {
     id: 1,
@@ -18,7 +18,7 @@ const OUTCOMES = [
     category: "Publication Services",
     title: "Put Your Research in Front of the Right Academic Audience",
     description: "We navigate the submission process with you, targeting high-impact indexed journals worldwide.",
-    image: "https://picsum.photos/seed/academic-library/700/480",
+    image: "/home/graduationcapwithbooks.jpg",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const OUTCOMES = [
     category: "Thesis Support",
     title: "Submit Work That Reflects Your True Academic Ability",
     description: "Professional structuring, editing, and review to meet every institutional and scholarly standard.",
-    image: "https://picsum.photos/seed/thesis-writing/700/480",
+    image: "/home/writing2.jpg",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const OUTCOMES = [
     category: "Honorary Doctorate",
     title: "Let Your Life's Work Receive the Title It Has Always Earned",
     description: "InscribeIQ connects accomplished individuals with accredited institutions across its global university network to nominate and facilitate the recognition of honorary doctorates that last a lifetime.",
-    image: "https://picsum.photos/seed/award-ceremony/700/480",
+    image: "/home/honary.jpg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const OUTCOMES = [
     category: "UG / PG Admissions",
     title: "Find the Programme That Actually Moves Your Career Forward",
     description: "Expert counselling and end-to-end application support for top universities across 50+ countries.",
-    image: "https://picsum.photos/seed/university-campus/700/480",
+    image: "/home/hero.jpg",
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const OUTCOMES = [
     category: "Certification Programs",
     title: "Gain Credentials That Professionals in Your Industry Respect",
     description: "Industry-aligned certifications to keep you ahead in a constantly evolving professional landscape.",
-    image: "https://picsum.photos/seed/certification-skills/700/480",
+    image: "/home/certification.jpg",
   },
 ];
 

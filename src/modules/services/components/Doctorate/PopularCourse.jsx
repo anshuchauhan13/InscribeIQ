@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import noise from "@/assets/noise.webp";
 import SectionViewer from "@/components/common/SectionViewer";
+import SectionLabel from "@/components/common/SectionLabel";
 
 
 function SpecCard({ item }) {
@@ -38,6 +39,7 @@ function SpecCard({ item }) {
 }
 
 const PopularCourse = ({
+  tagline="Courses",
   heading ,
   highlight ,
   accentColor ,
@@ -59,6 +61,7 @@ const PopularCourse = ({
     <SectionViewer className="py-12 md:py-16">
       {/* Heading */}
       <div className="mb-6">
+          <SectionLabel label={tagline} />
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-snug">
           {headingParts.map((part, i) =>
             part.toLowerCase() === highlight?.toLowerCase() ? (

@@ -8,13 +8,11 @@ function ComparisonPanel({ comparison }) {
 
   return (
     <div className="relative self-start">
-
       {/* Center Divider */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-1/2 z-10 pointer-events-none" />
 
       {/* Header — position:relative so VS badge is positioned relative to this */}
       <div className="relative grid grid-cols-2">
-
         {/* DBA */}
         <div className="bg-primary flex flex-col items-center justify-center px-4 pt-8 pb-6 gap-2">
           <div className="w-14 h-14 rounded-full bg-white/15 flex items-center justify-center">
@@ -32,7 +30,9 @@ function ComparisonPanel({ comparison }) {
             <RightIcon className="w-7 h-7 text-slate-500" />
           </div>
           <h3 className="text-3xl font-bold text-slate-800 text-center leading-snug">
-            Traditional<br />PhD
+            Traditional
+            <br />
+            PhD
           </h3>
           <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase text-center">
             Academic & Research
@@ -65,8 +65,18 @@ function ComparisonPanel({ comparison }) {
             {index !== 0 && (
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
                 <div className="h-7 w-7 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center">
-                  <svg className="h-3 w-3 text-[#062C73]" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  <svg
+                    className="h-3 w-3 text-[#062C73]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </div>
               </div>
@@ -113,23 +123,17 @@ const WhatIsCourse = ({
   const BadgeIcon = badge?.icon;
 
   const panelOffset = "calc(3.75rem + 0.5rem + 0.25rem + 1.5rem)";
-  
 
   return (
     <SectionViewer className={cn("py-12 md:py-16", className)}>
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-8 lg:gap-14 items-start">
-
         {/* ── Left Content ── */}
         <div className="flex flex-col">
-           {/* <span className="text-sm font-bold uppercase tracking-[0.25em] text-light-blue">
-                  {tagline}
-                </span> */}
+        <SectionLabel label={tagline} />
 
-                  <SectionLabel label={tagline} />
-        
-          <h3 className="mb-5 text-3xl sm:text-4xl  font-bold leading-tight">{heading}</h3>
-            {/* <div className="mb-6 h-1 w-28 bg-light-blue rounded-full" /> */}
-
+          <h3 className="mb-5 text-3xl md:text-3xl lg:text-5xl font-bold leading-[1.15] tracking-tight font-bold leading-tight">
+            {heading}
+          </h3>
           <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
             {description.map((item, index) => (
               <p key={index}>{item}</p>
@@ -150,9 +154,13 @@ const WhatIsCourse = ({
                 >
                   <BadgeIcon className="mb-1 h-5 w-5 text-blue-700" />
                   <p className="text-xs text-slate-500">{badge.title}</p>
-                  <p className="text-xl font-bold text-blue-900 leading-tight">{badge.highlight}</p>
+                  <p className="text-xl font-bold text-blue-900 leading-tight">
+                    {badge.highlight}
+                  </p>
                   <p className="text-xs text-slate-500">{badge.subtitle}</p>
-                  <p className="text-xl font-bold text-blue-900 leading-tight">{badge.emphasis}</p>
+                  <p className="text-xl font-bold text-blue-900 leading-tight">
+                    {badge.emphasis}
+                  </p>
                 </div>
               )}
             </div>
@@ -172,7 +180,6 @@ const WhatIsCourse = ({
             <ComparisonPanel comparison={comparison} />
           </div>
         )}
-
       </div>
     </SectionViewer>
   );

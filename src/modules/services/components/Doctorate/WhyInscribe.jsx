@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import SectionViewer from "@/components/common/SectionViewer";
+import SectionLabel from "@/components/common/SectionLabel";
 
 
 // ─── SUB-COMPONENTS ────────────────────────────────────────────────────────────
@@ -117,6 +118,7 @@ function DarkCard({ data }) {
 }
 
 const WhyInscribe = ({
+  tagline="why choose Inscribe IQ",
  heading = "",
   subheading = "",
   cards = {},
@@ -127,7 +129,8 @@ const WhyInscribe = ({
 
       {/* ── TOP HEADING ── */}
       <div className="mb-8 md:mb-11">
-        <h2 className="text-[28px] md:text-[32px] lg:text-[38px] font-bold text-black leading-[1.15] tracking-tight mb-4">
+          <SectionLabel label={tagline} />
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-[1.15] tracking-tight mb-4">
           {heading}
         </h2><div className="mb-2 h-1 w-22 bg-light-blue rounded-full" />
         <p className="text-[14px] md:text-[15px] text-foreground leading-[1.75] max-w-3xl">{subheading}</p>

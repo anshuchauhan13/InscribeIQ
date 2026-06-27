@@ -58,7 +58,7 @@ const WhyChooseThisProgram = ({
       {/* Heading */}
       <div className="mb-6">
         <SectionLabel label={badge} />
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-snug">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-gray-900 leading-snug">
           {headingParts.map((part, i) =>
             part.toLowerCase() === highlight?.toLowerCase() ? (
               <span key={i} className="relative inline-block">

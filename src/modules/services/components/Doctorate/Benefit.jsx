@@ -92,12 +92,10 @@ const Benefit = ({
         {/* ── Header row ── */}
         <div className="flex flex-row justify-between items-start mb-10">
           <div>
-            {/* <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-violet-600 mb-3">
-              {eyebrow}
-            </p> */}
+          
 
               <SectionLabel label={eyebrow} />
-            <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-gray-900">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
               {heading}
             </h2>
             <div className="w-28 h-1 bg-violet-600 rounded-full mt-3" />
@@ -111,14 +109,14 @@ const Benefit = ({
             <button
               onClick={() => scroll(-1)}
               aria-label="Previous"
-              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-violet-500 hover:text-violet-600 transition-colors"
+              className="w-9 h-9 rounded-full  flex items-center justify-center text-gray-400  border border-light-blue text-light-blue transition-colors cursor-pointer"
             >
               <ArrowRight className="w-4 h-4 rotate-180" />
             </button>
             <button
               onClick={() => scroll(1)}
               aria-label="Next"
-              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-violet-500 hover:text-violet-600 transition-colors"
+              className=" h-9 w-9 flex cursor-pointer items-center justify-center rounded-full bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] text-white shadow-lg shadow-light-blue/40 ring-1 ring-white/25 md:bottom-8 md:right-8"
             >
               <ArrowRight className="w-4 h-4" />
             </button>

@@ -23,7 +23,7 @@ const PROGRAMS = [
     category: "AI & ML",
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-ai-foundations/800/500",
+    image: "/home/ai1.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -31,7 +31,7 @@ const PROGRAMS = [
     category: "AI & ML",
     duration: "10 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-machine-learning/800/500",
+    image: "/home/machinelearning.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -39,7 +39,7 @@ const PROGRAMS = [
     category: "Education",
     duration: "6 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-chatgpt-teaching/800/500",
+    image: "/home/aitools.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -47,7 +47,7 @@ const PROGRAMS = [
     category: "Cybersecurity",
     duration: "10 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-cybersecurity/800/500",
+    image: "/home/cybersecurity.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -55,7 +55,7 @@ const PROGRAMS = [
     category: "FinTech",
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-fintech/800/500",
+    image: "/home/fintech.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -63,7 +63,7 @@ const PROGRAMS = [
     category: "Engineering",
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-python-eng/800/500",
+    image: "/home/codingman.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -71,7 +71,7 @@ const PROGRAMS = [
     category: "Data Science",
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-data-mining/800/500",
+    image: "/home/data.jpg",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -79,7 +79,7 @@ const PROGRAMS = [
     category: "Data Science",
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
-    image: "https://picsum.photos/seed/cert-database-sql/800/500",
+    image: "/home/databse.jpg",
   },
 ];
 

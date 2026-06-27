@@ -60,7 +60,7 @@ const programOverview = {
   primaryButtonText: "Discover More",
   phone: "+91 123 456 7890",
 
-  images: ["/service/bsc.jpg", "/service/bscabout.jpg", "/service/bsc3.jpg"],
+  images: ["/service/chemistry.png", "/service/bscabout.jpg", "/service/bsc3.jpg"],
 
   features: [
     {

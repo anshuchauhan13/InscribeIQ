@@ -41,8 +41,8 @@ function PhD() {
     duration: "UGC Recognized",
 
     imageSrc1: "/service/hero1.png",
-    imageSrc2: "/service/hero2.png",
-    imageSrc3: "/service/hero3.png",
+    imageSrc2: "/home/graduatephd.jpg",
+    imageSrc3: "/home/graduate1.jpg",
     imageSrc4: "/service/hero4.png",
 
     imageAlt1: "Person 1",
@@ -361,7 +361,7 @@ function PhD() {
         sub:
           "Identify a strong, relevant, and research-worthy topic aligned with your academic goals and university expectations.",
         tags: ["Topic Selection", "Research Gap", "Proposal Ready"],
-        img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+        img:"/home/hero-1.jpg",
       },
 
       lightCard: {

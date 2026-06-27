@@ -64,7 +64,7 @@ const programOverview = {
 
   images: [
     "/service/BTechabout3.jpg",
-    "/service/BTechabout.jpg",
+    "/service/bca.jpg",
     "/service/Btech3.jpg",
   ],
 
