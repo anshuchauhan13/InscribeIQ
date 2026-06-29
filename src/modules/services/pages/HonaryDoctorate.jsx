@@ -5,13 +5,14 @@ import WhoShould from "../components/Doctorate/WhoShould";
 import WhatIsCourse from "../components/Doctorate/WhatIsCourse";
 import PopularCourse from "../components/Doctorate/PopularCourse";
 import WhyGlobal from "../components/Doctorate/WhyGlobal";
-import { Search, Target, GraduationCap } from "lucide-react";
+import { Search, Target, GraduationCap , Award} from "lucide-react";
 
 import Journey from "../components/Doctorate/Journey";
 import WhyInscribe from "../components/Doctorate/WhyInscribe";
 import Benefit from "../components/Doctorate/Benefit";
 import LeadGeneration from "../components/Doctorate/LeadGeneration";
 import CareerOutcomes from "../components/Doctorate/CareerOutcomes";
+import WhatIsHonary from "../components/Doctorate/WhatIsHonary";
 import {
   Megaphone,
   DollarSign,
@@ -512,6 +513,27 @@ function HonaryDoctorate() {
     ]
   }
 
+
+const whatIsHonaryData = {
+  tagline: "About the Program",
+  heading: "A Recognition of Excellence and Impact",
+  description: [
+    "An Honorary Doctorate is a prestigious recognition awarded to individuals demonstrating exceptional achievements, leadership, innovation, philanthropy, or significant societal contributions. It honors lifelong impact and excellence.",
+  ],
+  sideImage: "/service/MBA2.jpg",
+  imagePosition: "right", // "right" | "left"
+  badge: {
+    icon: Award,
+    title: "Awarded For",
+    highlight: "Excellence",
+    subtitle: "&",
+    emphasis: "Impact",
+  },
+};
+
+
+
+
   const careerOutcomesData = {
     tagline: "CAREER OUTCOMES",
 
@@ -579,7 +601,7 @@ function HonaryDoctorate() {
         <HeroSection {...heroSectionData} />
         <QuickInfo items={quickInfoData} />
       </div>
-      <WhatIsCourse {...whatIsCourseData} />
+    <WhatIsHonary {...whatIsHonaryData}/>
       <WhoShould {...whoShouldJoinData} />
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
