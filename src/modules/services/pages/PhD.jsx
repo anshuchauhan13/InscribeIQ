@@ -12,6 +12,7 @@ import WhyInscribe from "../components/Doctorate/WhyInscribe";
 import Benefit from "../components/Doctorate/Benefit";
 import LeadGeneration from "../components/Doctorate/LeadGeneration";
 import CareerOutcomes from "../components/Doctorate/CareerOutcomes";
+import UniversityPartnership from "@/modules/home/components/UniversityPartnership";
 import {
   Megaphone,
   DollarSign,
@@ -561,13 +562,14 @@ function PhD() {
         <HeroSection {...heroSectionData} />
         <QuickInfo items={quickInfoData} />
       </div>
-      <WhatIsCourse {...whatIsCourseData} />
+      
       <WhoShould {...whoShouldJoinData} />
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
       <WhyInscribe {...whyInscribeData} />
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData} />
+      <UniversityPartnership/>
       <CareerOutcomes {...careerOutcomesData} />
       <LeadGeneration />
     </PageViewer>
