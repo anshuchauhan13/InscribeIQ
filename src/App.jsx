@@ -21,6 +21,8 @@ import ThesisWriting from "./modules/services/writing/pages/ThesisWriting";
 import DissertationWriting from "./modules/services/writing/pages/DissertationWriting";
 import ResearchPaperWriting from "./modules/services/writing/pages/ResearchPaperWriting";
 import OtherWriting from "./modules/services/writing/pages/OtherWriting";
+import NotFoundPage from "./modules/not-found/pages/NotFoundPage";
+import ProgramDetailPage from "./modules/programs/pages/ProgramDetailPage";
 import BBA from "./modules/services/pages/UG/BBA";
 import BA from "./modules/services/pages/UG/BA";
 import BCom from "./modules/services/pages/UG/BCom";
@@ -77,6 +79,8 @@ function App() {
             <Route path="web_of_science" element={<WebOfSciencePublication />} />
           </Route>
 
+          <Route path="programs/:slug" element={<ProgramDetailPage />} />
+
           <Route path="writing">
             <Route path="thesis" element={<ThesisWriting />} />
             <Route path="dissertation" element={<DissertationWriting />} />
@@ -92,6 +96,8 @@ function App() {
 
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/contact_us" element={<ContactUsPage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
 

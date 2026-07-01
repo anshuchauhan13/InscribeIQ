@@ -24,6 +24,7 @@ const PROGRAMS = [
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/ai1.jpg",
+    slug: "foundations-of-artificial-intelligence",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -32,6 +33,7 @@ const PROGRAMS = [
     duration: "10 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/machinelearning.jpg",
+    slug: "applied-machine-learning",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -40,6 +42,7 @@ const PROGRAMS = [
     duration: "6 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/aitools.jpg",
+    slug: "chatgpt-ai-tools-for-teaching",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -48,6 +51,7 @@ const PROGRAMS = [
     duration: "10 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/cybersecurity.jpg",
+    slug: "cybersecurity-network-defense",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -56,6 +60,7 @@ const PROGRAMS = [
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/fintech.jpg",
+    slug: "fintech-digital-banking",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -64,6 +69,7 @@ const PROGRAMS = [
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/codingman.jpg",
+    slug: "python-for-engineering",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -72,6 +78,7 @@ const PROGRAMS = [
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/data.jpg",
+    slug: "applied-data-mining",
   },
   {
     institution: "InscribeIQ Certification Academy",
@@ -80,6 +87,7 @@ const PROGRAMS = [
     duration: "8 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/databse.jpg",
+    slug: "database-systems-sql",
   },
 ];
 

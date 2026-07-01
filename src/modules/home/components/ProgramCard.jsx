@@ -1,4 +1,5 @@
 import { CircleCheck } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -10,9 +11,19 @@ function ProgramCard({
   duration,
   feature,
   image,
+  slug,
 }) {
+  const navigate = useNavigate();
+  const to = slug ? `/programs/${slug}` : null;
+  const goToProgram = () => to && navigate(to);
+  const goToApply = () => to && navigate(`${to}#apply`);
+
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-[0_2px_20px_rgba(23,5,69,0.06)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(23,5,69,0.12)]">
+    <div
+      onClick={goToProgram}
+      role={to ? "link" : undefined}
+      className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-card shadow-[0_2px_20px_rgba(23,5,69,0.06)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(23,5,69,0.12)]"
+    >
       {/* Image */}
       <div className="aspect-[16/10] w-full overflow-hidden">
         <img
@@ -53,10 +64,14 @@ function ProgramCard({
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <Button className="rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90">
+          <Button
+            onClick={(e) => { e.stopPropagation(); goToProgram(); }}
+            className="rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90"
+          >
             View Program
           </Button>
           <Button
+            onClick={(e) => { e.stopPropagation(); goToApply(); }}
             variant="link"
             className="px-0 font-semibold text-foreground hover:text-light-blue"
           >
