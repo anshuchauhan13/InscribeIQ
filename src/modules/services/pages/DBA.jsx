@@ -165,58 +165,58 @@ function DBA() {
     ],
   };
 
-  const whoShouldJoinData = {
-    tagline:"who should join",
-    heading: "Designed for Leaders Who Want More",
+ const whoShouldJoinData = {
+  tagline: "WHO SHOULD JOIN",
 
-    accentColor: "bg-blue-600",
+  heading: "Designed for Leaders Who Want More",
 
-    items: [
-      {
-        id: "01",
-        label: "Students enrolled in a degree program",
-      },
-      {
-        id: "02",
-        label: "Recent graduates within 2 years",
-      },
-      {
-        id: "03",
-        label: "Working professionals seeking upskilling",
-      },
-      {
-        id: "04",
-        label: "Students enrolled in a degree program",
-      },
-      {
-        id: "05",
-        label: "Recent graduates within 2 years",
-      },
-      {
-        id: "06",
-        label: "Working professionals seeking upskilling",
-      },
-    ],
+  accentColor: "bg-blue-600",
 
-    images: [
-      {
-        src: "/service/hero1.png",
-        alt: "Student",
-        shape: "circle",
-      },
-      {
-        src: "/service/BBA.jpg",
-        alt: "Graduate",
-        shape: "circle",
-      },
-      {
-        src: "/service/mbagrads.jpg",
-        alt: "Campus",
-        shape: "rounded",
-      },
-    ],
-  };
+  items: [
+    {
+      id: "01",
+      label: "Senior professionals aiming for executive leadership roles",
+    },
+    {
+      id: "02",
+      label: "Business owners and entrepreneurs seeking strategic growth",
+    },
+    {
+      id: "03",
+      label: "Corporate managers preparing for C-suite positions",
+    },
+    {
+      id: "04",
+      label: "Consultants looking to strengthen research and business expertise",
+    },
+    {
+      id: "05",
+      label: "Academicians and educators pursuing doctoral qualifications",
+    },
+    {
+      id: "06",
+      label: "Professionals passionate about solving real-world business challenges through research",
+    },
+  ],
 
+  images: [
+    {
+      src: "/service/hero1.png",
+      alt: "Business Leader",
+      shape: "circle",
+    },
+    {
+      src: "/service/BBA.png",
+      alt: "Research Professional",
+      shape: "circle",
+    },
+    {
+      src: "/service/mbagrads.jpg",
+      alt: "Doctoral Scholars",
+      shape: "rounded",
+    },
+  ],
+};
   const popularCourseData = {
     heading: "Popular DBA Specializations",
     highlight: "DBA Specializations",

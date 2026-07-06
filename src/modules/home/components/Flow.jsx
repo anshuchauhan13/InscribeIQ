@@ -54,7 +54,7 @@ function Flow() {
       <SectionViewer className="relative z-10 py-16 md:py-28">
         {/* Header */}
         <div className="mb-16 flex flex-col items-center gap-3 text-center md:mb-20">
-          <SectionLabel label="Our Ecosystem" className="text-secondary/70" />
+          <SectionLabel label="Our Ecosystem" className="text-secondary" />
           <h2 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl xl:text-5xl">
             A Seamless Journey Guided by Experts at{" "}
             <span className="text-secondary">Every Milestone</span>

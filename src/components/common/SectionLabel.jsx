@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 function SectionLabel({label, className}) {
   return (
-    <label className={cn("text-xs md:text-sm xl:text-base font-bold uppercase tracking-widest text-blue manrope", className)}>{label}</label>
+    <label className={cn("text-xs sm:text-sm md:text-[15px] xl:text-[23px] font-bold uppercase tracking-widest text-blue manrope", className)}>{label}</label>
   )
 }
 

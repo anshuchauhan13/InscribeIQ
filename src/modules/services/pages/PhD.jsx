@@ -495,67 +495,66 @@ function PhD() {
     ],
   };
 
-  const careerOutcomesData = {
-    tagline: "CAREER OUTCOMES",
+ const careerOutcomesData = {
+  tagline: "CAREER OUTCOMES",
 
-    heading: "Career Opportunities After PhD",
+  heading: "Career Opportunities After a PhD",
 
-    description:
-      "A DBA empowers experienced professionals to move into leadership, consulting, entrepreneurship, and academic roles through advanced business knowledge and applied research expertise.",
+  description:
+    "A PhD prepares scholars and professionals for careers in research, academia, innovation, leadership, and specialized industries by developing advanced research expertise and critical thinking skills.",
 
-    careers: [
-      {
-        id: "ceo",
-        title: "Chief Executive Officer",
-        description:
-          "Lead organizations with strategic vision and research-driven decision making.",
-      },
-      {
-        id: "director",
-        title: "Managing Director",
-        description:
-          "Oversee business growth, operations, and enterprise-wide transformation.",
-      },
-      {
-        id: "consultant",
-        title: "Business Consultant",
-        description:
-          "Provide evidence-based solutions to complex business challenges.",
-      },
-      {
-        id: "strategy",
-        title: "Strategy Consultant",
-        description:
-          "Shape long-term business strategy using advanced analytical frameworks.",
-      },
-      {
-        id: "academic",
-        title: "Academic Leadership",
-        description:
-          "Move into teaching, research, and executive education leadership roles.",
-      },
-      {
-        id: "entrepreneur",
-        title: "Entrepreneur",
-        description:
-          "Launch and scale ventures using doctoral-level business expertise.",
-      },
-    ],
+  careers: [
+    {
+      id: "professor",
+      title: "Professor",
+      description:
+        "Teach, mentor students, and contribute to academic research at universities.",
+    },
+    {
+      id: "researcher",
+      title: "Research Scientist",
+      description:
+        "Conduct advanced research and develop innovative solutions in your field of expertise.",
+    },
+    {
+      id: "postdoc",
+      title: "Postdoctoral Researcher",
+      description:
+        "Expand your research portfolio while collaborating with leading academic institutions.",
+    },
+    {
+      id: "consultant",
+      title: "Research Consultant",
+      description:
+        "Provide research-based insights and recommendations to organizations.",
+    },
+    {
+      id: "policy",
+      title: "Policy Analyst",
+      description:
+        "Influence public policy through evidence-based research and data-driven recommendations.",
+    },
+    {
+      id: "industry",
+      title: "Industry Specialist",
+      description:
+        "Lead innovation, R&D, and technical initiatives across corporate and industrial sectors.",
+    },
+  ],
 
-    featuredImage:
-      "/service/career.jpg",
+  featuredImage: "/service/career.jpg",
 
-    featuredBadge: "Executive Leadership",
+  featuredBadge: "Research Excellence",
 
-    featuredTitle: "Transform Experience Into Executive Authority",
+  featuredTitle: "Transform Knowledge Into Impact",
 
-    featuredDescription:
-      "A Doctor of Business Administration equips professionals with advanced strategic thinking, leadership expertise, and research-driven decision-making capabilities that open doors to high-impact roles across industries.",
+  featuredDescription:
+    "A PhD equips scholars with advanced research skills, analytical expertise, and subject mastery, enabling them to drive innovation, contribute to global knowledge, and excel in academia, research organizations, industry, and leadership roles.",
 
-    primaryCta: "Explore Program",
+  primaryCta: "Explore Program",
 
-    secondaryCta: "Visit Site",
-  };
+  secondaryCta: "Apply Now",
+};
   return (
     <PageViewer>
       <div>

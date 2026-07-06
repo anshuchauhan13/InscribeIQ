@@ -74,7 +74,7 @@ const LeadGeneration = ({
   heading = "Ready to Take Your Leadership Journey to the Next Level?",
   subheading =
     "Fill in your details and our advisors will reach out within 24 hours with a personalised DBA roadmap.",
-  ctaText = "Book a Free DBA Consultation",
+  ctaText = "Book a Free Consultation",
   onSubmit,
   qualifications = QUALIFICATIONS,
   experienceRanges = EXPERIENCE_RANGES,
@@ -161,7 +161,7 @@ const LeadGeneration = ({
             You're on the list!
           </h3>
           <p className="text-slate-500 text-sm leading-relaxed">
-            Our DBA advisors will reach out within 24 hours with a tailored
+            Our  advisors will reach out within 24 hours with a tailored
             roadmap. Keep an eye on{" "}
             <strong className="text-slate-700">{values.email}</strong>.
           </p>
@@ -212,7 +212,7 @@ const LeadGeneration = ({
               {[
                 "No commitment required",
                 "Response within 24 hours",
-                "Personalised DBA roadmap",
+                "Personalised roadmap",
               ].map((t) => (
                 <li
                   key={t}

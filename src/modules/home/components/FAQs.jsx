@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight, HelpCircle, Award, GraduationCap, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionViewer from "@/components/common/SectionViewer";
+import SectionLabel from "@/components/common/SectionLabel";
 
 const faqData = [
   {
@@ -171,9 +172,7 @@ const FAQs = () => {
           transition={{ duration: 0.55, ease: EASE }}
           className="mb-10"
         >
-          <p className="text-sm font-semibold text-[#320F8C] tracking-widest uppercase mb-2">
-            FAQs
-          </p>
+           <SectionLabel label={"FAQs"} />
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
             Questions We Hear Every Day, Answered Honestly
           </h2>

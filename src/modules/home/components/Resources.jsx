@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import SectionViewer from "@/components/common/SectionViewer";
 import { ArrowRight } from "lucide-react";
-
+import SectionLabel from "@/components/common/SectionLabel";
 const featuredPost = {
   id: 1,
   image: "/Resources1.png",
@@ -67,9 +67,7 @@ const Resources = () => {
           transition={{ duration: 0.55, ease: EASE }}
           className="text-center"
         >
-          <p className="text-md font-semibold tracking-[0.2em] uppercase text-[#320F8C] mb-2">
-            Blog
-          </p>
+          <SectionLabel label={"BLOGS"} />
           <h2 className="text-2xl sm:text-4xl font-semibold text-slate-900">
             Expert Insights for Lifelong Learners
           </h2>
