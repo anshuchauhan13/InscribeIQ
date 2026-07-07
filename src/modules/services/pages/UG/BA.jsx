@@ -65,7 +65,7 @@ const programOverview = {
 
   images: [
     "/service/MBA.jpg",
-    "/service/hero1.png",
+    "/service/hero1.jpg",
     "/service/books.jpg",
   ],
 
@@ -242,7 +242,7 @@ const whyInscribeData = {
       title: "Best Arts Universities",
       sub: "Choose from top accredited universities.",
       tags: ["BA English", "BA History", "BA Political Science"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

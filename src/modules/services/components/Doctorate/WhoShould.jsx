@@ -99,7 +99,7 @@ export default function WhoShould({
                   )}
                 >
                   <img
-                    src={image.src || "/service/hero2.png"}
+                    src={image.src || "/service/hero1.jpg"}
                     alt={image.alt || ""}
                     className="h-32 w-32 md:h-36 md:w-36 lg:h-40 lg:w-40 xl:h-44 xl:w-44 object-cover"
                   />
@@ -112,7 +112,7 @@ export default function WhoShould({
           {bottomImage && (
             <div className="overflow-hidden rounded-2xl w-full">
               <img
-                src={bottomImage.src || "/service/hero1.png"}
+                src={bottomImage.src || "/service/hero1.jpg"}
                 alt={bottomImage.alt || ""}
                 className="w-full aspect-[16/9] object-cover"
               />

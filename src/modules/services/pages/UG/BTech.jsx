@@ -241,7 +241,7 @@ const whyInscribeData = {
       title: "Best Engineering Universities",
       sub: "Choose from top accredited universities.",
       tags: ["B.Tech CSE", "IT", "AI & ML", "Data Science"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

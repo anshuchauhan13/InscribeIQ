@@ -39,10 +39,10 @@ function HonaryDoctorate() {
 
     duration: "3 Months",
 
-    imageSrc1: "/service/hero1.png",
-    imageSrc2: "/service/hero2.png",
-    imageSrc3: "/service/hero3.png",
-    imageSrc4: "/service/hero4.png",
+    imageSrc1: "/service/hero1.jpg",
+    imageSrc2: "/service/hero1.jpg",
+    imageSrc3: "/service/hero3.jpg",
+    imageSrc4: "/service/hero5.jpg",
 
     imageAlt1: "Foreign dignitary receiving award",
     imageAlt2: "Convocation ceremony",
@@ -202,17 +202,17 @@ function HonaryDoctorate() {
 
     images: [
       {
-        src: "/service/hero1.png",
+        src: "/service/hero1.jpg",
         alt: "Student",
         shape: "circle",
       },
       {
-        src: "/service/hero2.png",
+        src: "/service/hero1.jpg",
         alt: "Graduate",
         shape: "circle",
       },
       {
-        src: "/service/hero4.png",
+        src: "/service/hero5.jpg",
         alt: "Campus",
         shape: "rounded",
       },
@@ -409,7 +409,7 @@ function HonaryDoctorate() {
     items: [
       {
         id: "executive-credibility",
-        image: "/service/hero1.png",
+        image: "/service/hero1.jpg",
         name: "Executive Credibility",
         role: "Professional Recognition",
         quote:
@@ -417,7 +417,7 @@ function HonaryDoctorate() {
       },
       {
         id: "thinking",
-        image: "/service/hero2.png",
+        image: "/service/hero1.jpg",
         name: "Strategic Thinking",
         role: "Education Consultant",
         quote:
@@ -425,7 +425,7 @@ function HonaryDoctorate() {
       },
       {
         id: "global",
-        image: "/service/hero3.png",
+        image: "/service/hero3.jpg",
         name: "Global Recognition",
         role: "Education Consultant",
         company: "Founder, HopeBridge Foundation",
@@ -434,7 +434,7 @@ function HonaryDoctorate() {
       },
       {
         id: "consulting",
-        image: "/service/hero4.png",
+        image: "/service/hero5.jpg",
         name: "Consulting Opportunities",
         role: "Mindset Coach",
         quote:
@@ -610,7 +610,7 @@ const whatIsHonaryData = {
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData} />
       <CareerOutcomes {...careerOutcomesData} />
-      <LeadGeneration />
+      <LeadGeneration programName="Honorary Doctorate" />
     </PageViewer>
   );
 }

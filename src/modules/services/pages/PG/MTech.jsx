@@ -188,7 +188,7 @@ const whyInscribeData = {
         "Data Science",
         "Robotics",
       ],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

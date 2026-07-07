@@ -13,16 +13,16 @@ const TESTIMONIALS = [
       `"I spent two decades in education before InscribeIQ helped me formalise what I had built. The process was clear, the team was professional, and the recognition I received has opened conversations I never thought possible at this stage of my career."`,
     name: "Dr. Rajiv Menon",
     role: "Educator, Chennai",
-    experience: "20 Years of Experience",
-    image: "https://randomuser.me/api/portraits/men/64.jpg",
+    experience: "12 Years of Experience",
+    image: "/testimonials/men1.jpg",
   },
   {
     quote:
       `"I had published research, led teams, and built programmes that thousands of students benefited from. InscribeIQ helped me translate all of that into a credential that finally matched the work. The support I received was thorough, respectful, and completely reliable."`,
     name: "Dr. Priya Nair",
     role: "Academic Director, Bengaluru",
-    experience: "17 Years of Experience",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    experience: "7 Years of Experience",
+    image: "/testimonials/women1.jpg",
   },
   {
     quote:
@@ -30,42 +30,69 @@ const TESTIMONIALS = [
     name: "Dr. Amandeep Singh",
     role: "Senior Research Consultant, Chandigarh",
     experience: "14 Years of Experience",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "/testimonials/men2.jpg",
   },
   {
     quote:
       `"My research paper had been sitting incomplete for over a year. Within weeks of working with InscribeIQ, it was edited, formatted, and submitted to a Scopus-indexed journal. Seeing my name in print in an internationally recognised publication was a moment I will not forget."`,
     name: "Dr. Meera Krishnamurthy",
     role: "Associate Professor, Hyderabad",
-    experience: "11 Years of Experience",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    experience: "16 Years of Experience",
+    image: "/testimonials/women2.jpg",
   },
   {
     quote:
       `"I was sceptical at first. I had tried other services and walked away disappointed. InscribeIQ was different from the first call. They were honest about timelines, clear about what was involved, and delivered exactly what they promised. My honorary doctorate nomination was handled with complete professionalism."`,
     name: "Dr. Farhan Siddiqui",
     role: "Business Leader and Philanthropist, Mumbai",
-    experience: "25 Years of Experience",
-    image: "https://randomuser.me/api/portraits/men/45.jpg",
+    experience: "15 Years of Experience",
+    image: "/testimonials/men3.jpg",
+  },
+  {
+    quote:
+      `"My dissertation had stalled at the literature review for months. The InscribeIQ team gave me a clear chapter-wise plan, edited every draft with genuine academic rigour, and formatted the work exactly to my university's guidelines. I submitted on time and cleared it without a single major revision."`,
+    name: "Dr. Sanjay Deshpande",
+    role: "Management Faculty, Pune",
+    experience: "8 Years of Experience",
+    image: "/testimonials/men4.jpg",
+  },
+  {
+    quote:
+      `"I had strong data but no idea how to position it for a high-impact journal. InscribeIQ guided me through editing, journal selection, and the entire submission process. My paper is now published in a Web of Science-indexed journal, and my institution has certainly taken notice."`,
+    name: "Dr. Ananya Rao",
+    role: "Research Scientist, Kochi",
+    experience: "9 Years of Experience",
+    image: "/testimonials/women3.jpg",
+  },
+  {
+    quote:
+      `"After twenty-two years in industry, I wanted a doctorate that respected my time and my experience. InscribeIQ matched me with the right programme, supported my applied research from start to finish, and never once let the process feel bureaucratic. It was the most professional academic engagement I have had."`,
+    name: "Dr. Karthik Reddy",
+    role: "Managing Director, Gurugram",
+    experience: "22 Years of Experience",
+    image: "/testimonials/men5.jpg",
   },
 ];
 
-// Decorative avatars that orbit around the active testimonial
+// Decorative avatars that orbit around the active testimonial — drawn from the
+// same set of recipient photos.
 const ORBIT = {
   outer: [
-    "https://randomuser.me/api/portraits/men/12.jpg",
-    "https://randomuser.me/api/portraits/women/24.jpg",
-    "https://randomuser.me/api/portraits/men/45.jpg",
-    "https://randomuser.me/api/portraits/women/9.jpg",
-    "https://randomuser.me/api/portraits/men/12.jpg",
-    "https://randomuser.me/api/portraits/women/24.jpg",
+    "/testimonials/men1.jpg",
+    "/testimonials/women1.jpg",
+    "/testimonials/men2.jpg",
+    "/testimonials/women2.jpg",
+    "/testimonials/men3.jpg",
+    "/testimonials/women3.jpg",
+    "/testimonials/men4.jpg",
+    "/testimonials/men5.jpg",
   ],
   inner: [
-    "https://randomuser.me/api/portraits/women/15.jpg",
-    "https://randomuser.me/api/portraits/men/76.jpg",
-    "https://randomuser.me/api/portraits/women/33.jpg",
-    "https://randomuser.me/api/portraits/men/12.jpg",
-    "https://randomuser.me/api/portraits/women/24.jpg",
+    "/testimonials/men2.jpg",
+    "/testimonials/women2.jpg",
+    "/testimonials/men5.jpg",
+    "/testimonials/women1.jpg",
+    "/testimonials/men3.jpg",
   ],
 };
 

@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const featuredPost = {
   id: 1,
-  image: "/Resources1.png",
+  image: "/Resources1.jpg",
   title: "What Is an Honorary Doctorate? Everything You Need to Know in 2026",
   excerpt:
     "An honorary doctorate is one of the most prestigious recognitions a person can receive. But what exactly is it, who qualifies, and how is it different from a regular PhD? This complete guide answers every question.",

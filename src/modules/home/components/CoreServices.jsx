@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
 
@@ -10,6 +11,7 @@ const SERVICES = [
       "Doctoral support that covers every stage from choosing your research topic and writing your proposal to clearing your final viva, with expert mentors beside you throughout.",
     accent: "bg-blue/10 text-blue",
     image: "/home/phd1.jpg",
+    to: "/services?domain=doctoral",
   },
   {
     title: "Publication Services",
@@ -17,6 +19,7 @@ const SERVICES = [
       "Research that deserves to be read deserves the right journal. We support you through editing, formatting, and submission to Scopus, UGC, and Web of Science-indexed publications.",
     accent: "bg-light-blue/10 text-light-blue",
     image: "/home/hero-3.jpg",
+    to: "/services?domain=publications",
   },
   {
     title: "Thesis Writing",
@@ -24,6 +27,7 @@ const SERVICES = [
       "Structured, chapter-wise writing support with academic editing, plagiarism reduction, and formatting aligned precisely to your university requirements.",
     accent: "bg-primary/10 text-primary",
     image: "/home/graduationcapwithbooks.jpg",
+    to: "/services?domain=writing",
   },
   {
     title: "Honorary Doctorate",
@@ -31,6 +35,7 @@ const SERVICES = [
       "For individuals whose contributions to their field, community, or society have been exceptional. We facilitate the nomination process with accredited institutions worldwide.",
     accent: "bg-secondary/40 text-blue",
     image: "/home/honary.jpg",
+    to: "/services?domain=doctoral",
   },
   {
     title: "UG / PG Admissions",
@@ -38,6 +43,7 @@ const SERVICES = [
       "Personalised guidance to secure your seat at the right university, in the right programme, across India and internationally, in any discipline.",
     accent: "bg-blue/10 text-blue",
     image: "/service/BTech-hero2.jpg",
+    to: "/services?domain=ug",
   },
   {
     title: "Certification Programs",
@@ -45,6 +51,7 @@ const SERVICES = [
       "Short, focused, industry-relevant certification courses for working professionals who want to grow faster and stay ahead in their domain.",
     accent: "bg-light-blue/10 text-light-blue",
     image: "/home/certification.jpg",
+    to: "/#programs",
   },
 ];
 
@@ -65,33 +72,56 @@ const cardVar = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 };
 
-const ServiceCard = ({ icon: Icon, title, description, accent, image }) => (
-  <motion.div variants={cardVar} className="group flex flex-col gap-3 cursor-pointer">
-    {/* Image / Placeholder */}
-    <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-muted flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
-      {image ? (
-        <img src={image} alt={title} className="w-full h-full object-cover" />
-      ) : (
-        <div className={`flex items-center justify-center h-16 w-16 rounded-2xl ${accent}`}>
-          <Icon className="h-8 w-8" />
-        </div>
-      )}
-    </div>
+const ServiceCard = ({ title, description, image, to }) => {
+  // In-page anchor (Certification -> Programs section) scrolls smoothly instead
+  // of navigating; everything else routes to /services with the domain preselected.
+  const isHash = to?.startsWith("/#");
 
-    {/* Text */}
-    <div className="flex flex-col gap-1.5">
-      <h3 className="text-lg font-semibold text-foreground tracking-tight group-hover:text-light-blue transition-colors duration-200">
-        {title}
-      </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {description}
-      </p>
-      <span className="inline-flex items-center gap-1 text-sm font-medium text-light-blue mt-1 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
-        Learn more <ArrowRight className="h-3.5 w-3.5" />
-      </span>
-    </div>
-  </motion.div>
-);
+  const handleClick = (e) => {
+    if (!isHash) return;
+    const el = document.getElementById(to.split("#")[1]);
+    if (el) {
+      e.preventDefault();
+      // window.scrollTo is reliable here; offset clears the sticky navbar.
+      const top = el.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <motion.div variants={cardVar}>
+      <Link
+        to={to}
+        onClick={handleClick}
+        className="group flex flex-col gap-3 focus:outline-none"
+        aria-label={`Explore ${title}`}
+      >
+        {/* Image */}
+        <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-muted">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        </div>
+
+        {/* Text */}
+        <div className="flex flex-col gap-1.5">
+          <h3 className="text-lg font-semibold text-foreground tracking-tight group-hover:text-light-blue transition-colors duration-200">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {description}
+          </p>
+          <span className="inline-flex items-center gap-1 text-sm font-medium text-light-blue mt-1 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
+            Learn more <ArrowRight className="h-3.5 w-3.5" />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
 
 export default function CoreServices() {
   return (

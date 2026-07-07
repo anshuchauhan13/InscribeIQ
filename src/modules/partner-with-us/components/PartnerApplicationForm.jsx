@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
+import { sendLead } from "@/lib/emailjs";
 
 const TIERS = [
     { value: "referral", label: "Referral Partner" },
@@ -71,6 +72,7 @@ const inputClass = "!bg-white/70 backdrop-blur-xs border-light-blue/40";
 export default function PartnerApplicationForm() {
     const [form, setForm] = useState(EMPTY);
     const [errors, setErrors] = useState({});
+    const [submitting, setSubmitting] = useState(false);
 
     const setField = (key) => (value) => {
         setForm((prev) => ({ ...prev, [key]: value }));
@@ -86,16 +88,28 @@ export default function PartnerApplicationForm() {
         return next;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const next = validate();
         setErrors(next);
         if (Object.keys(next).length > 0) return;
-        console.log("Partner application submitted:", form);
-        toast.success(
-            "Application received! Our Partner Relations team will reach out within 48 hours."
-        );
-        setForm(EMPTY);
+        setSubmitting(true);
+        try {
+            await sendLead(
+                "Partnership Application",
+                form,
+                "Thank you for your interest in partnering with Inscribe IQ. Our Partner Relations team will review your application and get in touch within 48 hours."
+            );
+            toast.success(
+                "Application received! Our Partner Relations team will reach out within 48 hours."
+            );
+            setForm(EMPTY);
+        } catch (err) {
+            console.error(err);
+            toast.error("Something went wrong. Please try again or email us directly.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -294,8 +308,8 @@ export default function PartnerApplicationForm() {
                             />
                         </div>
 
-                        <Button type="submit" size="lg" className="mt-2 h-13 w-full bg-blue text-white font-semibold">
-                            Submit Partner Application <Send className="h-4 w-4" />
+                        <Button type="submit" size="lg" disabled={submitting} className="mt-2 h-13 w-full bg-blue text-white font-semibold">
+                            {submitting ? "Submitting…" : "Submit Partner Application"} <Send className="h-4 w-4" />
                         </Button>
                     </motion.form>
                 </div>

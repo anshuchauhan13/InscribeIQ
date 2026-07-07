@@ -190,7 +190,7 @@ const whyInscribeData = {
         "Finance",
         "HR",
       ],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

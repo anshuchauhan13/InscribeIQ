@@ -242,7 +242,7 @@ const whyInscribeData = {
       title: "Best Commerce Universities",
       sub: "Choose from top accredited universities.",
       tags: ["B.Com", "Finance", "Accounting", "Taxation"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

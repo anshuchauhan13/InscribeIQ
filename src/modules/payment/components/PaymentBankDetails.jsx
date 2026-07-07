@@ -5,17 +5,16 @@ import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
 import { cn } from "@/lib/utils";
 
-// ⚠️ Replace these placeholders with Inscribe IQ's real banking details.
 const bankFields = [
-  { label: "Account Holder", value: "Inscribe IQ Pvt. Ltd.", copyable: false },
-  { label: "Account Number", value: "50100 1234 5678 90", copyable: true },
-  { label: "IFSC Code", value: "HDFC0001234", copyable: true },
-  { label: "Bank Name", value: "HDFC Bank", copyable: false },
-  { label: "Branch", value: "Rajendra Nagar, Ghaziabad", copyable: false },
+  { label: "Account Holder", value: "Inscribe IQ Private Limited", copyable: false },
+  { label: "Account Number", value: "925020025272563", copyable: true },
+  { label: "IFSC Code", value: "UTIB0004621", copyable: true },
+  { label: "Bank Name", value: "Axis Bank", copyable: false },
+  { label: "Branch", value: "Shalimar City Extension, Ghaziabad", copyable: false },
   { label: "Account Type", value: "Current Account", copyable: false },
 ];
 
-// Replace with the official Inscribe IQ UPI ID and QR image.
+// ⚠️ Placeholder UPI ID / QR — replace with Inscribe IQ's official UPI handle.
 const UPI_ID = "inscribeiq@hdfcbank";
 const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(
   `upi://pay?pa=${UPI_ID}&pn=Inscribe IQ&cu=INR`
@@ -92,7 +91,7 @@ function PaymentBankDetails() {
               </div>
               <div>
                 <span className="inline-block rounded-md bg-secondary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary">
-                  HDFC Bank · Current A/c
+                  Axis Bank · Current A/c
                 </span>
                 <h3 className="mt-1.5 text-xl font-bold text-white">
                   Bank Transfer Details

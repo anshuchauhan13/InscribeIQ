@@ -107,10 +107,10 @@ function Flow() {
 
                   {/* Content card under the node */}
                   <div className="mt-4 w-full rounded-xl border border-white/[0.07] bg-white/[0.03] p-3 pt-3.5 transition-all duration-300 group-hover:border-secondary/15 group-hover:bg-white/[0.06]">
-                    <h3 className="mb-1 text-xs font-semibold leading-snug text-white/90 transition-colors duration-300 group-hover:text-secondary">
+                    <h3 className="mb-1 text-xs md:text-sm xl:text-base font-semibold leading-snug text-white/90 transition-colors duration-300 group-hover:text-secondary">
                       {step.title}
                     </h3>
-                    <p className="text-[10px] leading-relaxed text-white/55">{step.desc}</p>
+                    <p className="text-[10px] md:text-xs xl:text-sm leading-relaxed text-white/55">{step.desc}</p>
                   </div>
                 </motion.div>
               );

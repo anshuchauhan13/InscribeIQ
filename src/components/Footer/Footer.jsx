@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { Separator } from "@/components/ui/separator";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import SectionViewer from "../common/SectionViewer";
+import { sendLead } from "@/lib/emailjs";
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
@@ -24,36 +26,49 @@ const XIcon = () => (
 );
 
 const services = [
-  { label: "Publication", href: "#" },
-  { label: "Thesis", href: "#" },
-  { label: "Research", href: "#" },
-  { label: "University Partnership", href: "#" },
-  { label: "Honorary Doctorate", href: "#" },
-  { label: "Admissions", href: "#" },
+  { label: "PhD", href: "/courses/phd" },
+  { label: "DBA", href: "/courses/dba" },
+  { label: "Honorary Doctorate", href: "/courses/honary_doctorate" },
+  { label: "Publications", href: "/services?domain=publications" },
+  { label: "Thesis Writing", href: "/writing/thesis" },
+  { label: "Research Papers", href: "/writing/research_paper" },
 ];
 
 const company = [
-  { label: "About", href: "#" },
-  { label: "Contact", href: "#" },
-  { label: "Careers", href: "#" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact_us" },
+  { label: "Partner with Us", href: "/partner_with_us" },
 ];
 
 const resources = [
-  { label: "Blogs", href: "#" },
-  { label: "Guides", href: "#" },
-  { label: "FAQs", href: "#" },
+  { label: "Free Consultation", href: "/consultation" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Payment", href: "/payment" },
 ];
+
+// Internal routes use react-router <Link> for SPA navigation; anything else
+// (mailto:, tel:, external, or a bare #) falls back to a plain anchor.
+const FooterLink = ({ href, className, children }) =>
+  href?.startsWith("/") ? (
+    <Link to={href} className={className}>
+      {children}
+    </Link>
+  ) : (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  );
 
 const contactDetails = [
   {
     icon: Phone,
-    label: "+91 87877 34234",
-    href: "tel:+918787734234",
+    label: "+91 79923 16356",
+    href: "tel:+917992316356",
   },
   {
     icon: Mail,
-    label: "inscribe.iq@example.com",
-    href: "mailto:inscribe.iq@example.com",
+    label: "info@inscribeiq.in",
+    href: "mailto:info@inscribeiq.in",
   },
   {
     icon: MapPin,
@@ -64,15 +79,29 @@ const contactDetails = [
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     const value = email.trim();
     if (!value) return;
-    toast.success("You're subscribed!", {
-      description: "We'll keep you posted on academic insights & updates.",
-    });
-    setEmail("");
+    setSubmitting(true);
+    try {
+      await sendLead(
+        "Newsletter Subscription",
+        { email: value },
+        "Thank you for subscribing to Inscribe IQ. You'll now receive our latest academic insights and updates straight to your inbox."
+      );
+      toast.success("You're subscribed!", {
+        description: "We'll keep you posted on academic insights & updates.",
+      });
+      setEmail("");
+    } catch (err) {
+      console.error(err);
+      toast.error("Subscription failed. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -107,20 +136,20 @@ const Footer = () => {
       </svg>
 
       <SectionViewer>
-        <div className="py-6 md:py-12 xl:py-18">
+        <div className="pt-6 md:pt-12 xl:pt-18">
           {/* Main grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-10">
             {/* Col 1: Brand */}
-            <div className="flex flex-col gap-4 col-span-2">
+            <div className="flex flex-col gap-4 col-span-2 md:col-span-3">
               <div className="flex items-center gap-2">
                 <div className="h-8 w-auto">
-                  <a href="/" className="shrink-0">
+                  <Link to="/" className="shrink-0">
                     <img
                       src="/faviconIcon.png"
                       alt="Logo"
                       className="h-10 md:h-12 w-auto"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <span className="text-lg font-bold tracking-tight text-white">
                   Inscribe IQ
@@ -149,46 +178,65 @@ const Footer = () => {
               </div>
             </div>
 
+            {/* Col: Services */}
+            <div className="col-span-1 md:col-span-2">
+              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+                Services
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {services.map(({ label, href }) => (
+                  <li key={label}>
+                    <FooterLink
+                      href={href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {label}
+                    </FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Col: Company */}
-            <div>
+            <div className="col-span-1 md:col-span-2">
               <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
                 Company
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {company.map(({ label, href }) => (
                   <li key={label}>
-                    <a
+                    <FooterLink
                       href={href}
                       className="text-sm text-slate-400 hover:text-white transition-colors"
                     >
                       {label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Col: Resources */}
-            <div>
+            <div className="col-span-1 md:col-span-2">
               <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
                 Resources
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {resources.map(({ label, href }) => (
                   <li key={label}>
-                    <a
+                    <FooterLink
                       href={href}
                       className="text-sm text-slate-400 hover:text-white transition-colors"
                     >
                       {label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Col: Get in Touch */}
-            <div className="col-span-2 sm:col-span-1">
+            <div className="col-span-2 md:col-span-3">
               <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
                 Get in Touch
               </h3>
@@ -213,10 +261,11 @@ const Footer = () => {
                   />
                   <button
                     type="submit"
-                    className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] px-3.5 py-2 text-sm font-semibold text-white shadow-sm shadow-light-blue/30 transition-transform duration-200 hover:-translate-y-0.5"
+                    disabled={submitting}
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] px-3.5 py-2 text-sm font-semibold text-white shadow-sm shadow-light-blue/30 transition-transform duration-200 hover:-translate-y-0.5 disabled:opacity-60"
                   >
                     <Send className="h-3.5 w-3.5" />
-                    Join
+                    {submitting ? "…" : "Join"}
                   </button>
                 </div>
               </form>
@@ -231,9 +280,9 @@ const Footer = () => {
                       rel={href.startsWith("http") ? "noreferrer" : undefined}
                       className="group flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                     >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-light-blue transition-colors group-hover:border-light-blue/50 group-hover:bg-slate-800/70">
-                        <Icon className="h-4 w-4" />
-                      </span>
+                      {/* <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-light-blue transition-colors group-hover:border-light-blue/50 group-hover:bg-slate-800/70"> */}
+                        <Icon className="h-4 w-4 text-secondary/70" />
+                      {/* </span> */}
                       <span className="min-w-0 break-words">{label}</span>
                     </a>
                   </li>
