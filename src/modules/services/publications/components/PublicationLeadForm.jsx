@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import SectionViewer from "@/components/common/SectionViewer";
+import { sendLead } from "@/lib/emailjs";
 
 const DIAL_CODES = [
   { code: "IN", dial: "+91" },
@@ -55,6 +56,7 @@ export default function PublicationLeadForm({ data }) {
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [fileName, setFileName] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const setField = (key) => (value) => {
     setForm((p) => ({ ...p, [key]: value }));
@@ -71,17 +73,29 @@ export default function PublicationLeadForm({ data }) {
     return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    console.log(`${name} journal recommendation request:`, { ...form, fileName });
-    toast.success(
-      "Request received! Our publication expert will review and share suitable journal options shortly."
-    );
-    setForm(EMPTY);
-    setFileName("");
+    setSubmitting(true);
+    try {
+      await sendLead(
+        "Publication Lead",
+        { ...form, publication: name, fileName },
+        "Thank you for your journal recommendation request. Our publication expert will review your requirement and share suitable journal options shortly."
+      );
+      toast.success(
+        "Request received! Our publication expert will review and share suitable journal options shortly."
+      );
+      setForm(EMPTY);
+      setFileName("");
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -317,8 +331,8 @@ export default function PublicationLeadForm({ data }) {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="mt-1 h-12 w-full bg-blue font-semibold text-white">
-                {leadForm.submitCta}
+              <Button type="submit" size="lg" disabled={submitting} className="mt-1 h-12 w-full bg-blue font-semibold text-white">
+                {submitting ? "Sending…" : leadForm.submitCta}
                 <Send className="ml-1 h-4 w-4" />
               </Button>
 

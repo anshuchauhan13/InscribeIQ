@@ -4,22 +4,20 @@ import { Landmark, Copy, Check, QrCode, ScanLine } from "lucide-react";
 import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
 import { cn } from "@/lib/utils";
+import { CONTACT } from "@/lib/contact";
 
-// ⚠️ Replace these placeholders with Inscribe IQ's real banking details.
 const bankFields = [
-  { label: "Account Holder", value: "Inscribe IQ Pvt. Ltd.", copyable: false },
-  { label: "Account Number", value: "50100 1234 5678 90", copyable: true },
-  { label: "IFSC Code", value: "HDFC0001234", copyable: true },
-  { label: "Bank Name", value: "HDFC Bank", copyable: false },
-  { label: "Branch", value: "Rajendra Nagar, Ghaziabad", copyable: false },
+  { label: "Account Holder", value: "Inscribe IQ Private Limited", copyable: false },
+  { label: "Account Number", value: "925020025272563", copyable: true },
+  { label: "IFSC Code", value: "UTIB0004621", copyable: true },
+  { label: "Bank Name", value: "Axis Bank", copyable: false },
+  { label: "Branch", value: "Shalimar City Extension, Ghaziabad", copyable: false },
   { label: "Account Type", value: "Current Account", copyable: false },
 ];
 
-// Replace with the official Inscribe IQ UPI ID and QR image.
-const UPI_ID = "inscribeiq@hdfcbank";
-const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(
-  `upi://pay?pa=${UPI_ID}&pn=Inscribe IQ&cu=INR`
-)}`;
+// ⚠️ Placeholder UPI ID / QR — replace with Inscribe IQ's official UPI handle.
+// const UPI_ID = "inscribeiq@hdfcbank";
+const QR_SRC = `/IMG_5538.JPG`;
 
 const slideIn = (fromX) => ({
   initial: { opacity: 0, x: fromX },
@@ -92,7 +90,7 @@ function PaymentBankDetails() {
               </div>
               <div>
                 <span className="inline-block rounded-md bg-secondary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary">
-                  HDFC Bank · Current A/c
+                  Axis Bank · Current A/c
                 </span>
                 <h3 className="mt-1.5 text-xl font-bold text-white">
                   Bank Transfer Details
@@ -131,7 +129,7 @@ function PaymentBankDetails() {
               <p className="text-xs leading-relaxed text-primary/80 md:text-sm">
                 Once the transfer is done, WhatsApp the screenshot to{" "}
                 <span className="font-semibold text-primary">
-                  +91 87877 34234
+                  {CONTACT.enquiry.display}
                 </span>
                 . Your service is activated within 2 hours.
               </p>
@@ -162,7 +160,7 @@ function PaymentBankDetails() {
           >
             <img
               src={QR_SRC}
-              alt={`UPI QR code for ${UPI_ID}`}
+              alt={`UPI QR code`}
               className="h-44 w-44 rounded-lg md:h-52 md:w-52"
             />
             {/* Animated scanning line */}
@@ -173,7 +171,7 @@ function PaymentBankDetails() {
             />
           </motion.div>
 
-          <div className="mt-6 flex w-full max-w-xs items-center justify-between gap-3 rounded-xl border border-violet-100 bg-muted px-4 py-3">
+          {/* <div className="mt-6 flex w-full max-w-xs items-center justify-between gap-3 rounded-xl border border-violet-100 bg-muted px-4 py-3">
             <div className="flex items-center gap-2 truncate">
               <ScanLine className="h-4 w-4 shrink-0 text-light-blue" />
               <span className="truncate text-sm font-semibold text-primary">
@@ -186,7 +184,7 @@ function PaymentBankDetails() {
               copiedKey={copiedKey}
               onCopy={handleCopy}
             />
-          </div>
+          </div> */}
 
           <p className="mt-4 text-xs text-muted-foreground">
             Works with Google Pay · PhonePe · Paytm · BHIM

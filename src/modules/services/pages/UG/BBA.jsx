@@ -37,8 +37,8 @@ const heroData = {
   ],
   primaryButtonText: "Apply Now",
   secondaryButtonText: "Free Career Counselling",
-  mainImage: "/service/BBA.png",
-  secondaryImage: "/service/bba3.png",
+  mainImage: "/service/BBA.jpg",
+  secondaryImage: "/service/bba3.jpg",
   trustBadgeText: "12+ University Options",
   supportBadgeText: "Research-Oriented Learning",
   onPrimaryClick: "/bba.jpg",
@@ -51,7 +51,7 @@ const programOverview = {
     "A Bachelor of Business Administration (BBA) equips students with essential business, management, marketing, and leadership skills required to succeed in today's competitive corporate environment.",
   primaryButtonText: "Discover More",
   phone: "+91 123 456 7890",
-  images: ["/service/bba1.png", "/service/hero2.png", "/service/bba4.jpg"],
+  images: ["/service/bba3.jpg", "/service/hero1.jpg", "/service/bba4.jpg"],
   features: [
     {
       title: "Business Management",
@@ -238,7 +238,7 @@ const whyInscribeData = {
       title: "Multiple Universities. One Trusted Partner.",
       sub: "Explore a wide range of accredited universities and programs with expert guidance.",
       tags: ["UG Programs", "PG Programs", "Doctoral Programs"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

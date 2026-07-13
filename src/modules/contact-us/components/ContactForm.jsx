@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import { useState } from "react";
+import { sendLead } from "@/lib/emailjs";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 20 },
@@ -62,6 +63,7 @@ function ContactForm() {
      
     const [form, setForm] = useState(EMPTY);
     const [errors, setErrors] = useState({});
+    const [submitting, setSubmitting] = useState(false);
 
     const setField = (key) => (value) => {
         setForm((prev) => ({ ...prev, [key]: value }));
@@ -86,14 +88,26 @@ function ContactForm() {
         return next;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const next = validate();
         setErrors(next);
         if (Object.keys(next).length > 0) return;
-        console.log("Contact submitted:", form);
-        toast.success("Thanks for reaching out! Our team will get back to you shortly.");
-        setForm(EMPTY);
+        setSubmitting(true);
+        try {
+            await sendLead(
+                "Contact Enquiry",
+                form,
+                "Thank you for reaching out. Our team has received your message and will get back to you shortly."
+            );
+            toast.success("Thanks for reaching out! Our team will get back to you shortly.");
+            setForm(EMPTY);
+        } catch (err) {
+            console.error(err);
+            toast.error("Something went wrong. Please try again or email us directly.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
   return (
@@ -262,8 +276,8 @@ function ContactForm() {
                 variants={fadeUp}
                 transition={{ duration: 0.45, ease: "easeOut" }}
             >
-                <Button type="submit" size="lg" className="mt-4 w-full">
-                    Send message
+                <Button type="submit" size="lg" className="mt-4 w-full" disabled={submitting}>
+                    {submitting ? "Sending…" : "Send message"}
                 </Button>
             </motion.div>
         </motion.form>

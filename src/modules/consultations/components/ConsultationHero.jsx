@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
+import { sendLead } from "@/lib/emailjs";
 
 const SERVICES = [
   "PhD Admission Guidance",
@@ -91,6 +92,7 @@ const fadeUp = {
 export default function ConsultationHero() {
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   const setField = (key) => (value) => {
     setForm((p) => ({ ...p, [key]: value }));
@@ -109,14 +111,26 @@ export default function ConsultationHero() {
     return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    console.log("Consultation submitted:", form);
-    toast.success("Consultation booked! Our advisor will call you at your preferred time.");
-    setForm(EMPTY);
+    setSubmitting(true);
+    try {
+      await sendLead(
+        "Consultation Booking",
+        form,
+        "Your free consultation is confirmed. Our academic advisor will call you at your preferred time — we look forward to speaking with you."
+      );
+      toast.success("Consultation booked! Our advisor will call you at your preferred time.");
+      setForm(EMPTY);
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -380,8 +394,8 @@ export default function ConsultationHero() {
                   />
                 </div>
 
-                <Button type="submit" size="lg" variant="" className="mt-1 w-full bg-blue text-white h-12">
-                  Book Free Consultation
+                <Button type="submit" size="lg" variant="" disabled={submitting} className="mt-1 w-full bg-blue text-white h-12">
+                  {submitting ? "Booking…" : "Book Free Consultation"}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
 

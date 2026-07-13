@@ -85,7 +85,7 @@ const whyInscribeData = {
       title: "Multiple University Options",
       sub: "Choose from top reputed universities for M.Com.",
       tags: ["Finance", "Accounting", "Taxation"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

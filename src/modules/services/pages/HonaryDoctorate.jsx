@@ -39,10 +39,10 @@ function HonaryDoctorate() {
 
     duration: "3 Months",
 
-    imageSrc1: "/service/hero1.png",
-    imageSrc2: "/service/hero2.png",
-    imageSrc3: "/service/hero3.png",
-    imageSrc4: "/service/hero4.png",
+    imageSrc1: "/service/hero1.jpg",
+    imageSrc2: "/service/hero1.jpg",
+    imageSrc3: "/service/hero3.jpg",
+    imageSrc4: "/service/hero5.jpg",
 
     imageAlt1: "Foreign dignitary receiving award",
     imageAlt2: "Convocation ceremony",
@@ -202,17 +202,17 @@ function HonaryDoctorate() {
 
     images: [
       {
-        src: "/service/hero1.png",
+        src: "/service/hero1.jpg",
         alt: "Student",
         shape: "circle",
       },
       {
-        src: "/service/hero2.png",
+        src: "/service/hero1.jpg",
         alt: "Graduate",
         shape: "circle",
       },
       {
-        src: "/service/hero4.png",
+        src: "/service/hero5.jpg",
         alt: "Campus",
         shape: "rounded",
       },
@@ -220,70 +220,70 @@ function HonaryDoctorate() {
   };
 
   const popularCourseData = {
-    heading: "Popular DBA Specializations",
-    highlight: "DBA Specializations",
+    heading: "Recognition in Your Field",
+    highlight: "Fields of Excellence",
 
     columns: 3,
 
     items: [
       {
         id: "business",
-        title: "Business & Management",
+        title: "Business & Entrepreneurship",
         icon: Briefcase,
         points: [
-          "Strategic Management",
-          "Leadership",
-          "Organizational Behavior",
+          "Business Innovation",
+          "Leadership Excellence",
+          "Economic Impact",
         ],
       },
       {
-        id: "marketing",
-        title: "Marketing",
+        id: "education",
+        title: "Education & Academia",
+        icon: GraduationCap,
+        points: [
+          "Academic Contribution",
+          "Educational Impact",
+          "Mentorship Excellence",
+        ],
+      },
+      {
+        id: "healthcare",
+        title: "Healthcare & Wellness",
+        icon: Award,
+        points: [
+          "Medical Innovation",
+          "Patient Care Excellence",
+          "Health Leadership",
+        ],
+      },
+      {
+        id: "arts",
+        title: "Arts & Culture",
         icon: Megaphone,
         points: [
-          "Digital Marketing",
-          "Consumer Behaviour",
-          "Brand Management",
+          "Creative Achievement",
+          "Cultural Contribution",
+          "Artistic Excellence",
         ],
       },
       {
-        id: "finance",
-        title: "Finance",
-        icon: DollarSign,
-        points: [
-          "Corporate Finance",
-          "Investment Management",
-          "Financial Strategy",
-        ],
-      },
-      {
-        id: "hr",
-        title: "Human Resource Management",
-        icon: Users,
-        points: [
-          "Talent Management",
-          "Organizational Development",
-          "HR Analytics",
-        ],
-      },
-      {
-        id: "operations",
-        title: "Operations",
-        icon: Settings,
-        points: [
-          "Supply Chain Management",
-          "Logistics",
-          "Quality Management",
-        ],
-      },
-      {
-        id: "tech",
+        id: "technology",
         title: "Technology & Innovation",
         icon: Cpu,
         points: [
-          "Business Analytics",
-          "Artificial Intelligence",
+          "Tech Innovation",
           "Digital Transformation",
+          "Future Leadership",
+        ],
+      },
+      {
+        id: "social",
+        title: "Social Impact & Community",
+        icon: Users,
+        points: [
+          "Community Development",
+          "Social Contribution",
+          "Impact Leadership",
         ],
       },
     ],
@@ -297,103 +297,91 @@ function HonaryDoctorate() {
     headingAccent: "It Works",
 
     subheading:
-      "From your first profile evaluation to receiving your doctorate — a structured, guided path built around your professional life.",
+      "From your first profile submission to receiving your honorary doctorate — a prestigious path recognizing your lifetime of achievement.",
 
     steps: [
       {
         id: 1,
-        title: "Profile Evaluation",
-        shortTitle: "Profile Evaluation",
-        desc: "We assess your professional background, achievements, and academic readiness for the DBA program.",
+        title: "Profile Submission",
+        shortTitle: "Profile Submission",
+        desc: "Submit your professional achievements, contributions, and impact across your career journey.",
       },
       {
         id: 2,
-        title: "Achievement Evaluation",
-        shortTitle: "University Shortlisting",
-        desc: "We match you with accredited universities that align with your goals, industry, and research interests.",
+        title: "Achievement Review",
+        shortTitle: "Achievement Review",
+        desc: "Our panel evaluates your lifetime contributions, leadership, and impact in your field.",
       },
       {
         id: 3,
-        title: "Documentation Review",
-        shortTitle: "Admission Process",
-        desc: "Our team guides you through every step of the application and enrollment process seamlessly.",
+        title: "Institution Matching",
+        shortTitle: "Institution Matching",
+        desc: "We identify prestigious global institutions that recognize and honor your specific achievements.",
       },
       {
         id: 4,
-        title: "Nomination Guidance",
-        shortTitle: "Research Proposal",
-        desc: "You craft a focused research proposal with mentorship from our academic committee.",
+        title: "Nomination Process",
+        shortTitle: "Nomination Process",
+        desc: "Your profile is formally nominated to partner universities for honorary recognition.",
       },
       {
         id: 5,
-        title: "Recognition Consideration",
-        shortTitle: "Coursework & Research",
-        desc: "Engage in rigorous coursework and begin your applied research journey under expert supervision.",
+        title: "University Approval",
+        shortTitle: "University Approval",
+        desc: "Distinguished universities review and approve your honorary doctorate candidacy.",
       },
       {
         id: 6,
-        title: "Award & Convocation Ceremony",
-        shortTitle: "Applied Research",
-        desc: "Conduct real-world business research that creates measurable impact in your industry.",
+        title: "Award & Recognition",
+        shortTitle: "Award & Recognition",
+        desc: "Receive your honorary doctorate credential and join an elite community of global leaders.",
       },
-      // {
-      //   id: 7,
-      //   title: "Final Thesis / Project",
-      //   shortTitle: "Final Thesis",
-      //   desc: "Submit your doctoral thesis or capstone project for formal academic evaluation.",
-      // },
-      // {
-      //   id: 8,
-      //   title: "Doctoral Qualification Completion",
-      //   shortTitle: "Doctorate Awarded",
-      //   desc: "Your DBA is formally awarded and all credentials are dispatched within 30 days.",
-      // },
     ],
   };
 
   const whyInscribeData = {
-    heading: "How Inscribe IQ Supports Your DBA Journey",
+    heading: "How Inscribe IQ Supports Your Honorary Doctorate Journey",
 
     subheading:
-      "Most DBA aspirants come to us after struggling alone — unsure which university fits, uncertain about proposals, and overwhelmed by research. Inscribe IQ is built differently. Not just guidance — but a full-stack support system for every stage of your doctoral journey.",
+      "Most distinguished leaders approach honorary recognition without proper guidance—unsure which institutions align with their achievements, uncertain about nomination processes, and lacking expert support. Inscribe IQ is built differently. Not just guidance — but a full-stack support system for every stage of your honorary recognition journey.",
 
     cards: {
       stat: {
-        eyebrow: "Program Guidance",
-        body: "Eligibility checks & university shortlisting — matched to your profile and research goals.",
-        stat: "<10",
-        statLabel: "Days to University Shortlist",
-        badgeText: "Admission\nAssistance",
+        eyebrow: "Achievement Evaluation",
+        body: "We thoroughly assess your achievements & match you with prestigious institutions worldwide.",
+        stat: "<21",
+        statLabel: "Days to Institution Match",
+        badgeText: "Recognition\nGuidance",
       },
 
       imageCard: {
-        badge: "Research Support",
-        title: "Thesis & Proposal That Stands Out.",
-        sub: "From research topic selection to final doctoral report — guided at every step.",
-        tags: ["Proposal Dev", "SPSS / AMOS", "SmartPLS"],
+        badge: "Profile Excellence",
+        title: "Your Achievement Story, Perfectly Crafted.",
+        sub: "From career narrative to impact documentation — presented at every stage.",
+        tags: ["Profile Dev", "Achievement Doc", "Impact Analysis"],
         img: "/home/hero-1.jpg",
       },
 
       lightCard: {
-        eyebrow: "Application Assistance",
-        title: "Documentation. Admissions. Done Right.",
-        accent: "End-to-end support from SOP to offer letter",
-        body: "We handle every document, every deadline, and every university requirement — so you focus on your research vision, not paperwork.",
-        pills: ["SOP Writing", "LOR Guidance", "Interview Prep"],
+        eyebrow: "Institution Support",
+        title: "Nomination. Recognition. Credentials.",
+        accent: "End-to-end support from nomination to diploma",
+        body: "We handle every institutional requirement, every deadline, and all documentation — so you focus on your legacy, not paperwork.",
+        pills: ["Nomination Prep", "Credential Verification", "Documentation"],
       },
 
       darkCard1: {
-        badge: "Data Analysis",
-        title: "SPSS. SmartPLS. AMOS. R.",
-        accent: "Your data, expertly analysed",
-        body: "We run your quantitative & qualitative analysis and walk you through every output — ready for your viva.",
+        badge: "Global Network",
+        title: "Prestigious Institutions. Worldwide Recognition.",
+        accent: "Your doctorate, globally honoured",
+        body: "We connect you with top-tier universities across the world and guide you through their entire recognition process.",
       },
 
       darkCard2: {
-        badge: "Publication Support",
-        title: "Research Published. Career Advanced.",
-        accent: "Journals & conferences, covered",
-        body: "Get your research submitted to indexed journals and conferences with expert editorial guidance.",
+        badge: "Legacy Building",
+        title: "Recognition Certified. Impact Amplified.",
+        accent: "Legacy documentation & certification",
+        body: "Get your honorary doctorate formally certified with professional documentation that positions you as a global leader.",
       },
     },
   };
@@ -401,15 +389,15 @@ function HonaryDoctorate() {
   const benefitsData = {
     eyebrow: "Benefits",
 
-    heading: "Why Business Leaders Choose DBA Programs",
+    heading: "Why Distinguished Leaders Pursue Honorary Doctorate",
 
     subheading:
-      "Elevate your leadership, strengthen your credibility.",
+      "Elevate your global recognition, strengthen your legacy.",
 
     items: [
       {
         id: "executive-credibility",
-        image: "/service/hero1.png",
+        image: "/service/hero1.jpg",
         name: "Executive Credibility",
         role: "Professional Recognition",
         quote:
@@ -417,7 +405,7 @@ function HonaryDoctorate() {
       },
       {
         id: "thinking",
-        image: "/service/hero2.png",
+        image: "/service/hero1.jpg",
         name: "Strategic Thinking",
         role: "Education Consultant",
         quote:
@@ -425,7 +413,7 @@ function HonaryDoctorate() {
       },
       {
         id: "global",
-        image: "/service/hero3.png",
+        image: "/service/hero3.jpg",
         name: "Global Recognition",
         role: "Education Consultant",
         company: "Founder, HopeBridge Foundation",
@@ -434,7 +422,7 @@ function HonaryDoctorate() {
       },
       {
         id: "consulting",
-        image: "/service/hero4.png",
+        image: "/service/hero5.jpg",
         name: "Consulting Opportunities",
         role: "Mindset Coach",
         quote:
@@ -535,65 +523,65 @@ const whatIsHonaryData = {
 
 
   const careerOutcomesData = {
-    tagline: "CAREER OUTCOMES",
+    tagline: "RECOGNITION OUTCOMES",
 
-    heading: "Career Opportunities After DBA",
+    heading: "Your Honorary Doctorate Opens Doors",
 
     description:
-      "A DBA empowers experienced professionals to move into leadership, consulting, entrepreneurship, and academic roles through advanced business knowledge and applied research expertise.",
+      "An Honorary Doctorate positions you as a globally recognized leader, elevating your influence, credibility, and opportunities across industries, academia, and society.",
 
     careers: [
       {
-        id: "ceo",
-        title: "Chief Executive Officer",
+        id: "executive",
+        title: "Board Leadership",
         description:
-          "Lead organizations with strategic vision and research-driven decision making.",
+          "Sit on prestigious corporate and nonprofit boards as a recognized thought leader.",
       },
       {
-        id: "director",
-        title: "Managing Director",
+        id: "advisory",
+        title: "Strategic Advisory",
         description:
-          "Oversee business growth, operations, and enterprise-wide transformation.",
+          "Serve as a trusted advisor to C-suite executives and government bodies.",
       },
       {
-        id: "consultant",
-        title: "Business Consultant",
+        id: "speaker",
+        title: "Keynote Speaker",
         description:
-          "Provide evidence-based solutions to complex business challenges.",
+          "Command global platforms at international conferences and prestigious forums.",
       },
       {
-        id: "strategy",
-        title: "Strategy Consultant",
+        id: "mentor",
+        title: "Mentorship & Coaching",
         description:
-          "Shape long-term business strategy using advanced analytical frameworks.",
+          "Guide the next generation through executive coaching and mentorship programs.",
       },
       {
         id: "academic",
-        title: "Academic Leadership",
+        title: "Academic Positions",
         description:
-          "Move into teaching, research, and executive education leadership roles.",
+          "Hold visiting professor roles and academic leadership positions worldwide.",
       },
       {
-        id: "entrepreneur",
-        title: "Entrepreneur",
+        id: "innovation",
+        title: "Innovation Leadership",
         description:
-          "Launch and scale ventures using doctoral-level business expertise.",
+          "Lead industry transformation and establish your thought leadership platform.",
       },
     ],
 
     featuredImage:
       "/service/career.jpg",
 
-    featuredBadge: "Executive Leadership",
+    featuredBadge: "Global Recognition",
 
-    featuredTitle: "Transform Experience Into Executive Authority",
+    featuredTitle: "Your Achievements, Globally Honored",
 
     featuredDescription:
-      "A Doctor of Business Administration equips professionals with advanced strategic thinking, leadership expertise, and research-driven decision-making capabilities that open doors to high-impact roles across industries.",
+      "An Honorary Doctorate from a globally recognized institution validates your lifetime of achievement, opening doors to international influence, legacy building, and unprecedented opportunities across industries and continents.",
 
-    primaryCta: "Explore Program",
+    primaryCta: "Begin Your Recognition",
 
-    secondaryCta: "Visit Site",
+    secondaryCta: "Learn More",
   };
   return (
     <PageViewer>
@@ -610,7 +598,7 @@ const whatIsHonaryData = {
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData} />
       <CareerOutcomes {...careerOutcomesData} />
-      <LeadGeneration />
+      <LeadGeneration programName="Honorary Doctorate" />
     </PageViewer>
   );
 }

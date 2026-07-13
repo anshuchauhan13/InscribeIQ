@@ -21,6 +21,7 @@ import {
   Cpu,
   Briefcase,
 } from "lucide-react";
+import Gallery from "../components/Doctorate/Gallery";
 // import Process from '../components/Doctorate/Process';
 // import FAQ from '../components/Doctorate/FAQ';
 
@@ -41,10 +42,10 @@ function PhD() {
     titleLine2: "& Research Aspirants",
     duration: "UGC Recognized",
 
-    imageSrc1: "/service/hero1.png",
+    imageSrc1: "/service/hero1.jpg",
     imageSrc2: "/home/graduatephd.jpg",
     imageSrc3: "/home/graduate1.jpg",
-    imageSrc4: "/service/hero4.png",
+    imageSrc4: "/service/hero5.jpg",
 
     imageAlt1: "Person 1",
     imageAlt2: "Person 2",
@@ -86,12 +87,12 @@ function PhD() {
   const whatIsCourseData = {
     tagline: "What is a PhD?",
 
-    heading: "What Makes a PhD Different from a Traditional Doctorate?",
+    heading: "What Makes a PhD Different from a Professional Doctorate?",
 
     description: [
-      "A Doctor of Business Administration (DBA) is a professional doctoral degree designed for experienced business professionals who want to solve real-world business challenges through applied research.",
+      "A PhD (Doctor of Philosophy) is the highest academic degree, designed for scholars who want to make an original contribution to knowledge through rigorous, in-depth research.",
 
-      "Unlike traditional academic doctorates, DBA programs focus on practical business impact, leadership, innovation, and organizational transformation.",
+      "Unlike professional doctorates, a PhD focuses on advancing theory, developing new frameworks, and building a long-term academic and research career.",
     ],
 
 
@@ -100,15 +101,15 @@ function PhD() {
 
     badge: {
       title: "Designed for",
-      highlight: "Impact",
+      highlight: "Depth",
       subtitle: "Built for",
-      emphasis: "Leaders",
+      emphasis: "Researchers",
       icon: GraduationCap,
     },
 
     comparison: {
       left: {
-        title: "DBA",
+        title: "Professional Doctorate",
         icon: Briefcase,
         items: [
           {
@@ -131,7 +132,7 @@ function PhD() {
       },
 
       right: {
-        title: "Traditional PhD",
+        title: "PhD",
         icon: GraduationCap,
         items: [
           {
@@ -157,8 +158,8 @@ function PhD() {
     highlights: [
       {
         icon: Target,
-        title: "Practical. Relevant.",
-        description: "Industry-focused research",
+        title: "Original. Rigorous.",
+        description: "Knowledge-focused research",
       },
     ],
   };
@@ -190,17 +191,17 @@ function PhD() {
 
     images: [
       {
-        src: "/service/hero1.png",
+        src: "/service/hero1.jpg",
         alt: "Student",
         shape: "circle",
       },
       {
-        src: "/service/hero2.png",
+        src: "/service/hero1.jpg",
         alt: "Graduate",
         shape: "circle",
       },
       {
-        src: "/service/hero4.png",
+        src: "/service/hero5.jpg",
         alt: "Campus",
         shape: "rounded",
       },
@@ -209,7 +210,7 @@ function PhD() {
 
   const popularCourseData = {
     heading: "Popular PhD Specializations",
-    highlight: "DBA Specializations",
+    highlight: "PhD Specializations",
     accentColor: "bg-purple-700",
     columns: 3,
 
@@ -292,7 +293,7 @@ function PhD() {
         id: 1,
         title: "Profile Evaluation",
         shortTitle: "Profile Evaluation",
-        desc: "We assess your professional background, achievements, and academic readiness for the DBA program.",
+        desc: "We assess your professional background, achievements, and academic readiness for the PhD program.",
       },
       {
         id: 2,
@@ -334,7 +335,7 @@ function PhD() {
         id: 8,
         title: "Final Submission & Viva Preparation",
         shortTitle: "Doctorate Awarded",
-        desc: "Your DBA is formally awarded and all credentials are dispatched within 30 days.",
+        desc: "Your PhD is formally awarded and all credentials are dispatched within 30 days.",
       },
     ],
   };
@@ -344,7 +345,7 @@ function PhD() {
     heading: "Why Choose Us?",
 
     subheading:
-      "Pursuing a PhD or DBA can be overwhelming without the right guidance. From university selection to thesis completion and publication, our experts provide end-to-end academic support designed to help you succeed with confidence.",
+      "Pursuing a PhD can be overwhelming without the right guidance. From university selection to thesis completion and publication, our experts provide end-to-end academic support designed to help you succeed with confidence.",
 
     cards: {
       stat: {
@@ -405,7 +406,7 @@ function PhD() {
     items: [
       {
         id: "Academic promotions",
-        image: "/service/hero1.png",
+        image: "/service/hero1.jpg",
         name: "Academic promotions",
         role: "Professional Recognition",
         quote:
@@ -413,7 +414,7 @@ function PhD() {
       },
       {
         id: "thinking",
-        image: "/service/hero2.png",
+        image: "/service/hero1.jpg",
         name: "Professor / lecturer opportunities",
         role: "Education Consultant",
         quote:
@@ -421,7 +422,7 @@ function PhD() {
       },
       {
         id: "global",
-        image: "/service/hero3.png",
+        image: "/service/hero3.jpg",
         name: "Research career growth",
         role: "Education Consultant",
         company: "Founder, HopeBridge Foundation",
@@ -430,7 +431,7 @@ function PhD() {
       },
       {
         id: "consulting",
-        image: "/service/hero4.png",
+        image: "/service/hero5.jpg",
         name: "Better credibility",
         role: "Mindset Coach",
         quote:
@@ -483,7 +484,7 @@ function PhD() {
         iconType: "global",
         title: "Global Recognition",
         description:
-          "A DBA is accepted across borders — opening doors in multinational corporations, international advisory roles, and top-tier academic institutions.",
+          "A PhD is accepted across borders — opening doors in universities, research institutions, and top-tier organisations worldwide.",
       },
       {
         id: 4,
@@ -500,8 +501,8 @@ function PhD() {
 
   heading: "Career Opportunities After a PhD",
 
-  description:
-    "A PhD prepares scholars and professionals for careers in research, academia, innovation, leadership, and specialized industries by developing advanced research expertise and critical thinking skills.",
+    description:
+      "A PhD empowers scholars and professionals to move into research, academic leadership, consulting, and specialist roles through advanced expertise and original research.",
 
   careers: [
     {
@@ -548,13 +549,22 @@ function PhD() {
 
   featuredTitle: "Transform Knowledge Into Impact",
 
-  featuredDescription:
-    "A PhD equips scholars with advanced research skills, analytical expertise, and subject mastery, enabling them to drive innovation, contribute to global knowledge, and excel in academia, research organizations, industry, and leadership roles.",
+    featuredDescription:
+      "A PhD equips scholars with advanced research expertise, critical thinking, and subject authority that open doors to high-impact roles across academia and industry.",
 
   primaryCta: "Explore Program",
 
-  secondaryCta: "Apply Now",
-};
+    secondaryCta: "Visit Site",
+  };
+
+  const galleryImages = [
+    { src: "/service/Gallery1.jpeg", alt: "PhD Research Presentation" },
+    { src: "/service/gallery2.jpeg", alt: "Academic Collaboration" },
+    { src: "/service/gallery3.jpeg", alt: "Thesis Defense" },
+    { src: "/service/gallery4.jpeg", alt: "Research Laboratory" },
+    { src: "/service/gallery5.jpeg", alt: "University Campus" },
+    { src: "/service/gallery6.jpeg", alt: "Academic Achievement" },
+  ];
   return (
     <PageViewer>
       <div>
@@ -566,11 +576,12 @@ function PhD() {
       <PopularCourse {...popularCourseData} />
       <Journey {...journeyData} />
       <WhyInscribe {...whyInscribeData} />
+      <Gallery images={galleryImages} />
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData} />
       <UniversityPartnership/>
       <CareerOutcomes {...careerOutcomesData} />
-      <LeadGeneration />
+      <LeadGeneration programName="PhD" />
     </PageViewer>
   );
 }

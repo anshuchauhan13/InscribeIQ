@@ -48,7 +48,7 @@ function PaymentOption() {
           transition={{ type: "spring", stiffness: 80, damping: 18 }}
         >
           <motion.img
-            src="/payment/card-image.png"
+            src="/payment/card-image.jpg"
             alt="Secure online payment cards"
             className="w-full max-w-lg select-none"
             animate={{ y: [0, -12, 0] }}

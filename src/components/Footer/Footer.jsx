@@ -1,78 +1,108 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { Separator } from "@/components/ui/separator";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
+import {
+  IconBrandWhatsapp,
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+} from "@tabler/icons-react";
 import SectionViewer from "../common/SectionViewer";
+import { sendLead } from "@/lib/emailjs";
+import { CONTACT, waLink } from "@/lib/contact";
 
-const FacebookIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-);
-
-const YoutubeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-    <polygon fill="#0f172a" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-  </svg>
-);
-
-const XIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+const socials = [
+  { icon: IconBrandFacebook, label: "Facebook", href: CONTACT.socials.facebook },
+  { icon: IconBrandInstagram, label: "Instagram", href: CONTACT.socials.instagram },
+  { icon: IconBrandLinkedin, label: "LinkedIn", href: CONTACT.socials.linkedin },
+];
 
 const services = [
-  { label: "Publication", href: "#" },
-  { label: "Thesis", href: "#" },
-  { label: "Research", href: "#" },
-  { label: "University Partnership", href: "#" },
-  { label: "Honorary Doctorate", href: "#" },
-  { label: "Admissions", href: "#" },
+  { label: "PhD", href: "/courses/phd" },
+  { label: "DBA", href: "/courses/dba" },
+  { label: "Honorary Doctorate", href: "/courses/honary_doctorate" },
+  { label: "Publications", href: "/services?domain=publications" },
+  { label: "Thesis Writing", href: "/writing/thesis" },
+  { label: "Research Papers", href: "/writing/research_paper" },
 ];
 
 const company = [
-  { label: "About", href: "#" },
-  { label: "Contact", href: "#" },
-  { label: "Careers", href: "#" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact_us" },
+  { label: "Partner with Us", href: "/partner_with_us" },
 ];
 
 const resources = [
-  { label: "Blogs", href: "#" },
-  { label: "Guides", href: "#" },
-  { label: "FAQs", href: "#" },
+  { label: "Free Consultation", href: "/consultation" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Payment", href: "/payment" },
 ];
+
+// Internal routes use react-router <Link> for SPA navigation; anything else
+// (mailto:, tel:, external, or a bare #) falls back to a plain anchor.
+const FooterLink = ({ href, className, children }) =>
+  href?.startsWith("/") ? (
+    <Link to={href} className={className}>
+      {children}
+    </Link>
+  ) : (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  );
 
 const contactDetails = [
   {
+    icon: IconBrandWhatsapp,
+    label: `Enquiry: ${CONTACT.enquiry.display}`,
+    href: waLink(),
+    external: true,
+  },
+  {
     icon: Phone,
-    label: "+91 87877 34234",
-    href: "tel:+918787734234",
+    label: `Support: ${CONTACT.support.display}`,
+    href: `tel:${CONTACT.support.tel}`,
   },
   {
     icon: Mail,
-    label: "inscribe.iq@example.com",
-    href: "mailto:inscribe.iq@example.com",
+    label: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
   },
   {
     icon: MapPin,
-    label: "Rajendra Nagar, Ghaziabad, India 201007.",
-    href: "https://maps.google.com/?q=Rajendra+Nagar+Ghaziabad+India+201007",
+    label: CONTACT.address,
+    href: CONTACT.mapUrl,
+    external: true,
   },
 ];
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     const value = email.trim();
     if (!value) return;
-    toast.success("You're subscribed!", {
-      description: "We'll keep you posted on academic insights & updates.",
-    });
-    setEmail("");
+    setSubmitting(true);
+    try {
+      await sendLead(
+        "Newsletter Subscription",
+        { email: value },
+        "Thank you for subscribing to Inscribe IQ. You'll now receive our latest academic insights and updates straight to your inbox."
+      );
+      toast.success("You're subscribed!", {
+        description: "We'll keep you posted on academic insights & updates.",
+      });
+      setEmail("");
+    } catch (err) {
+      console.error(err);
+      toast.error("Subscription failed. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -109,87 +139,104 @@ const Footer = () => {
       <SectionViewer>
         <div className="py-6 md:py-12 xl:py-18">
           {/* Main grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-10">
             {/* Col 1: Brand */}
-            <div className="flex flex-col gap-4 col-span-2">
+            <div className="flex flex-col gap-4 col-span-2 md:col-span-3">
               <div className="flex items-center gap-2">
                 <div className="h-8 w-auto">
-                  <a href="/" className="shrink-0">
+                  <Link to="/" className="shrink-0">
                     <img
                       src="/faviconIcon.png"
                       alt="Logo"
                       className="h-10 md:h-12 w-auto"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <span className="text-lg font-bold tracking-tight text-white">
                   Inscribe IQ
                 </span>
               </div>
-              <p className="text-sm text-slate-400 leading-relaxed sm:max-w-sm">
+              <p className="text-sm md:text-base text-slate-400 leading-relaxed sm:max-w-sm">
                 Empowering your ideas with expert writing and publishing
                 solutions. Let's create impactful stories together—crafted with
                 precision, delivered with excellence.
               </p>
               <div className="flex items-center gap-3 mt-1">
-                {[
-                  { icon: <FacebookIcon />, label: "Facebook" },
-                  { icon: <YoutubeIcon />, label: "YouTube" },
-                  { icon: <XIcon />, label: "X" },
-                ].map(({ icon, label }) => (
+                {socials.map(({ icon: Icon, label, href }) => (
                   <a
                     key={label}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
                     aria-label={label}
-                    className="h-8 w-8 rounded-md border border-slate-700 flex items-center justify-center text-white hover:text-white hover:border-slate-500 transition-colors"
+                    className="h-9 w-9 rounded-lg border border-slate-700 flex items-center justify-center text-white transition-colors hover:border-light-blue hover:bg-light-blue/10 hover:text-light-blue"
                   >
-                    {icon}
+                    <Icon className="h-[18px] w-[18px]" stroke={1.75} />
                   </a>
                 ))}
               </div>
             </div>
 
+            {/* Col: Services */}
+            <div className="col-span-1 md:col-span-2">
+              <h3 className="text-base md:text-xl font-semibold text-white mb-4 tracking-wide">
+                Services
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {services.map(({ label, href }) => (
+                  <li key={label}>
+                    <FooterLink
+                      href={href}
+                      className="text-sm md:text-base text-slate-400 hover:text-white transition-colors"
+                    >
+                      {label}
+                    </FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Col: Company */}
-            <div>
-              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+            <div className="col-span-1 md:col-span-2">
+              <h3 className="text-base md:text-xl font-semibold text-white mb-4 tracking-wide">
                 Company
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {company.map(({ label, href }) => (
                   <li key={label}>
-                    <a
+                    <FooterLink
                       href={href}
-                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                      className="text-sm md:text-base text-slate-400 hover:text-white transition-colors"
                     >
                       {label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Col: Resources */}
-            <div>
-              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+            <div className="col-span-1 md:col-span-2">
+              <h3 className="text-base md:text-xl font-semibold text-white mb-4 tracking-wide">
                 Resources
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {resources.map(({ label, href }) => (
                   <li key={label}>
-                    <a
+                    <FooterLink
                       href={href}
-                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                      className="text-sm md:text-base text-slate-400 hover:text-white transition-colors"
                     >
                       {label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Col: Get in Touch */}
-            <div className="col-span-2 sm:col-span-1">
-              <h3 className="text-md font-semibold text-white mb-4 tracking-wide">
+            <div className="col-span-2 md:col-span-3">
+              <h3 className="text-base md:text-xl font-semibold text-white mb-4 tracking-wide">
                 Get in Touch
               </h3>
 
@@ -197,7 +244,7 @@ const Footer = () => {
               <form onSubmit={handleSubscribe} className="mb-6">
                 <label
                   htmlFor="footer-email"
-                  className="mb-2 block text-xs leading-relaxed text-slate-400"
+                  className="mb-2 block text-xs md:text-sm leading-relaxed text-slate-400"
                 >
                   Subscribe for academic insights & updates.
                 </label>
@@ -209,14 +256,15 @@ const Footer = () => {
                     placeholder="you@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder:text-slate-500 outline-none"
+                    className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm md:text-base text-white placeholder:text-slate-500 outline-none"
                   />
                   <button
                     type="submit"
-                    className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] px-3.5 py-2 text-sm font-semibold text-white shadow-sm shadow-light-blue/30 transition-transform duration-200 hover:-translate-y-0.5"
+                    disabled={submitting}
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-b from-[#6B52F9] to-[#8B79F2] px-3.5 py-2 text-sm md:text-base font-semibold text-white shadow-sm shadow-light-blue/30 transition-transform duration-200 hover:-translate-y-0.5 disabled:opacity-60"
                   >
                     <Send className="h-3.5 w-3.5" />
-                    Join
+                    {submitting ? "…" : "Join"}
                   </button>
                 </div>
               </form>
@@ -229,11 +277,11 @@ const Footer = () => {
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel={href.startsWith("http") ? "noreferrer" : undefined}
-                      className="group flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
+                      className="group flex items-center gap-3 text-sm md:text-base text-slate-400 transition-colors hover:text-white"
                     >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-light-blue transition-colors group-hover:border-light-blue/50 group-hover:bg-slate-800/70">
-                        <Icon className="h-4 w-4" />
-                      </span>
+                      {/* <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-light-blue transition-colors group-hover:border-light-blue/50 group-hover:bg-slate-800/70"> */}
+                        <Icon className="h-4 w-4 text-secondary/70" />
+                      {/* </span> */}
                       <span className="min-w-0 break-words">{label}</span>
                     </a>
                   </li>
@@ -248,15 +296,15 @@ const Footer = () => {
             <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-[#0f172a] to-transparent" />
             <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f172a] to-transparent" />
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs md:text-sm text-slate-400">
             <span>©2026 InscribeIQ • All right reserved.</span>
             <div className="flex items-center gap-5">
-              <a href="#" className="hover:text-slate-300 transition-colors">
+              <Link to="/privacy_policy" className="hover:text-slate-300 transition-colors cursor-pointer">
                 Privacy Policy
-              </a>
-              <a href="#" className="hover:text-slate-300 transition-colors">
-                Terms of Services
-              </a>
+              </Link>
+              <Link to="/refund_policy" className="hover:text-slate-300 transition-colors cursor-pointer">
+                Refund Policy
+              </Link>
             </div>
           </div>
         </div>
@@ -267,14 +315,14 @@ const Footer = () => {
         at any screen size; overflow-hidden on <footer> clips any excess.
         */}
         <div
-          className="pointer-events-none select-none overflow-hidden translate-y-4 md:translate-y-16"
+          className="absolute -bottom-20 left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden"
           aria-hidden="true"
         >
           <span
             className="block whitespace-nowrap font-extrabold leading-none tracking-tight md:tracking-tighter text-transparent bg-clip-text"
             style={{
               fontSize: "clamp(3rem, 19vw, 22rem)",
-              opacity: 0.2,
+              opacity: 0.1,
               filter: "url(#footer-noise-filter)",
               backgroundImage:
                 "linear-gradient(to bottom, #8D7CB1A6 0%, #5B5A5D 100%)",

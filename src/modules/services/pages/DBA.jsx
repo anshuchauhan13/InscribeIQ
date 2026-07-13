@@ -40,7 +40,7 @@ function DBA() {
     imageSrc1: "/service/MBA.jpg",
     imageSrc2: "/service/growth.jpg",
     imageSrc3: "/service/hero4.jpg",
-    imageSrc4: "/service/hero4.png",
+    imageSrc4: "/service/hero5.jpg",
 
     imageAlt1: "CEO in boardroom",
     imageAlt2: "Business executive presenting",
@@ -198,25 +198,25 @@ function DBA() {
       label: "Professionals passionate about solving real-world business challenges through research",
     },
   ],
+    images: [
+      {
+        src: "/service/hero1.jpg",
+        alt: "Student",
+        shape: "circle",
+      },
+      {
+        src: "/service/BBA.jpg",
+        alt: "Graduate",
+        shape: "circle",
+      },
+      {
+        src: "/service/mbagrads.jpg",
+        alt: "Campus",
+        shape: "rounded",
+      },
+    ],
+  };
 
-  images: [
-    {
-      src: "/service/hero1.png",
-      alt: "Business Leader",
-      shape: "circle",
-    },
-    {
-      src: "/service/BBA.png",
-      alt: "Research Professional",
-      shape: "circle",
-    },
-    {
-      src: "/service/mbagrads.jpg",
-      alt: "Doctoral Scholars",
-      shape: "rounded",
-    },
-  ],
-};
   const popularCourseData = {
     heading: "Popular DBA Specializations",
     highlight: "DBA Specializations",
@@ -423,7 +423,7 @@ function DBA() {
       },
       {
         id: "global",
-        image: "/service/hero3.png",
+        image: "/service/hero3.jpg",
         name: "Global Recognition",
         role: "Education Consultant",
         company: "Founder, HopeBridge Foundation",
@@ -432,7 +432,7 @@ function DBA() {
       },
       {
         id: "consulting",
-        image: "/service/hero4.png",
+        image: "/service/hero5.jpg",
         name: "Consulting Opportunities",
         role: "Mindset Coach",
         quote:
@@ -572,7 +572,7 @@ function DBA() {
       <Benefit {...benefitsData} />
       <WhyGlobal {...whyChooseUsData} />
       <CareerOutcomes {...careerOutcomesData} />
-      <LeadGeneration />
+      <LeadGeneration programName="DBA" />
     </PageViewer>
   );
 }

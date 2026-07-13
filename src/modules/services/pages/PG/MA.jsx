@@ -1,4 +1,3 @@
-import React from "react";
 import PageViewer from "@/components/common/PageViewer";
 import HeroSection from "../../components/PG/HeroSection";
 import ProgramOverview from "../../components/PG/ProgramOverview";
@@ -85,7 +84,7 @@ const whyInscribeData = {
       title: "Multiple University Options",
       sub: "Choose from top reputed universities for M.A.",
       tags: ["Psychology", "Sociology", "Political Science"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {
@@ -198,9 +197,9 @@ const programOverviewData = {
   phone: "+91 123 456 7890",
 
   images: [
-    "/service/hero1.png",
-    "/service/hero2.png",
-    "/service/hero3.png",
+    "/service/hero1.jpg",
+    "/service/hero1.jpg",
+    "/service/hero3.jpg",
   ],
 
   features: [

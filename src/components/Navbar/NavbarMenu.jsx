@@ -130,11 +130,11 @@ export const NavbarMenu = () => {
 
             {/* Right Section */}
             <div className="flex items-center justify-end gap-2 flex-1">
-              <Button size="lg" variant="primary" className="hidden lg:inline-flex px-5 rounded-full font-semibold" onClick={() => navigate("/payment")}>
+              <Button size="lg" variant="primary" className="hidden lg:inline-flex px-5 rounded-full font-semibold xl:!text-base" onClick={() => navigate("/payment")}>
                 Pay Now
               </Button>
 
-              <Button size="lg" variant="gradiant" className="hidden lg:inline-flex px-5 rounded-full" onClick={() => navigate("/contact_us")}>
+              <Button size="lg" variant="gradiant" className="hidden lg:inline-flex px-5 rounded-full xl:!text-base" onClick={() => navigate("/contact_us")}>
                 Contact Us
                 <ArrowRight />
               </Button>

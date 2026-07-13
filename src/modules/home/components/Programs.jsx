@@ -21,7 +21,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Foundations of Artificial Intelligence",
     category: "AI & ML",
-    duration: "8 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/ai1.jpg",
     slug: "foundations-of-artificial-intelligence",
@@ -30,7 +30,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Applied Machine Learning",
     category: "AI & ML",
-    duration: "10 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/machinelearning.jpg",
     slug: "applied-machine-learning",
@@ -39,7 +39,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Using ChatGPT and AI Tools for Teaching",
     category: "Education",
-    duration: "6 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/aitools.jpg",
     slug: "chatgpt-ai-tools-for-teaching",
@@ -48,7 +48,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Cybersecurity Fundamentals and Network Defense",
     category: "Cybersecurity",
-    duration: "10 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/cybersecurity.jpg",
     slug: "cybersecurity-network-defense",
@@ -57,7 +57,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in FinTech Ecosystems, Digital Banking, and Payment Systems",
     category: "FinTech",
-    duration: "8 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/fintech.jpg",
     slug: "fintech-digital-banking",
@@ -66,7 +66,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Python for Engineering and Applied Sciences",
     category: "Engineering",
-    duration: "8 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/codingman.jpg",
     slug: "python-for-engineering",
@@ -75,7 +75,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Applied Data Mining Techniques",
     category: "Data Science",
-    duration: "8 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/data.jpg",
     slug: "applied-data-mining",
@@ -84,7 +84,7 @@ const PROGRAMS = [
     institution: "InscribeIQ Certification Academy",
     title: "Certificate Advanced Program in Database Systems and SQL for Enterprise Application",
     category: "Data Science",
-    duration: "8 Weeks",
+    duration: "4 Weeks",
     feature: "Live Online + Industry Certificate",
     image: "/home/databse.jpg",
     slug: "database-systems-sql",
@@ -107,7 +107,7 @@ function Programs() {
       : PROGRAMS.filter((p) => p.category === active);
 
   return (
-    <SectionViewer className="py-16 md:py-24">
+    <SectionViewer id="programs" className="py-16 md:py-24">
       <div className="flex flex-col gap-10">
         {/* Header */}
         <motion.div

@@ -1,164 +1,109 @@
-import { ArrowDown } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { motion } from "motion/react";
 import SectionViewer from "@/components/common/SectionViewer";
 import SectionLabel from "@/components/common/SectionLabel";
 
+const EASE = [0.22, 0.61, 0.36, 1];
 
-// ─── SUB-COMPONENTS ────────────────────────────────────────────────────────────
+const gridVar = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
 
-function LearnMoreBtn({ dark = false }) {
+const cardVar = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+};
+
+/** A single clean feature card — uniform across the grid. */
+function FeatureCard({ item }) {
   return (
-    <button
-      className={`inline-flex items-center gap-2 text-[13px] font-bold underline underline-offset-2 transition-opacity hover:opacity-75 border-none bg-transparent cursor-pointer ${
-        dark ? "text-white" : "text-[#0d3322]"
-      }`}
+    <motion.div
+      variants={cardVar}
+      className="group flex flex-col rounded-2xl border border-primary/10 bg-white p-7 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-light-blue/40 hover:shadow-[0_22px_44px_-26px_rgba(50,15,140,0.28)]"
     >
-      Learn More
-      <span className="w-7 h-7 rounded-full bg-light-blue flex items-center justify-center flex-shrink-0">
-        <ArrowDown size={13} color="#fff" strokeWidth={2.5} />
-      </span>
-    </button>
-  );
-}
-
-/** Card 1 — Stat card */
-function StatCard({ data }) {
-  return (
-    <div className="rounded-[18px] bg-white flex flex-col justify-between p-7 lg:row-span-2 min-h-[280px] lg:min-h-[320px]">
-      <div>
-        <p className="text-[10px] font-semibold tracking-[.18em] uppercase text-primary mb-3">
-          {data.eyebrow}
+      <div className="mb-5 h-1 w-8 rounded-full bg-gradient-to-r from-light-blue to-blue transition-all duration-300 group-hover:w-12" />
+      {item.label && (
+        <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[.18em] text-light-blue">
+          {item.label}
         </p>
-        <p className="text-[15px] font-medium text-black leading-relaxed">{data.body}</p>
-      </div>
-      <div className="mt-6 lg:mt-0">
-        <p className="text-[46px] font-bold text-light-blue leading-none tracking-tight mb-1">
-          {data.stat}
-        </p>
-        <p className="text-[12px] text-light-blue mb-4">{data.statLabel}</p>
-        <div className="inline-block bg-primary text-white text-[12px] font-semibold px-5 py-2.5 rounded-[10px] leading-snug">
-          {data.badgeText}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** Card 2 — Dark image card */
-function ImageCard({ data }) {
-  return (
-    <div className="rounded-[18px] overflow-hidden relative flex flex-col justify-end lg:row-span-2 min-h-[280px] lg:min-h-[320px] bg-black">
-      <img
-        src={data.img}
-        alt="Research workspace"
-        className="absolute inset-0 w-full h-full object-cover opacity-55"
-      />
-      <div className="relative z-10 p-6">
-        <span className="inline-flex bg-white/20 backdrop-blur-sm border border-white/25 text-white text-[11px] font-medium px-3 py-1.5 rounded-full mb-3">
-          {data.badge}
-        </span>
-        <h3 className="text-[20px] font-bold text-white leading-snug mb-2">{data.title}</h3>
-        <p className="text-[12.5px] text-white/75 leading-relaxed mb-4">{data.sub}</p>
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {data.tags.map((t) => (
-            <span
-              key={t}
-              className="bg-white/15 border border-white/20 text-white text-[11px] px-2.5 py-1 rounded-full"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-        <LearnMoreBtn dark />
-      </div>
-    </div>
-  );
-}
-
-/** Card 3 — Light text card */
-function LightCard({ data }) {
-  return (
-    <div className="rounded-[18px] bg-white md:col-span-2 lg:col-span-2 flex flex-col justify-between p-7">
-      <div>
-        <p className="text-[10px] font-semibold tracking-[.18em] uppercase text-primary mb-2.5">
-          {data.eyebrow}
-        </p>
-        <h3 className="text-[20px] font-bold text-primary leading-snug mb-1.5">{data.title}</h3>
-        <p className="text-[12.5px] font-medium text-light-blue mb-2.5">{data.accent}</p>
-        <p className="text-[13px] text-[#4a5a4e] leading-relaxed mb-5">{data.body}</p>
-        <div className="flex flex-wrap gap-2 mb-5">
-          {data.pills.map((p) => (
-            <span
-              key={p}
-              className="bg-primary text-white text-[11.5px] font-medium px-3.5 py-1.5 rounded-full"
-            >
-              {p}
-            </span>
-          ))}
-        </div>
-      </div>
-      <LearnMoreBtn />
-    </div>
-  );
-}
-
-/** Card 4 & 5 — Dark text card */
-function DarkCard({ data }) {
-  return (
-    <div className="rounded-[18px] bg-primary flex flex-col p-7">
-      <span className="inline-flex bg-light-blue text-white text-[11px] font-medium px-3.5 py-1.5 rounded-full mb-4 w-fit">
-        {data.badge}
-      </span>
-      <h3 className="text-[20px] font-bold text-white leading-snug mb-2">{data.title}</h3>
-      <p className="text-[12.5px] font-medium text-light-blue mb-2.5">{data.accent}</p>
-      <p className="text-[13px] text-white/65 leading-relaxed mb-5 flex-1">{data.body}</p>
-      <LearnMoreBtn dark />
-    </div>
+      )}
+      <h3 className="mb-2 text-lg md:text-xl font-bold leading-snug text-primary">
+        {item.title}
+      </h3>
+      {item.accent && (
+        <p className="mb-2 text-[12.5px] font-medium text-light-blue">{item.accent}</p>
+      )}
+      <p className="text-[13.5px] leading-relaxed text-foreground/70">{item.body}</p>
+    </motion.div>
   );
 }
 
 const WhyInscribe = ({
-  tagline="why choose Inscribe IQ",
- heading = "",
+  tagline = "why choose Inscribe IQ",
+  heading = "",
   subheading = "",
   cards = {},
 }) => {
+  // Normalise the five card entries into one uniform list.
+  const { stat, imageCard, lightCard, darkCard1, darkCard2 } = cards;
+  const items = [
+    stat && {
+      label: stat.eyebrow,
+      title: [stat.stat, stat.statLabel].filter(Boolean).join(" "),
+      body: stat.body,
+    },
+    imageCard && {
+      label: imageCard.badge,
+      title: imageCard.title,
+      body: imageCard.sub,
+    },
+    lightCard && {
+      label: lightCard.eyebrow,
+      title: lightCard.title,
+      accent: lightCard.accent,
+      body: lightCard.body,
+    },
+    darkCard1 && {
+      label: darkCard1.badge,
+      title: darkCard1.title,
+      accent: darkCard1.accent,
+      body: darkCard1.body,
+    },
+    darkCard2 && {
+      label: darkCard2.badge,
+      title: darkCard2.title,
+      accent: darkCard2.accent,
+      body: darkCard2.body,
+    },
+  ].filter(Boolean);
+
   return (
-    <section className="bg-light-blue/10">
-      <SectionViewer className="py-12 md:py-16">
-
-      {/* ── TOP HEADING ── */}
-      <div className="mb-8 md:mb-11">
+    <section className="bg-muted">
+      <SectionViewer className="py-14 md:py-20">
+        {/* ── Heading ── */}
+        <div className="mb-10 md:mb-12 max-w-3xl">
           <SectionLabel label={tagline} />
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-[1.15] tracking-tight mb-4">
-          {heading}
-        </h2><div className="mb-2 h-1 w-22 bg-light-blue rounded-full" />
-        <p className="text-[14px] md:text-[15px] text-foreground leading-[1.75] max-w-3xl">{subheading}</p>
-      </div>
+          <h2 className="mt-2 mb-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight text-primary">
+            {heading}
+          </h2>
+          <div className="mb-4 h-1 w-16 rounded-full bg-gradient-to-r from-light-blue to-blue" />
+          <p className="text-[14px] md:text-[15px] leading-[1.75] text-foreground/70">
+            {subheading}
+          </p>
+        </div>
 
-      {/* ── BENTO GRID ──
-          mobile:  1 col, all cards stacked
-          tablet:  2 col, cards fill naturally (LightCard spans 2)
-          desktop: 4 col × 2 row bento (unchanged)
-      ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-3.5">
-
-        {/* Stat card — lg: col 1, rows 1-2 */}
-        <StatCard data={cards.stat} />
-
-        {/* Image card — lg: col 2, rows 1-2 */}
-        <ImageCard data={cards.imageCard} />
-
-        {/* Light card — md: spans 2 cols, lg: cols 3-4 row 1 */}
-        <LightCard data={cards.lightCard} />
-
-        {/* Dark card 1 — lg: col 3 row 2 */}
-        <DarkCard data={cards.darkCard1} />
-
-        {/* Dark card 2 — lg: col 4 row 2 */}
-        <DarkCard data={cards.darkCard2} />
-
-      </div>
+        {/* ── Uniform feature grid ── */}
+        <motion.div
+          variants={gridVar}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+          {items.map((item) => (
+            <FeatureCard key={item.title} item={item} />
+          ))}
+        </motion.div>
       </SectionViewer>
     </section>
   );

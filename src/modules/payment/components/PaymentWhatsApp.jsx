@@ -2,9 +2,9 @@ import { motion } from "motion/react";
 import { Phone, Camera, MessageCircle } from "lucide-react";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
 import SectionViewer from "@/components/common/SectionViewer";
+import { CONTACT } from "@/lib/contact";
 
-const WHATSAPP_NUMBER = "918787734234";
-const WHATSAPP_DISPLAY = "+91 87877 34234";
+const WHATSAPP_NUMBER = CONTACT.enquiry.wa;
 const WHATSAPP_MSG = encodeURIComponent(
   "Hi Inscribe IQ, I've completed my payment. Sharing the screenshot for confirmation."
 );
@@ -84,11 +84,11 @@ function PaymentWhatsApp() {
           </motion.a>
 
           <a
-            href="tel:+918787734234"
+            href={`tel:${CONTACT.support.tel}`}
             className="mt-4 inline-flex items-center gap-2 text-sm text-white/55 transition-colors hover:text-white"
           >
             <Phone className="h-4 w-4" />
-            Prefer a call? {WHATSAPP_DISPLAY}
+            Prefer a call? {CONTACT.support.display}
           </a>
         </div>
 

@@ -34,6 +34,10 @@ import MCom from "./modules/services/pages/PG/MCom";
 import MTech from "./modules/services/pages/PG/MTech";
 import MA from "./modules/services/pages/PG/MA";
 import MCA from "./modules/services/pages/PG/MCA";
+import RefundPolicy from "./modules/terms/pages/RefundPolicy";
+import PrivacyPolicyPage from "./modules/terms/pages/PrivacyPolicyPage";
+
+
 
 
 function App() {
@@ -54,17 +58,17 @@ function App() {
             <Route path="phd" element={<PhD />} />
             <Route path="honary_doctorate" element={<HonaryDoctorate />} />
           </Route>
-           <Route path="courses" >
+          <Route path="courses" >
             <Route path="bba" element={<BBA />} />
             <Route path="bsc" element={<BSc />} />
             <Route path="bcom" element={<BCom />} />
             <Route path="ba" element={<BA />} />
-             <Route path="bca" element={<BCA />} />
-              <Route path="btech" element={<BTech />} />
+            <Route path="bca" element={<BCA />} />
+            <Route path="btech" element={<BTech />} />
           </Route>
-           <Route path="courses" >
+          <Route path="courses" >
             <Route path="mba" element={<MBA />} />
-           
+
             <Route path="mcom" element={<MCom />} />
             <Route path="mtech" element={<MTech />} />
             <Route path="ma" element={<MA />} />
@@ -96,6 +100,9 @@ function App() {
 
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/contact_us" element={<ContactUsPage />} />
+
+          <Route path="/refund_policy" element={<RefundPolicy />} />
+          <Route path="/privacy_policy" element={<PrivacyPolicyPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

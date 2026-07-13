@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { sendLead } from "@/lib/emailjs";
 
 const EASE = [0.22, 0.61, 0.36, 1];
 
@@ -26,6 +27,7 @@ export default function ProgramLeadForm({ program }) {
     message: "",
   });
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   const setField = (key) => (value) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -42,7 +44,7 @@ export default function ProgramLeadForm({ program }) {
     return next;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const next = validate();
     setErrors(next);
@@ -50,9 +52,21 @@ export default function ProgramLeadForm({ program }) {
       toast.error("Please fix the highlighted fields.");
       return;
     }
-    console.log("Program lead:", { program: fullTitle, ...form });
-    toast.success("Thank you! Our program advisor will reach out shortly.");
-    setForm({ name: "", phone: "", email: "", profession: "", organization: "", interest: "", message: "" });
+    setSubmitting(true);
+    try {
+      await sendLead(
+        "Program Enquiry",
+        { ...form, program: fullTitle },
+        "Thank you for your interest in our program. We'll share the brochure, curriculum and fee structure with you shortly, and an advisor will reach out."
+      );
+      toast.success("Thank you! Our program advisor will reach out shortly.");
+      setForm({ name: "", phone: "", email: "", profession: "", organization: "", interest: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -197,11 +211,11 @@ export default function ProgramLeadForm({ program }) {
             </div>
 
             <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-              <Button type="submit" size="lg" variant="gradiant" className="rounded-full px-7 font-semibold">
-                Apply Now
+              <Button type="submit" size="lg" variant="gradiant" disabled={submitting} className="rounded-full px-7 font-semibold">
+                {submitting ? "Sending…" : "Apply Now"}
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button type="submit" size="lg" variant="primary" className="rounded-full px-7 font-semibold">
+              <Button type="submit" size="lg" variant="primary" disabled={submitting} className="rounded-full px-7 font-semibold">
                 <Download className="h-4 w-4" />
                 Request Brochure
               </Button>

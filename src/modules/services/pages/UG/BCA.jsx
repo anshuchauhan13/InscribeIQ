@@ -279,7 +279,7 @@ const whyInscribeData = {
       title: "Top AI-Focused Universities",
       sub: "Choose from leading universities offering AI-integrated BCA programs.",
       tags: ["Artificial Intelligence", "Machine Learning", "Data Science"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

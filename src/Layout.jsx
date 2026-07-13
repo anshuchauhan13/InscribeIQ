@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { NavbarMenu } from "./components/Navbar/NavbarMenu";
 import Footer from "./components/Footer/Footer";
 import BackToTop from "./components/common/BackToTop";
+import WhatsAppButton from "./components/common/WhatsAppButton";
 
 const Layout = () => {
   return (
@@ -15,7 +16,8 @@ const Layout = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Floating scroll-to-top control (appears after scrolling down) */}
+      {/* Floating WhatsApp CTA (every page) + scroll-to-top control */}
+      <WhatsAppButton />
       <BackToTop />
     </div>
   );

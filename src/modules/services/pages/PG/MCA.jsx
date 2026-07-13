@@ -86,7 +86,7 @@ const whyInscribeData = {
       title: "Multiple University Options",
       sub: "Choose from top reputed universities for MCA (AI Integrated).",
       tags: ["AI", "Machine Learning", "Cloud Computing"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

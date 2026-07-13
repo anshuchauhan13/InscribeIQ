@@ -14,7 +14,7 @@ export const PROGRAMS = {
     "fullTitle": "Foundations of Artificial Intelligence",
     "rawTitle": "",
     "category": "AI & ML",
-    "duration": "8 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/ai1.jpg",
     "icon": "BrainCircuit",
     "hero": {
@@ -285,7 +285,7 @@ export const PROGRAMS = {
     "fullTitle": "Applied Machine Learning",
     "rawTitle": "",
     "category": "AI & ML",
-    "duration": "10 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/machinelearning.jpg",
     "icon": "Bot",
     "hero": {
@@ -556,7 +556,7 @@ export const PROGRAMS = {
     "fullTitle": "Using ChatGPT & AI Tools for Teaching",
     "rawTitle": "",
     "category": "Education",
-    "duration": "6 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/aitools.jpg",
     "icon": "GraduationCap",
     "hero": {
@@ -827,7 +827,7 @@ export const PROGRAMS = {
     "fullTitle": "Cybersecurity Fundamentals & Network Defense",
     "rawTitle": "",
     "category": "Cybersecurity",
-    "duration": "10 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/cybersecurity.jpg",
     "icon": "ShieldCheck",
     "hero": {
@@ -1098,7 +1098,7 @@ export const PROGRAMS = {
     "fullTitle": "FinTech Ecosystems & Digital Banking",
     "rawTitle": "",
     "category": "FinTech",
-    "duration": "8 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/fintech.jpg",
     "icon": "Landmark",
     "hero": {
@@ -1369,7 +1369,7 @@ export const PROGRAMS = {
     "fullTitle": "Python for Engineering & Applied Sciences",
     "rawTitle": "",
     "category": "Engineering",
-    "duration": "8 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/codingman.jpg",
     "icon": "Code2",
     "hero": {
@@ -1640,7 +1640,7 @@ export const PROGRAMS = {
     "fullTitle": "Applied Data Mining Techniques",
     "rawTitle": "",
     "category": "Data Science",
-    "duration": "8 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/data.jpg",
     "icon": "Database",
     "hero": {
@@ -1911,7 +1911,7 @@ export const PROGRAMS = {
     "fullTitle": "Database Systems & SQL for Enterprise",
     "rawTitle": "",
     "category": "Data Science",
-    "duration": "8 Weeks",
+    "duration": "4 Weeks",
     "image": "/home/databse.jpg",
     "icon": "Server",
     "hero": {

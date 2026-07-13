@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
+import { sendLead } from "@/lib/emailjs";
 // ─── Static options ───────────────────────────────────────────────────────────
 
 const QUALIFICATIONS = [
@@ -71,10 +73,10 @@ function FieldLabel({ children, required }) {
 }
 
 const LeadGeneration = ({
+  programName = "doctorate",
   heading = "Ready to Take Your Leadership Journey to the Next Level?",
-  subheading =
-    "Fill in your details and our advisors will reach out within 24 hours with a personalised DBA roadmap.",
-  ctaText = "Book a Free Consultation",
+  subheading = `Fill in your details and our advisors will reach out within 24 hours with a personalised ${programName} roadmap.`,
+  ctaText = `Book a Free ${programName} Consultation`,
   onSubmit,
   qualifications = QUALIFICATIONS,
   experienceRanges = EXPERIENCE_RANGES,
@@ -125,8 +127,20 @@ const LeadGeneration = ({
     setErrors({});
     setLoading(true);
     try {
-      await onSubmit?.(values);
+      // Prefer a parent-supplied handler; otherwise send via EmailJS directly.
+      if (onSubmit) {
+        await onSubmit(values);
+      } else {
+        await sendLead(
+          `${programName} Lead`,
+          values,
+          `Thank you for your interest in our ${programName} program. Our advisors will reach out within 24 hours with a personalised roadmap for you.`
+        );
+      }
       setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again or email us directly.");
     } finally {
       setLoading(false);
     }
@@ -161,8 +175,8 @@ const LeadGeneration = ({
             You're on the list!
           </h3>
           <p className="text-slate-500 text-sm leading-relaxed">
-            Our  advisors will reach out within 24 hours with a tailored
-            roadmap. Keep an eye on{" "}
+            Our {programName} advisors will reach out within 24 hours with a
+            tailored roadmap. Keep an eye on{" "}
             <strong className="text-slate-700">{values.email}</strong>.
           </p>
         </SectionViewer>
@@ -187,17 +201,7 @@ const LeadGeneration = ({
         */}
         <div className="grid lg:grid-cols-[1fr_1.7fr] gap-10 xl:gap-16 items-start">
 
-          {/* ── Left: headline + trust signals ── */}
-          {/*
-            lg:self-start + lg:sticky lg:top-8 ONLY when left content
-            is taller than viewport would need it — but here left is always
-            shorter than the form, so sticky would cause it to scroll away.
-            Fix: remove sticky entirely. Left col sits at the top, form scrolls.
-            If you want left to follow the form: use lg:sticky with a top value
-            equal to navbar height, AND ensure the section itself is the scroll
-            container (overflow-auto) — not the page. Since page scroll is the
-            norm here, no sticky is the cleanest solution.
-          */}
+         
           <div className="lg:self-start">
              <SectionLabel label="Get Started" />
             <h2 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-slate-900 leading-tight mb-5">
@@ -212,7 +216,7 @@ const LeadGeneration = ({
               {[
                 "No commitment required",
                 "Response within 24 hours",
-                "Personalised roadmap",
+                `Personalised ${programName} roadmap`,
               ].map((t) => (
                 <li
                   key={t}

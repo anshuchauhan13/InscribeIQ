@@ -60,7 +60,7 @@ const programOverview = {
   primaryButtonText: "Discover More",
   phone: "+91 123 456 7890",
 
-  images: ["/service/chemistry.png", "/service/bscabout.jpg", "/service/bsc3.jpg"],
+  images: ["/service/chemistry.jpg", "/service/bscabout.jpg", "/service/bsc3.jpg"],
 
   features: [
     {
@@ -235,7 +235,7 @@ const whyInscribeData = {
       title: "Best Science Universities",
       sub: "Choose from top accredited universities.",
       tags: ["B.Sc Physics", "B.Sc Chemistry", "B.Sc Biology"],
-      img: "/service/hero1.png",
+      img: "/service/hero1.jpg",
     },
 
     lightCard: {

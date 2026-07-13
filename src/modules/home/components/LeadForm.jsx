@@ -21,6 +21,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { sendLead } from "@/lib/emailjs";
 
 const SERVICES = [
   "Publication Services",
@@ -45,6 +47,7 @@ export default function LeadForm() {
   });
   const [errors, setErrors] = useState({});
   const [dateOpen, setDateOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const setField = (key) => (value) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -64,28 +67,52 @@ export default function LeadForm() {
     return next;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const next = validate();
     setErrors(next);
     if (Object.keys(next).length > 0) return;
-    console.log("Lead submitted:", form);
-    alert("Thanks! One of our advisors will reach out shortly.");
-    setForm({ service: "", name: "", phone: "", email: "", message: "", date: undefined, time: "" });
+    setSubmitting(true);
+    try {
+      await sendLead(
+        "Home Page Lead",
+        form,
+        "Thank you for your enquiry. One of our academic advisors will reach out to you shortly to discuss the best way forward."
+      );
+      toast.success("Thanks! One of our advisors will reach out shortly.");
+      setForm({ service: "", name: "", phone: "", email: "", message: "", date: undefined, time: "" });
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <SectionViewer className="flex items-center justify-center overflow-hidden pb-24">
       <div className="w-full relative max-w-6xl overflow-hidden flex flex-col md:flex-row">
         {/* Decorative overlay elements */}
-        <div className="w-full h-full z-2 absolute bg-linear-to-t from-transparent to-black"></div>
+        <div className="w-full h-full z-2 absolute">
+          <div className="relative w-full h-full">
+            {/* Image */}
+            <img
+              src="/home/contact.jpg"
+              alt="Contact"
+              className="w-full h-full object-cover object-bottom"
+            />
+
+            {/* Overlay on top */}
+            <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black z-10" />
+            <div className="w-[15rem] h-[15rem] bg-orange-500 absolute z-1 rounded-full bottom-0"></div>
+            <div className="w-[8rem] h-[5rem] bg-white absolute z-1 rounded-full bottom-0"></div>
+          </div>
+        </div>
         <div className="flex absolute z-2 overflow-hidden backdrop-blur-2xl">
-          {[...Array(6)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
             <div key={i} className="h-[60rem] z-2 w-[4rem] bg-linear-90 from-[#ffffff00] via-[#000000] via-[69%] to-[#ffffff30] opacity-30 overflow-hidden" />
           ))}
         </div>
-        <div className="w-[15rem] h-[15rem] bg-orange-500 absolute z-1 rounded-full bottom-0"></div>
-        <div className="w-[8rem] h-[5rem] bg-white absolute z-1 rounded-full bottom-0"></div>
 
         {/* Left panel — slides in from the left */}
         <motion.div
@@ -242,8 +269,8 @@ export default function LeadForm() {
               </div>
             </div>
 
-            <Button type="submit" size="lg" variant="gradiant" className="mt-2">
-              Send My Inquiry
+            <Button type="submit" size="lg" variant="gradiant" className="mt-2" disabled={submitting}>
+              {submitting ? "Sending…" : "Send My Inquiry"}
             </Button>
           </form>
         </motion.div>
