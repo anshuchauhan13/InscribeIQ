@@ -4,6 +4,7 @@ import { Landmark, Copy, Check, QrCode, ScanLine } from "lucide-react";
 import SectionLabel from "@/components/common/SectionLabel";
 import SectionViewer from "@/components/common/SectionViewer";
 import { cn } from "@/lib/utils";
+import { CONTACT } from "@/lib/contact";
 
 const bankFields = [
   { label: "Account Holder", value: "Inscribe IQ Private Limited", copyable: false },
@@ -15,10 +16,8 @@ const bankFields = [
 ];
 
 // ⚠️ Placeholder UPI ID / QR — replace with Inscribe IQ's official UPI handle.
-const UPI_ID = "inscribeiq@hdfcbank";
-const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(
-  `upi://pay?pa=${UPI_ID}&pn=Inscribe IQ&cu=INR`
-)}`;
+// const UPI_ID = "inscribeiq@hdfcbank";
+const QR_SRC = `/IMG_5538.JPG`;
 
 const slideIn = (fromX) => ({
   initial: { opacity: 0, x: fromX },
@@ -130,7 +129,7 @@ function PaymentBankDetails() {
               <p className="text-xs leading-relaxed text-primary/80 md:text-sm">
                 Once the transfer is done, WhatsApp the screenshot to{" "}
                 <span className="font-semibold text-primary">
-                  +91 87877 34234
+                  {CONTACT.enquiry.display}
                 </span>
                 . Your service is activated within 2 hours.
               </p>
@@ -161,7 +160,7 @@ function PaymentBankDetails() {
           >
             <img
               src={QR_SRC}
-              alt={`UPI QR code for ${UPI_ID}`}
+              alt={`UPI QR code`}
               className="h-44 w-44 rounded-lg md:h-52 md:w-52"
             />
             {/* Animated scanning line */}
@@ -172,7 +171,7 @@ function PaymentBankDetails() {
             />
           </motion.div>
 
-          <div className="mt-6 flex w-full max-w-xs items-center justify-between gap-3 rounded-xl border border-violet-100 bg-muted px-4 py-3">
+          {/* <div className="mt-6 flex w-full max-w-xs items-center justify-between gap-3 rounded-xl border border-violet-100 bg-muted px-4 py-3">
             <div className="flex items-center gap-2 truncate">
               <ScanLine className="h-4 w-4 shrink-0 text-light-blue" />
               <span className="truncate text-sm font-semibold text-primary">
@@ -185,7 +184,7 @@ function PaymentBankDetails() {
               copiedKey={copiedKey}
               onCopy={handleCopy}
             />
-          </div>
+          </div> */}
 
           <p className="mt-4 text-xs text-muted-foreground">
             Works with Google Pay · PhonePe · Paytm · BHIM
